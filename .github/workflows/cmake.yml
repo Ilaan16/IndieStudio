@@ -19,6 +19,9 @@ jobs:
     - name: Update Kernel
       run: sudo apt update ; sudo apt -y upgrade
 
+    - name: Install xrandr
+      run: sudo apt install libxrandr
+
     - name: Build
       run: cmake -B ${{github.workspace}}/build
 
