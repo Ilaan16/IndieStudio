@@ -18,7 +18,7 @@ jobs:
     #   run: sudo apt update ; sudo apt -y upgrade
 
     - name: Build
-      run: ls -l
+      run: cat CMakeLists.txt
 
     - name: Makefile
       run: make -C ${{github.workspace}}/build
