@@ -16,21 +16,24 @@ jobs:
     steps:
     - name: tests
       run: ls -R ../
-    - name: mkdir
-      run: mkdir build
-    - name: cmake build
-      run: cmake -Bbuild -H.
-    - name: cmake make
-      run: cmake --build build/ --target all
+    - name: tests2
+      run: cat IndieStudio/test.txt
 
-    - if: ${{ success() }}
-      uses: andstor/copycat-action@v3
-      with:
-        personal_token: ${{ secrets.API_GITHUB }}
-        src_path: /.
-        src_branch: main
-        dst_branch: master
-        dst_path: /.
-        dst_owner: EpitechPromo2025
-        dst_repo_name: B-YEP-400-TLS-4-1-indiestudio-ilan.chekroun
-        commit_message: "[CA] - Push to ID: ${{ github.run_id }} by github action from ${{ github.repository }}"
+    # - name: mkdir
+    #   run: mkdir build
+    # - name: cmake build
+    #   run: cmake -Bbuild -H.
+    # - name: cmake make
+    #   run: cmake --build build/ --target all
+
+    # - if: ${{ success() }}
+    #   uses: andstor/copycat-action@v3
+    #   with:
+    #     personal_token: ${{ secrets.API_GITHUB }}
+    #     src_path: /.
+    #     src_branch: main
+    #     dst_branch: master
+    #     dst_path: /.
+    #     dst_owner: EpitechPromo2025
+    #     dst_repo_name: B-YEP-400-TLS-4-1-indiestudio-ilan.chekroun
+    #     commit_message: "[CA] - Push to ID: ${{ github.run_id }} by github action from ${{ github.repository }}"
