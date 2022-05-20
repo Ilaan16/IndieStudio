@@ -17,7 +17,7 @@ jobs:
     - name: tests
       run: ls -R ../
     - name: tests2
-      run: cat IndieStudio/test.txt
+      run: cat test.txt
 
     # - name: mkdir
     #   run: mkdir build
