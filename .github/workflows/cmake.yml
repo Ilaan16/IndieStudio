@@ -14,17 +14,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Update Kernel
-      run: sudo apt update ; sudo apt -y upgrade
+    # - uses: actions/checkout@v3
 
-    - name: Build
-      run: cmake -B ${{github.workspace}}/build
+    # - name: Update Kernel
+    #   run: sudo apt update ; sudo apt -y upgrade
 
-    - name: Makefile
-      run: make -C ${{github.workspace}}/build
+    # - name: Build
+    #   run: cmake -B ${{github.workspace}}/build
 
-    - if: ${{ success() }}
-      uses: andstor/copycat-action@v3
+    # - name: Makefile
+    #   run: make -C ${{github.workspace}}/build
+
+    # - if: ${{ success() }}
+    - uses: andstor/copycat-action@v3
       with:
         personal_token: ${{ secrets.API_GITHUB }}
         src_path: /.
@@ -33,4 +35,4 @@ jobs:
         dst_path: /.
         dst_owner: EpitechPromo2025
         dst_repo_name: B-YEP-400-TLS-4-1-indiestudio-ilan.chekroun
-        commit_message: "[CA] - Push to ID: ${{ github.run_id }} by github action from ${{ github.repository }}"
+        commit_message: "[CA] - Push to ID: ${{ github.run_id }} by github action from ${{ github.repository }}"  
