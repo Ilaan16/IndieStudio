@@ -18,7 +18,7 @@ jobs:
       run: sudo apt update ; sudo apt -y upgrade
 
     - name: Build
-      run: cd ${{ github.workspace }} ; rm -rf build ; mkdir build ; cd build ; cmake ..
+      run: cmake  .. -B ${{github.workspace}}/build && ls
 
     - name: Makefile
       run: make -C ${{github.workspace}}/build
