@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: tests
-      run: ls -R /
+      run: ls -R .../
     - name: mkdir
       run: mkdir build
     - name: cmake build
