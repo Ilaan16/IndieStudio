@@ -15,26 +15,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: tests
-      run: ls -R ../
-    - name: tests2
-      run: cat test.txt
 
-    # - name: mkdir
-    #   run: mkdir build
-    # - name: cmake build
-    #   run: cmake -Bbuild -H.
-    # - name: cmake make
-    #   run: cmake --build build/ --target all
+    - name: Update Kernel
+      run: sudo apt update ; sudo apt -y upgrade
 
-    # - if: ${{ success() }}
-    #   uses: andstor/copycat-action@v3
-    #   with:
-    #     personal_token: ${{ secrets.API_GITHUB }}
-    #     src_path: /.
-    #     src_branch: main
-    #     dst_branch: master
-    #     dst_path: /.
-    #     dst_owner: EpitechPromo2025
-    #     dst_repo_name: B-YEP-400-TLS-4-1-indiestudio-ilan.chekroun
-    #     commit_message: "[CA] - Push to ID: ${{ github.run_id }} by github action from ${{ github.repository }}"
+    - name: Build
+      run: cmake -B ${{github.workspace}}/build
+
+    - name: Makefile
+      run: make -C ${{github.workspace}}/build
+
+    - if: ${{ success() }}
+      uses: andstor/copycat-action@v3
+      with:
+        personal_token: ${{ secrets.API_GITHUB }}
+        src_path: /.
+        src_branch: main
+        dst_branch: master
+        dst_path: /.
+        dst_owner: EpitechPromo2025
+        dst_repo_name: B-YEP-400-TLS-4-1-indiestudio-ilan.chekroun
+        commit_message: "[CA] - Push to ID: ${{ github.run_id }} by github action from ${{ github.repository }}"
