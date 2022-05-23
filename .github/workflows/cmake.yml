@@ -14,22 +14,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    # - uses: actions/checkout@v3
 
-    - name: Update Kernel
-      run: sudo apt update ; sudo apt -y upgrade
+    # - name: Update Kernel
+    #   run: sudo apt update ; sudo apt -y upgrade
 
-    - name: Install missed packages
-      run: sudo apt-get install -y libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libx11-dev
+    # - name: Build
+    #   run: cmake -B ${{github.workspace}}/build
 
-    - name: Build
-      run: cmake -B ${{github.workspace}}/build
+    # - name: Makefile
+    #   run: make -C ${{github.workspace}}/build
 
-    - name: Makefile
-      run: make -C ${{github.workspace}}/build
-
-    - if: ${{ success() }}
-      uses: andstor/copycat-action@v3
+    # - if: ${{ success() }}
+    - uses: andstor/copycat-action@v3
       with:
         personal_token: ${{ secrets.API_GITHUB }}
         src_path: /.
