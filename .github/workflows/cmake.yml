@@ -20,7 +20,7 @@ jobs:
       run: sudo apt update ; sudo apt -y upgrade
 
     - name: Install xrandr
-      run: sudo apt install libxrandr
+      run: sudo apt-get install -y libxrandr-dev
 
     - name: Build
       run: cmake -B ${{github.workspace}}/build
@@ -38,4 +38,4 @@ jobs:
         dst_path: /.
         dst_owner: EpitechPromo2025
         dst_repo_name: B-YEP-400-TLS-4-1-indiestudio-ilan.chekroun
-        commit_message: "[CA] - Push to ID: ${{ github.run_id }} by github action from ${{ github.repository }}"
+        commit_message: "[CA] - Push to ID: ${{ github.run_id }} by github action from ${{ github.repository }}"  
