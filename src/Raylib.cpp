@@ -45,6 +45,11 @@ bool Raylib::gameLoop()
     return !WindowShouldClose();
 }
 
+bool Raylib::isKeyDown(int button) const noexcept
+{
+    return (IsKeyDown(button));
+}
+
 bool Raylib::isKeyPressed(int button) const noexcept
 {
     return (IsKeyPressed(button));

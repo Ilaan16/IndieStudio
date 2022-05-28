@@ -1,5 +1,12 @@
 /*
 ** EPITECH PROJECT, 2022
+** Indie
+** File description:
+** Raylib
+*/
+
+/*
+** EPITECH PROJECT, 2022
 ** indie
 ** File description:
 ** ralib
@@ -44,7 +51,7 @@ class Raylib {
         void setCamera(Vector3 pos, Vector3 target, Vector3 up, float fovy, int projection);
         Camera getCamera() const;
 
-
+        bool isKeyDown(int button) const noexcept;
         bool isKeyPressed(int button) const noexcept;
         bool isKeyReleased(int button) const noexcept;
 
