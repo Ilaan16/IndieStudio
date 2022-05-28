@@ -19,12 +19,19 @@ namespace menu {
         OPTION,
         QUIT
     };
+
+    static const std::unordered_map<menu_e, Scenes> _returnScene {
+        {menu_e::START, Scenes::NEW_GAME},
+        {menu_e::LOAD, Scenes::GAME},
+        {menu_e::OPTION, Scenes::OPTION},
+        {menu_e::QUIT, Scenes::QUIT}
+    };
+
     class SceneMenu : public AScene {
         public:
             SceneMenu();
             ~SceneMenu();
-            int run(Raylib &lib) final;
-            void InitAssets();
+            Scenes run(Raylib &lib, Scenes const &prevScene) final;
             bool clockGame();
 
         protected:

@@ -33,7 +33,7 @@ namespace menu {
     {
     }
 
-    int SceneMenu::run(Raylib &lib)
+    Scenes SceneMenu::run(Raylib &lib, Scenes const &prevScene)
     {
         bool enter = 0;
 
@@ -55,7 +55,7 @@ namespace menu {
             EndDrawing();
         }
         if (_select == QUIT)
-            return (Core::Scenes::QUIT);
-        return (Core::Scenes::QUIT);
+            return (_returnScene.at(static_cast<menu_e>(_select)));
+        return (_returnScene.at(static_cast<menu_e>(_select)));
     }
 }

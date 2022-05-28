@@ -69,7 +69,7 @@ void Raylib::printCircle(type const type, std::pair<int, int> const position, fl
     else if (type == LINES)
         DrawCircleLines(position.first, position.second, radius, color.first);
     else
-        std::cout << "[-] Unknow Circle Type, valid are Basic, Gradient, Lines" << '\n';
+        std::cout << "Unknow Circle Type\n";
 }
 
 void Raylib::printRectangle(type const type, std::pair<int, int> const position, std::pair<int, int> const size, std::pair<Color, Color> const color) const
@@ -81,7 +81,7 @@ void Raylib::printRectangle(type const type, std::pair<int, int> const position,
     else if (type == LINES)
         DrawRectangleLines(position.first, position.second, size.first, size.second, color.first);
     else
-        std::cout << "[-] Unknow Rectangle Type, valid are Basic, Gradient, Lines" << '\n';
+        std::cout << "Unknow Rectangle Type\n";
 }
 
 void Raylib::printCube(type const type, Vector3 const position, Vector3 const size, Color const color) const
@@ -91,7 +91,7 @@ void Raylib::printCube(type const type, Vector3 const position, Vector3 const si
     else if (type == WIRES)
         DrawCubeWires(position, size.x, size.y, size.z, color);
     else
-        std::cout << "[-] Unknow Cube Type, valid are Basic, Wires" << '\n';
+        std::cout << "Unknow Cube Type\n";
 }
 
 void Raylib::printSphere(type const type, Vector3 const position, float const size, std::pair<int, int> const Vertex, Color const color) const
@@ -101,7 +101,7 @@ void Raylib::printSphere(type const type, Vector3 const position, float const si
     else if (type == WIRES)
         DrawSphereWires(position, size, Vertex.first, Vertex.second, color);
     else
-        std::cout << "[-] Unknow Shpere Type, valid are Basic, Wires" << '\n';
+        std::cout << "Unknow Shpere Type\n";
 }
 
 void Raylib::printGrid(int const slices, float const space) const

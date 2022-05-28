@@ -13,12 +13,13 @@
 #include <string>
 
 #include "Raylib.hpp"
+#include "IScene.hpp"
 
-class AScene {
+class AScene : public IScene {
     public:
         AScene() = default;
         virtual ~AScene() = default;
-        virtual int run(Raylib &lib) = 0;
+        virtual Scenes run(Raylib &lib, Scenes const &prevScene) = 0;
 
     protected:
     private:
