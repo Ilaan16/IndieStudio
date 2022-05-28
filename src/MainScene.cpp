@@ -96,5 +96,6 @@ Scenes MainScene::run(Raylib &lib, Scenes const &prevScene)
         EndMode3D();
         EndDrawing();
     }
-    return (Scenes::QUIT);
+    ClearBackground(RAYWHITE);
+    return (Scenes::MENU);
 }

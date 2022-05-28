@@ -56,6 +56,7 @@ namespace menu {
         }
         if (_select == QUIT)
             return (_returnScene.at(static_cast<menu_e>(_select)));
+        ClearBackground(RAYWHITE);
         return (_returnScene.at(static_cast<menu_e>(_select)));
     }
 }
