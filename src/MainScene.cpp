@@ -8,16 +8,18 @@
 #include "MainScene.hpp"
 #include "Core.hpp"
 
-MainScene::MainScene()
+indie::MainScene::MainScene()
 {
+    _entities.push_back(createPlayer());
+    _entities.push_back(createCamera());
 }
 
-MainScene::~MainScene()
+indie::MainScene::~MainScene()
 {
     //clear objects
 }
 
-Scenes MainScene::run(Raylib &lib, Scenes const &prevScene)
+Scenes indie::MainScene::run(Raylib &lib, Scenes const &prevScene)
 {
     Camera camera = { { 0.0f, 10.0f, 10.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f }, 45.0f, 0 };
 
@@ -97,4 +99,18 @@ Scenes MainScene::run(Raylib &lib, Scenes const &prevScene)
     }
     ClearBackground(RAYWHITE);
     return (Scenes::MENU);
+}
+
+std::unique_ptr<indie::Entity> indie::MainScene::createPlayer()
+{
+    std::unique_ptr<Entity> player1;
+}
+
+std::unique_ptr<indie::Entity> indie::MainScene::createCamera()
+{
+    std::unique_ptr<Entity> camera;
+    camera->addVector3D(camera, 10, 10, 10);
+    camera->addVector3D(camera, 10, 10, 10);
+    camera->addVector3D(camera, 10, 10, 10);
+    camera->addIncliAndZoom(camera, 10, 0);
 }

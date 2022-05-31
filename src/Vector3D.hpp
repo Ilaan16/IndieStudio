@@ -15,12 +15,12 @@
     namespace indie {
         class Vector3D : public IComponent {
             public:
-                Vector3D(double x = 0, double y = 0, double z = 0) : _x(x), _y(y), _z(z) {}
+                Vector3D(float x = 0, float y = 0, float z = 0) : _x(x), _y(y), _z(z) {}
 
-                double _x;
-                double _y;
+                float _x;
+                float _y;
                 /* In other word the bigger the z is, the higher the element will be displayed and on elements with lower z. */
-                double _z;
+                float _z;
 
             /* x and y position in the architecture works as followed:
             - Each entities will be considered as a one-by-one square.
