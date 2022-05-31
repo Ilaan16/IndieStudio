@@ -16,6 +16,9 @@
 #include "SpriteText.hpp"
 #include "Vector3D.hpp"
 #include "IncliAndZoom.hpp"
+#include "Sprite3D.hpp"
+#include "Model3D.hpp"
+#include "IAAlgorithmes.hpp"
 
 namespace indie 
 {
@@ -29,9 +32,11 @@ namespace indie
             void addVelocity(std::unique_ptr<Entity> &entity);
             void addVector3D(std::unique_ptr<Entity> &entity, int x, int y, int z);
             void addRect(std::unique_ptr<Entity> &entity, int x, int y, int h, int l);
-            void addSprite2D(std::unique_ptr<Entity> &entity, const char *filename);
+            void addSprite3D(std::unique_ptr<Entity> &entity, const char *filename);
+            void addModel3D(std::unique_ptr<Entity> &entity, const char *filename);
             void addText(std::unique_ptr<Entity> &entity, const char *text);
             void addIncliAndZoom(std::unique_ptr<Entity> &entity, float x, int y);
+            void addIAAlgo(std::unique_ptr<Entity> &entity);
         protected:
         private:
             std::vector<std::unique_ptr<indie::IComponent>> _components;

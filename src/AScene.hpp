@@ -16,15 +16,17 @@
 #include "IScene.hpp"
 #include "Entity.hpp"
 
-class AScene : public IScene {
-    public:
-        AScene() = default;
-        virtual ~AScene() = default;
-        virtual Scenes run(Raylib &lib, Scenes const &prevScene) = 0;
+namespace indie
+{
+    class AScene : public IScene {
+        public:
+            AScene() = default;
+            virtual ~AScene() = default;
+            virtual Scenes run(Raylib &lib, Scenes const &prevScene) = 0;
 
-    protected:
-        std::vector<std::unique_ptr<indie::Entity>> _entities;
-    private:
-};
-
+        protected:
+            std::vector<std::unique_ptr<indie::Entity>> _entities;
+        private:
+    };
+}
 #endif /* !ascenedef */
