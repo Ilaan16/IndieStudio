@@ -6,6 +6,7 @@
 */
 
 #include "Entity.hpp"
+#include <iostream>
 
 indie::Entity::Entity()
 {
@@ -53,5 +54,5 @@ void indie::Entity::addIAAlgo(std::unique_ptr<Entity> &entity)
 
 void indie::Entity::putComponent(std::unique_ptr<indie::IComponent> component)
 {
-    Entity::_components.push_back(std::move(component));
+    _components.push_back(std::move(component));
 }
