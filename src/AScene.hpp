@@ -14,6 +14,7 @@
 
 #include "Raylib.hpp"
 #include "IScene.hpp"
+#include "Entity.hpp"
 
 class AScene : public IScene {
     public:
@@ -22,6 +23,7 @@ class AScene : public IScene {
         virtual Scenes run(Raylib &lib, Scenes const &prevScene) = 0;
 
     protected:
+        std::vector<indie::Entity> _entities;
     private:
 };
 
