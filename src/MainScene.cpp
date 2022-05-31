@@ -114,7 +114,7 @@ std::unique_ptr<indie::Entity> indie::MainScene::createPlayer()
     player->addModel3D(player, "");
 }
 
-std::unique_ptr<indie::Entity> indie::MainScene::createPlayer()
+std::unique_ptr<indie::Entity> indie::MainScene::createIA()
 {
     std::unique_ptr<Entity> IA;
     IA->addVector3D(IA, 0.0f, 1.0f, 2.0f);

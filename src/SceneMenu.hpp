@@ -11,6 +11,8 @@
 #include <array>
 #include "AScene.hpp"
 
+namespace indie
+{
 namespace menu {
 
     enum menu_e {
@@ -42,5 +44,5 @@ namespace menu {
             static const std::vector<std::string> _menuText;
     };
 }
-
+}
 #endif /* !scenemenudef */

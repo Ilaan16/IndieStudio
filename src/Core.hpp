@@ -21,7 +21,7 @@ class Core {
 
     protected:
     private:
-        std::vector<std::unique_ptr<AScene>> _vecScenes;
+        std::vector<std::unique_ptr<indie::AScene>> _vecScenes;
         int _screenWidth;
         int _screenHeight;
         Scenes _scenePos;
