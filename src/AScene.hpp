@@ -23,7 +23,7 @@ class AScene : public IScene {
         virtual Scenes run(Raylib &lib, Scenes const &prevScene) = 0;
 
     protected:
-        std::vector<indie::Entity> _entities;
+        std::vector<std::unique_ptr<indie::Entity>> _entities;
     private:
 };
 
