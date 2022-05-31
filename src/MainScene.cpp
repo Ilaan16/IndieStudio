@@ -10,7 +10,6 @@
 
 MainScene::MainScene()
 {
-    //init objects
 }
 
 MainScene::~MainScene()

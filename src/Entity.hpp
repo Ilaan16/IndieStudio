@@ -12,14 +12,17 @@
 #include <memory>
 #include "IComponent.hpp"
 
-class Entity {
-    public:
-        Entity();
-        ~Entity();
+namespace indie 
+{
+    class Entity {
+        public:
+            Entity();
+            ~Entity();
 
-    protected:
-    private:
-        std::vector<std::unique_ptr<indie::IComponent>> _components;
-};
+        protected:
+        private:
+            std::vector<std::unique_ptr<indie::IComponent>> _components;
+    };
+}
 
 #endif /* !ENTITY_HPP_ */
