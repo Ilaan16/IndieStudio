@@ -21,6 +21,18 @@ void indie::Entity::addVector3D(std::unique_ptr<Entity> &entity, int x, int y, i
     entity->putComponent(move(vector));
 }
 
+void indie::Entity::addSprite3D(std::unique_ptr<Entity> &entity, const char *filename)
+{
+    std::unique_ptr<indie::IComponent> vector = std::make_unique<indie::Sprite3D>(filename);
+    entity->putComponent(move(vector));
+}
+
+void indie::Entity::addModel3D(std::unique_ptr<Entity> &entity, const char *filename)
+{
+    std::unique_ptr<indie::IComponent> vector = std::make_unique<indie::Model3D>(filename);
+    entity->putComponent(move(vector));
+}
+
 void indie::Entity::addText(std::unique_ptr<Entity> &entity, const char *text)
 {
     std::unique_ptr<indie::IComponent> sprite_text = std::make_unique<indie::SpriteText>(text);
@@ -31,6 +43,12 @@ void indie::Entity::addIncliAndZoom(std::unique_ptr<Entity> &entity, float x, in
 {
     std::unique_ptr<indie::IComponent> inclination_zoom = std::make_unique<indie::IncliAndZoom>(x, y);
     entity->putComponent(move(inclination_zoom));
+}
+
+void indie::Entity::addIAAlgo(std::unique_ptr<Entity> &entity)
+{
+    std::unique_ptr<indie::IComponent> IA = std::make_unique<indie::IAAlgorithmes>();
+    entity->putComponent(move(IA));
 }
 
 void indie::Entity::putComponent(std::unique_ptr<indie::IComponent> component)
