@@ -5,21 +5,21 @@
 ** SceneOption
 */
 
-#ifndef SCENEOPTION_HPP_
-#define SCENEOPTION_HPP_
+// #ifndef SCENEOPTION_HPP_
+// #define SCENEOPTION_HPP_
 
-#include "AScene.hpp"
+// #include "AScene.hpp"
 
-namespace indie
-{
-    class SceneOption : public AScene {
-        public:
-            SceneOption();
-            ~SceneOption();
+// namespace indie
+// {
+//     class SceneOption : public AScene {
+//         public:
+//             SceneOption();
+//             ~SceneOption();
 
-        protected:
-        private:
-    };
-}
+//         protected:
+//         private:
+//     };
+// }
 
-#endif /* !SCENEOPTION_HPP_ */
+// #endif /* !SCENEOPTION_HPP_ */
