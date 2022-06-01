@@ -12,6 +12,11 @@
 #include <string>
 #include <memory>
 #include "AScene.hpp"
+#include "Raylib.hpp"
+#include "SceneMenu.hpp"
+#include "MainScene.hpp"
+#include "Graphical.hpp"
+#include "Game.hpp"
 
 class Core {
     public:
@@ -27,6 +32,8 @@ class Core {
         Scenes _scenePos;
         std::string _title;
         std::size_t _fps;
+        indie::Game _gameLogic;
+        indie::Graphical _raylib;
 };
 
 #endif /* !coredef */

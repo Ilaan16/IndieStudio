@@ -27,6 +27,7 @@ namespace indie
             Entity();
             ~Entity();
 
+            std::vector<std::unique_ptr<IComponent>> &getComponents();
             void putComponent(std::unique_ptr<indie::IComponent> component);
             void addEventListener(std::unique_ptr<Entity> &entity);
             void addVelocity(std::unique_ptr<Entity> &entity);
@@ -38,8 +39,8 @@ namespace indie
             void addIncliAndZoom(std::unique_ptr<Entity> &entity, float x, int y);
             void addIAAlgo(std::unique_ptr<Entity> &entity);
         protected:
-        private:
             std::vector<std::unique_ptr<indie::IComponent>> _components;
+        private:
     };
 }
 

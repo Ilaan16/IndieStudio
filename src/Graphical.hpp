@@ -18,8 +18,7 @@ namespace indie {
             Graphical();
             ~Graphical();
 
-            AScene *initGame();
-            AScene *updateSystem();
+            int updateSystem(std::unique_ptr<AScene> &scene);
             void destroyGame();
             IEvent *translateEvent();
         protected:

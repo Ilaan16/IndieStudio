@@ -23,7 +23,7 @@ namespace indie
             AScene() = default;
             virtual ~AScene() = default;
             virtual Scenes run(Raylib &lib, Scenes const &prevScene) = 0;
-
+            virtual std::unique_ptr<indie::Entity> &getEntities();
         protected:
             std::vector<std::unique_ptr<indie::Entity>> _entities;
         private:

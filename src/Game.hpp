@@ -11,6 +11,7 @@
 #include "AScene.hpp"
 #include "MainScene.hpp"
 #include "SceneOption.hpp"
+#include "SceneMenu.hpp"
 
 namespace indie {
 
@@ -23,7 +24,7 @@ namespace indie {
             void manageGame();
             AScene *initGame();
             void destroyGame();
-            std::unique_ptr<AScene> getScene();
+            std::unique_ptr<AScene> &getScene();
         protected:
         private:
             int sceneId;

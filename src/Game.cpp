@@ -11,6 +11,7 @@ indie::Game::Game()
 {
     this->sceneId = 0;
     std::unique_ptr<indie::AScene> mainScene = std::make_unique<indie::MainScene>();
+    std::unique_ptr<indie::AScene> menuScene = std::make_unique<indie::SceneMenu>();
     // std::unique_ptr<indie::AScene> optionScene = std::make_unique<indie::MainScene>();
     this->_scenes.push_back(move(mainScene));
 }
@@ -39,7 +40,7 @@ void indie::Game::destroyGame()
 
 }
 
-std::unique_ptr<indie::AScene> indie::Game::getScene()
+std::unique_ptr<indie::AScene> &indie::Game::getScene()
 {
-    return (move(this->_scenes[sceneId]));
+    return (this->_scenes[sceneId]);
 }
