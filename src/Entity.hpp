@@ -10,15 +10,15 @@
 
 #include <vector>
 #include <memory>
-#include "IComponent.hpp"
-#include "Rect.hpp"
-#include "Scale.hpp"
-#include "SpriteText.hpp"
-#include "Vector3D.hpp"
-#include "IncliAndZoom.hpp"
-#include "Sprite3D.hpp"
-#include "Model3D.hpp"
-#include "IAAlgorithmes.hpp"
+#include "components/IComponent.hpp"
+#include "components/Rect.hpp"
+#include "components/Scale.hpp"
+#include "components/SpriteText.hpp"
+#include "components/Vector3D.hpp"
+#include "components/IncliAndZoom.hpp"
+#include "components/Sprite3D.hpp"
+#include "components/Model3D.hpp"
+#include "components/IAAlgorithmes.hpp"
 
 namespace indie 
 {
