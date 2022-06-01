@@ -125,3 +125,8 @@ std::unique_ptr<indie::Entity> indie::MainScene::createCamera()
     camera->addIncliAndZoom(camera, 10, 0);
     return (camera);
 }
+
+std::vector<std::unique_ptr<indie::Entity>> &indie::MainScene::getEntities()
+{
+    return (this->_entities);
+}
