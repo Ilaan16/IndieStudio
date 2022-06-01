@@ -56,3 +56,8 @@ void indie::Entity::putComponent(std::unique_ptr<indie::IComponent> component)
 {
     _components.push_back(std::move(component));
 }
+
+std::vector<std::unique_ptr<indie::IComponent>> &indie::Entity::getComponents()
+{
+    return (this->_components);
+}

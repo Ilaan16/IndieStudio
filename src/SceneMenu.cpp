@@ -60,4 +60,9 @@ namespace indie
         ClearBackground(RAYWHITE);
         return (_returnScene.at(static_cast<menu_e>(_select)));
     }
+
+    std::vector<std::unique_ptr<indie::Entity>> &indie::SceneMenu::getEntities()
+    {
+        return (this->_entities);
+    }
 }
