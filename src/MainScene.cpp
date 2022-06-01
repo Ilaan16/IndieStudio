@@ -10,7 +10,6 @@
 
 indie::MainScene::MainScene()
 {
-
     _entities.push_back(createPlayer());
     std::cout << "Player set" << std::endl;
     _entities.push_back(createCamera());
@@ -39,16 +38,6 @@ Scenes indie::MainScene::run(Raylib &lib, Scenes const &prevScene)
     float enemySphereSize = 1.5f;
 
     bool collision = false;
-    // bool collision = false;
-    // const Vector3 playerSize = {1.0f, 2.0f, 1.0f};
-    // const Vector3 enemyBoxPos = {-4.0f, 1.0f, 0.0f};
-    // const Vector3 enemyBoxSize = {2.0f, 2.0f, 2.0f};
-
-    // Vector3 enemySpherePos = {4.0f, 0.0f, 0.0f};
-    // float enemySphereSize = 1.5f;
-
-    // Vector3 playerPosition = {0.0f, 1.0f, 2.0f};
-    // Color playerColor = GREEN;
 
     while (lib.gameLoop()) {
         if (lib.isKeyDown(KEY_RIGHT)) playerPosition.x += 0.2f;

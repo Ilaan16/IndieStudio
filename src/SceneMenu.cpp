@@ -12,7 +12,6 @@
 
 namespace indie
 {
-namespace menu {
     const std::vector<std::string> SceneMenu::_menuText {
         "Start game",
         "Load game",
@@ -61,5 +60,4 @@ namespace menu {
         ClearBackground(RAYWHITE);
         return (_returnScene.at(static_cast<menu_e>(_select)));
     }
-}
 }
