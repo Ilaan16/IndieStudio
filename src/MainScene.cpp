@@ -51,29 +51,42 @@ Scenes MainScene::run(Raylib &lib, Scenes const &prevScene)
         else if (lib.isKeyDown(KEY_UP)) playerPosition.z -= 0.2f;
 
         collision = false;
+        Vector3 vect1 = { playerPosition.x - playerSize.x/2,
+                        playerPosition.y - playerSize.y/2,
+                        playerPosition.z - playerSize.z/2};
+        Vector3 vect2 = { playerPosition.x + playerSize.x/2,
+                        playerPosition.y + playerSize.y/2,
+                        playerPosition.z + playerSize.z/2 };
 
-        if (CheckCollisionBoxes(
-            (BoundingBox){(Vector3){ playerPosition.x - playerSize.x/2,
-                                     playerPosition.y - playerSize.y/2,
-                                     playerPosition.z - playerSize.z/2 },
-                          (Vector3){ playerPosition.x + playerSize.x/2,
-                                     playerPosition.y + playerSize.y/2,
-                                     playerPosition.z + playerSize.z/2 }},
-            (BoundingBox){(Vector3){ enemyBoxPos.x - enemyBoxSize.x/2,
+        BoundingBox bounding1 = { vect1, vect2 };
+
+        Vector3 vect3 = { enemyBoxPos.x - enemyBoxSize.x/2,
                                      enemyBoxPos.y - enemyBoxSize.y/2,
-                                     enemyBoxPos.z - enemyBoxSize.z/2 },
-                          (Vector3){ enemyBoxPos.x + enemyBoxSize.x/2,
-                                     enemyBoxPos.y + enemyBoxSize.y/2,
-                                     enemyBoxPos.z + enemyBoxSize.z/2 }})) collision = true;
+                                     enemyBoxPos.z - enemyBoxSize.z/2 };
 
-        if (CheckCollisionBoxSphere(
-            (BoundingBox){(Vector3){ playerPosition.x - playerSize.x/2,
+        Vector3 vect4 = { enemyBoxPos.x + enemyBoxSize.x/2,
+                                     enemyBoxPos.y + enemyBoxSize.y/2,
+                                     enemyBoxPos.z + enemyBoxSize.z/2 };
+
+        BoundingBox bounding2 = { vect3, vect4 };
+
+        if (CheckCollisionBoxes(bounding1, bounding2)) {
+            collision = true;
+        }
+
+        Vector3 vect5 = { playerPosition.x - playerSize.x/2,
                                      playerPosition.y - playerSize.y/2,
-                                     playerPosition.z - playerSize.z/2 },
-                          (Vector3){ playerPosition.x + playerSize.x/2,
+                                     playerPosition.z - playerSize.z/2 };
+
+        Vector3 vect6 = { playerPosition.x + playerSize.x/2,
                                      playerPosition.y + playerSize.y/2,
-                                     playerPosition.z + playerSize.z/2 }},
-            enemySpherePos, enemySphereSize)) collision = true;
+                                     playerPosition.z + playerSize.z/2 };
+
+        BoundingBox bounding3 = { vect5, vect6 };
+
+        if (CheckCollisionBoxSphere(bounding3, enemySpherePos, enemySphereSize)) {
+            collision = true;
+        }
 
         if (collision) playerColor = RED;
         else playerColor = GREEN;
