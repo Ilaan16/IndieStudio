@@ -20,7 +20,7 @@
 
 class Core {
     public:
-        Core(int screenWidth = 1920, int screenHeight = 1080, std::string const &title = "default", std::size_t const fps = 60);
+        Core(std::size_t const fps = 60);
         ~Core();
         void start();
 
