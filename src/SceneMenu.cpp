@@ -10,7 +10,8 @@
 #include <chrono>
 #include "Raylib.hpp"
 
-namespace menu {
+namespace indie
+{
     const std::vector<std::string> SceneMenu::_menuText {
         "Start game",
         "Load game",
@@ -58,5 +59,10 @@ namespace menu {
             return (_returnScene.at(static_cast<menu_e>(_select)));
         ClearBackground(RAYWHITE);
         return (_returnScene.at(static_cast<menu_e>(_select)));
+    }
+
+    std::vector<std::unique_ptr<indie::Entity>> &indie::SceneMenu::getEntities()
+    {
+        return (this->_entities);
     }
 }

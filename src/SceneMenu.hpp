@@ -11,8 +11,8 @@
 #include <array>
 #include "AScene.hpp"
 
-namespace menu {
-
+namespace indie
+{
     enum menu_e {
         START,
         LOAD,
@@ -32,6 +32,7 @@ namespace menu {
             SceneMenu();
             ~SceneMenu();
             Scenes run(Raylib &lib, Scenes const &prevScene) final;
+            std::vector<std::unique_ptr<indie::Entity>> &getEntities();
             bool clockGame();
 
         protected:
@@ -42,5 +43,4 @@ namespace menu {
             static const std::vector<std::string> _menuText;
     };
 }
-
 #endif /* !scenemenudef */
