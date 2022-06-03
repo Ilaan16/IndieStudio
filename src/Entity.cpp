@@ -48,7 +48,7 @@ void indie::Entity::addIncliAndZoom(std::unique_ptr<Entity> &entity, float x, in
 
 void indie::Entity::addIAAlgo(std::unique_ptr<Entity> &entity)
 {
-    std::unique_ptr<indie::IComponent> IA = std::make_unique<indie::IAAlgorithmes>();
+    std::unique_ptr<indie::IComponent> IA = std::make_unique<indie::IAAlgorithmes>(0, 0, 0, 0);
     entity->putComponent(move(IA));
 }
 
