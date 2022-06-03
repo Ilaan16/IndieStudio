@@ -8,7 +8,7 @@
 #ifndef GRAPHICAL_HPP_
 #define GRAPHICAL_HPP_
 
-#include "AScene.hpp"
+#include "scenes/AScene.hpp"
 #include "IEvent.hpp"
 
 namespace indie {

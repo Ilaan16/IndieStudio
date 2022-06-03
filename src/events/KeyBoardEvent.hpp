@@ -11,7 +11,6 @@
 
 namespace indie
 {
-
     class KeyBoardEvent : public IEvent
     {
     public:

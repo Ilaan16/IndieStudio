@@ -19,6 +19,7 @@ namespace indie
         enum ButtonState
         {
             None = -1,
+            Hover,
             Pressed,
             Released
         };
