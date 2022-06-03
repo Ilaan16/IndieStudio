@@ -7,17 +7,17 @@
 
 #include "Core.hpp"
 
-Core::Core(std::size_t const fps)
+indie::Core::Core(std::size_t const fps)
     : _fps(fps),  _scenePos(Scenes::MENU)
 {
 
 }
 
-Core::~Core()
+indie::Core::~Core()
 {
 }
 
-void Core::start()
+void indie::Core::start()
 {
     std::cout << 2 << std::endl;
 
