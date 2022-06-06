@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <memory>
+#include <map>
 #include "components/IComponent.hpp"
 #include "components/Rect.hpp"
 #include "components/Scale.hpp"
@@ -22,24 +23,39 @@
 
 namespace indie 
 {
+    enum tag {
+        TEXTURE2D,
+        TEXTURE3D,
+        VECTOR3D,
+        VECTOR2D,
+        IA,
+        EVENT,
+        CAMUTILS,
+        MODEL3D,
+        ROTATION,
+        TEXT,
+        MOVEMENT,
+    };
+
     class Entity {
         public:
             Entity();
             ~Entity();
 
-            std::vector<std::unique_ptr<IComponent>> &getComponents();
-            void putComponent(std::unique_ptr<indie::IComponent> component);
+            std::map<indie::tag, std::unique_ptr<indie::IComponent>> &getComponents();
+            void putComponent(std::unique_ptr<indie::IComponent> component, indie::tag tag);
             void addEventListener(std::unique_ptr<Entity> &entity);
             void addVelocity(std::unique_ptr<Entity> &entity);
-            void addVector3D(std::unique_ptr<Entity> &entity, int x, int y, int z);
+            void addVector3D(std::unique_ptr<Entity> &entity, int x, int y, int z, int i);
             void addRect(std::unique_ptr<Entity> &entity, int x, int y, int h, int l);
             void addSprite3D(std::unique_ptr<Entity> &entity, const char *filename);
+            void addSprite2D(std::unique_ptr<Entity> &entity, const char *filename);
             void addModel3D(std::unique_ptr<Entity> &entity, const char *filename);
             void addText(std::unique_ptr<Entity> &entity, const char *text);
             void addIncliAndZoom(std::unique_ptr<Entity> &entity, float x, int y);
             void addIAAlgo(std::unique_ptr<Entity> &entity);
         protected:
-            std::vector<std::unique_ptr<indie::IComponent>> _components;
+            std::map<indie::tag, std::unique_ptr<indie::IComponent>> _components;
         private:
     };
 }
