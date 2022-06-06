@@ -14,7 +14,7 @@
 namespace arcade
 {
 
-    class Sprite2D : public arcade::IComponent
+    class Sprite2D : public indie::IComponent
     {
     public:
         Sprite2D(const std::string &texture);
