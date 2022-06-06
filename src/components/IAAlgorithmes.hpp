@@ -14,7 +14,7 @@
 
     namespace indie {
         class IAAlgorithmes : public IComponent {
-            public:
+            public: 
                 IAAlgorithmes() {}
             };
     }
