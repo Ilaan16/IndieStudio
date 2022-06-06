@@ -44,16 +44,16 @@ namespace indie
 
             std::map<indie::tag, std::unique_ptr<indie::IComponent>> &getComponents();
             void putComponent(std::unique_ptr<indie::IComponent> component, indie::tag tag);
-            void addEventListener(std::unique_ptr<Entity> &entity);
-            void addVelocity(std::unique_ptr<Entity> &entity);
-            void addVector3D(std::unique_ptr<Entity> &entity, int x, int y, int z, int i);
-            void addRect(std::unique_ptr<Entity> &entity, int x, int y, int h, int l);
-            void addSprite3D(std::unique_ptr<Entity> &entity, const char *filename);
-            void addSprite2D(std::unique_ptr<Entity> &entity, const char *filename);
-            void addModel3D(std::unique_ptr<Entity> &entity, const char *filename);
-            void addText(std::unique_ptr<Entity> &entity, const char *text);
-            void addIncliAndZoom(std::unique_ptr<Entity> &entity, float x, int y);
-            void addIAAlgo(std::unique_ptr<Entity> &entity);
+            void addEventListener(std::shared_ptr<Entity> &entity);
+            void addVelocity(std::shared_ptr<Entity> &entity);
+            void addVector3D(std::shared_ptr<Entity> &entity, int x, int y, int z, int i);
+            void addRect(std::shared_ptr<Entity> &entity, int x, int y, int h, int l);
+            void addSprite3D(std::shared_ptr<Entity> &entity, const char *filename);
+            void addSprite2D(std::shared_ptr<Entity> &entity, const char *filename);
+            void addModel3D(std::shared_ptr<Entity> &entity, const char *filename);
+            void addText(std::shared_ptr<Entity> &entity, const char *text);
+            void addIncliAndZoom(std::shared_ptr<Entity> &entity, float x, int y);
+            void addIAAlgo(std::shared_ptr<Entity> &entity);
         protected:
             std::map<indie::tag, std::unique_ptr<indie::IComponent>> _components;
         private:
