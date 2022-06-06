@@ -8,8 +8,7 @@
 #ifndef GRAPHICAL_HPP_
 #define GRAPHICAL_HPP_
 
-#include "AScene.hpp"
-#include "IEvent.hpp"
+#include "scenes/AScene.hpp"
 
 namespace indie {
 
@@ -19,8 +18,7 @@ namespace indie {
             ~Graphical();
 
             int updateSystem(std::unique_ptr<AScene> &scene);
-            void destroyGame();
-            IEvent *translateEvent();
+
         protected:
         private:
     };

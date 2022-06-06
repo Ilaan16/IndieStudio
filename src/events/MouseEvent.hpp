@@ -7,26 +7,16 @@
 
 #pragma once
 
-#include "IEvent.hpp"
-
 namespace indie {
-
-    class MouseEvent : public IEvent
+    class MouseEvent
     {
     public:
-        enum Button {
-            None = -1,
-            Left,
-            Middle,
-            Right
-        };
+        ~MouseEvent() = default;
 
-        MouseEvent(double x, double y, ButtonState state = ButtonState::None, Button button = None)
-            : _btn(button), _x(x), _y(y), _state(state) {};
+        virtual void click() noexcept = 0;
+    protected:
 
-        Button _btn;
         double _x;
         double _y;
-        ButtonState _state;
     };
 }

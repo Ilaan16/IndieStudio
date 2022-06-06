@@ -18,13 +18,11 @@ namespace indie
             ~MainScene();
 
             Scenes run(Raylib &lib, Scenes const &prevScene) final;
-            std::map<std::vector<type>, std::unique_ptr<indie::Entity>> &getEntities();
+            std::map<std::vector<indie::type>, std::shared_ptr<indie::Entity>> &getEntities();
 
-            
-            std::unique_ptr<Entity> createPlayer();
-            std::unique_ptr<Entity> createCamera();
-            std::unique_ptr<Entity> createIA();
-        protected:
+            std::shared_ptr<Entity> createPlayer();
+            std::shared_ptr<Entity> createCamera();
+            std::shared_ptr<Entity> createIA();
         private:
     };
 }

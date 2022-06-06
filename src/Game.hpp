@@ -22,10 +22,8 @@ namespace indie {
 
             AScene *updateSystem();
             void manageGame();
-            AScene *initGame();
-            void destroyGame();
             std::unique_ptr<AScene> &getScene();
-        protected:
+
         private:
             int sceneId;
             std::vector<std::unique_ptr<AScene>> _scenes;

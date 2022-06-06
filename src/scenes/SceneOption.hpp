@@ -5,21 +5,24 @@
 ** SceneOption
 */
 
-// #ifndef SCENEOPTION_HPP_
-// #define SCENEOPTION_HPP_
+#ifndef SCENEOPTION_HPP_
+    #define SCENEOPTION_HPP_
 
-// #include "AScene.hpp"
+    #include "AScene.hpp"
 
-// namespace indie
-// {
-//     class SceneOption : public AScene {
-//         public:
-//             SceneOption();
-//             ~SceneOption();
+namespace indie
+{
+    class SceneOption : public AScene {
+        public:
+            SceneOption();
+            ~SceneOption();
 
-//         protected:
-//         private:
-//     };
-// }
+            Scenes run(Raylib &lib, Scenes const &prevScene) final;
+            std::map<std::vector<indie::type>, std::shared_ptr<indie::Entity>> &getEntities();
 
-// #endif /* !SCENEOPTION_HPP_ */
+            std::shared_ptr<Entity> createButton();
+            std::shared_ptr<Entity> createSlider();
+        private:
+    };
+}
+#endif /* !SCENEOPTION_HPP_ */

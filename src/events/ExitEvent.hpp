@@ -8,11 +8,9 @@
 #ifndef EXITEVENT_HPP_
 #define EXITEVENT_HPP_
 
-#include "IEvent.hpp"
-
 namespace indie {
 
-    class ExitEvent : public IEvent
+    class ExitEvent
     {
     };
 

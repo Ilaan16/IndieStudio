@@ -11,10 +11,9 @@
 #include <string>
 #include "IComponent.hpp"
 
-namespace arcade
+namespace indie
 {
-
-    class Sprite2D : public arcade::IComponent
+    class Sprite2D : public IComponent
     {
     public:
         Sprite2D(const std::string &texture);

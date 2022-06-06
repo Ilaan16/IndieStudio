@@ -28,9 +28,9 @@ Scenes indie::MainScene::run(Raylib &lib, Scenes const &prevScene)
 
 }
 
-std::unique_ptr<indie::Entity> indie::MainScene::createPlayer()
+std::shared_ptr<indie::Entity> indie::MainScene::createPlayer()
 {
-    std::unique_ptr<Entity> player = std::make_unique<indie::Entity>();
+    std::shared_ptr<Entity> player = std::make_shared<indie::Entity>();
     player->addVector3D(player, 0.0f, 1.0f, 2.0f, 0);
     player->addVector3D(player, 1.0f, 2.0f, 1.0f, 1);
     player->addSprite3D(player, "");
@@ -38,9 +38,9 @@ std::unique_ptr<indie::Entity> indie::MainScene::createPlayer()
     return (player);
 }
 
-std::unique_ptr<indie::Entity> indie::MainScene::createIA()
+std::shared_ptr<indie::Entity> indie::MainScene::createIA()
 {
-    std::unique_ptr<Entity> IA = std::make_unique<indie::Entity>();
+    std::shared_ptr<Entity> IA = std::make_shared<indie::Entity>();
     IA->addVector3D(IA, 0.0f, 1.0f, 2.0f, 0);
     IA->addVector3D(IA, 1.0f, 2.0f, 1.0f, 1);
     IA->addSprite3D(IA, "");
@@ -49,9 +49,9 @@ std::unique_ptr<indie::Entity> indie::MainScene::createIA()
     return (IA);
 }
 
-std::unique_ptr<indie::Entity> indie::MainScene::createCamera()
+std::shared_ptr<indie::Entity> indie::MainScene::createCamera()
 {
-    std::unique_ptr<Entity> camera = std::make_unique<indie::Entity>();
+    std::shared_ptr<Entity> camera = std::make_shared<indie::Entity>();
     camera->addVector3D(camera, 10, 10, 10, 1);
     camera->addVector3D(camera, 10, 10, 10, 1);
     camera->addVector3D(camera, 10, 10, 10, 1);
@@ -59,7 +59,7 @@ std::unique_ptr<indie::Entity> indie::MainScene::createCamera()
     return (camera);
 }
 
-std::map<std::vector<indie::type>, std::unique_ptr<indie::Entity>> &indie::MainScene::getEntities()
+std::map<std::vector<indie::type>, std::shared_ptr<indie::Entity>> &indie::MainScene::getEntities()
 {
     return (this->_entities);
 }
