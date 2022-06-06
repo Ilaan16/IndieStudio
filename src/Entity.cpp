@@ -16,10 +16,13 @@ indie::Entity::~Entity()
 {
 }
 
-void indie::Entity::addVector3D(std::unique_ptr<Entity> &entity, int x, int y, int z)
+void indie::Entity::addVector3D(std::unique_ptr<Entity> &entity, int x, int y, int z, int i)
 {
     std::unique_ptr<indie::IComponent> vector = std::make_unique<indie::Vector3D>(x, y, z);
-    entity->putComponent(move(vector), indie::VECTOR3D);
+    if (i == 0)
+        entity->putComponent(move(vector), indie::VECTOR3D);
+    if (i == 1)
+        entity->putComponent(move(vector), indie::MOVEMENT);
 }
 
 void indie::Entity::addSprite3D(std::unique_ptr<Entity> &entity, const char *filename)

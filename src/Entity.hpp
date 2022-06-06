@@ -34,6 +34,7 @@ namespace indie
         MODEL3D,
         ROTATION,
         TEXT,
+        MOVEMENT,
     };
 
     class Entity {
@@ -45,7 +46,7 @@ namespace indie
             void putComponent(std::unique_ptr<indie::IComponent> component, indie::tag tag);
             void addEventListener(std::unique_ptr<Entity> &entity);
             void addVelocity(std::unique_ptr<Entity> &entity);
-            void addVector3D(std::unique_ptr<Entity> &entity, int x, int y, int z);
+            void addVector3D(std::unique_ptr<Entity> &entity, int x, int y, int z, int i);
             void addRect(std::unique_ptr<Entity> &entity, int x, int y, int h, int l);
             void addSprite3D(std::unique_ptr<Entity> &entity, const char *filename);
             void addSprite2D(std::unique_ptr<Entity> &entity, const char *filename);
@@ -55,7 +56,6 @@ namespace indie
             void addIAAlgo(std::unique_ptr<Entity> &entity);
         protected:
             std::map<indie::tag, std::unique_ptr<indie::IComponent>> _components;
-
         private:
     };
 }
