@@ -5,6 +5,7 @@
 ** raylib
 */
 
+#include "AScene.hpp"
 #include "Raylib.hpp"
 
 Raylib::Raylib() :
@@ -117,4 +118,44 @@ void Raylib::printGrid(int const slices, float const space) const
 void Raylib::printFps(std::pair<int, int> const pos) const
 {
     DrawFPS(pos.first, pos.second);
+}
+
+void print_sprite(indie::Entity &entitie, std::pair<int, int> _screensize)
+{
+    Image Sprite = LoadImage(entitie._components[0]->_sprite.path);
+    Texture2D texture = LoadTextureFromImage(Sprite);
+    BeginDrawing();
+        DrawTexture(texture, _screensize.first/2 - texture.width/2, _screensize.second/2 - texture.height/2, WHITE);
+    EndDrawing();
+    return;
+}
+
+// void print_text(Entity &entitie, sf::RenderWindow &window)
+// {
+//     sf::Text text;
+//     sf::Font font;
+
+//     if (!font.loadFromFile(entitie._components[0]->_text.pathFont))
+//         throw("CANNOT LOAD FONT");
+//     text.setFont(font);
+//     text.setCharacterSize(20);
+//     text.setFillColor(sf::Color::White);
+//     text.setPosition(entitie._components[0]->_position.x, entitie._components[0]->_position.y);
+//     text.setString(entitie._components[0]->_text.text);
+//     window.draw(text);
+//     return;
+// }
+
+void Raylib::displayAll(std::map<std::vector<type>, std::unique_ptr<indie::Entity>> &entities)
+{
+    auto sprite = entities.find(indie::tag::TEXTURE2D);
+    print_sprite()
+    for (int i = 0; i < entities.size(); i++) {
+        if (entities[i]->_components[0]->_sprite.path != "")
+            print_sprite(*entities[i], this->_screenSize);
+        else if (entities[i]->_components[0]->_text.text != "")
+            print_text(*entities[i], this->_screenSize);
+    }
+    BeginDrawing();
+    return;
 }

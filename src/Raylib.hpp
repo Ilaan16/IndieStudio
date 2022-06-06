@@ -22,6 +22,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <functional>
+#include "AScene.hpp"
 #include "raylib.h"
 
 class Raylib {
@@ -39,6 +40,7 @@ class Raylib {
         void createWindow(int screenWidth, int screenHeight, std::string const &title, std::size_t const Fps);
 
         bool gameLoop();
+        void displayAll(std::map<std::vector<type>, std::unique_ptr<indie::Entity>> &entities);
 
         void printText(std::string const &text, std::pair<int, int> const position, int const fontSize, Color const color) const;
         void printCircle(type const type, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const;
