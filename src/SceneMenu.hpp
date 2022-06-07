@@ -32,6 +32,7 @@ namespace indie
         public:
             SceneMenu();
             ~SceneMenu();
+      
             Scenes run(Scenes const &prevScene) final;
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
             bool clockGame();
