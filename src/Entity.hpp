@@ -15,9 +15,11 @@
 #include "components/Rect.hpp"
 #include "components/Scale.hpp"
 #include "components/SpriteText.hpp"
+#include "components/Vector2D.hpp"
 #include "components/Vector3D.hpp"
 #include "components/IncliAndZoom.hpp"
 #include "components/Sprite3D.hpp"
+#include "components/Sprite2D.hpp"
 #include "components/Model3D.hpp"
 #include "components/IAAlgorithmes.hpp"
 

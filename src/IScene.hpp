@@ -22,7 +22,7 @@ enum Scenes {
 class IScene {
     public:
         virtual ~IScene() {};
-        virtual Scenes run(Raylib &lib, Scenes const &prevScene) = 0;
+        virtual Scenes run(indie::Raylib &lib, Scenes const &prevScene) = 0;
 
     protected:
     private:

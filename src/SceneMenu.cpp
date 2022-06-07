@@ -47,10 +47,10 @@ namespace indie
                 _select = !_select ? QUIT : _select - 1;
             BeginDrawing();
             for (auto &i : _menuPos)
-                lib.printRectangle(Raylib::BASIC, i.at(0), i.at(1), {ORANGE, ORANGE});
-            lib.printRectangle(Raylib::GRADIENT, _menuPos.at(_select).at(0), _menuPos.at(_select).at(1), {RED, RED});
+                lib.printRectangle(typeLine::BASIC, i.at(0), i.at(1), {ORANGE, ORANGE});
+            lib.printRectangle(typeLine::GRADIENT, _menuPos.at(_select).at(0), _menuPos.at(_select).at(1), {RED, RED});
             if (enter)
-                lib.printRectangle(Raylib::GRADIENT, _menuPos.at(_select).at(0), _menuPos.at(_select).at(1), {PINK, PINK});
+                lib.printRectangle(typeLine::GRADIENT, _menuPos.at(_select).at(0), _menuPos.at(_select).at(1), {PINK, PINK});
             for (std::size_t i = 0; i <= QUIT; ++i)
                 lib.printText(_menuText[i], _menuPos[i].at(0), 20, BLACK);
             EndDrawing();

@@ -61,11 +61,6 @@ bool indie::Raylib::isKeyReleased(int button) const noexcept
     return (IsKeyReleased(button));
 }
 
-void indie::Raylib::printText(std::string const &text, std::pair<int, int> const position, int const fontSize, Color const color) const
-{
-    DrawText(text.c_str(), position.first, position.second, fontSize, color);
-}
-
 void indie::Raylib::printCircle(typeLine const typeLine, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const
 {
     if (typeLine == BASIC)
@@ -120,38 +115,34 @@ void indie::Raylib::printFps(std::pair<int, int> const pos) const
     DrawFPS(pos.first, pos.second);
 }
 
-void print_sprite(indie::Entity &entitie, std::pair<int, int> _screensize)
-{
-    Image Sprite = LoadImage(entitie._components[0]->_sprite.path);
-    Texture2D texture = LoadTextureFromImage(Sprite);
-    BeginDrawing();
-        DrawTexture(texture, _screensize.first/2 - texture.width/2, _screensize.second/2 - texture.height/2, WHITE);
-    EndDrawing();
-    return;
-}
-
-// void print_text(Entity &entitie, sf::RenderWindow &window)
+// void indie::Raylib::printText(std::unique_ptr<indie::IComponent> text) const
 // {
-//     sf::Text text;
-//     sf::Font font;
-
-//     if (!font.loadFromFile(entitie._components[0]->_text.pathFont))
-//         throw("CANNOT LOAD FONT");
-//     text.setFont(font);
-//     text.setCharacterSize(20);
-//     text.setFillColor(sf::Color::White);
-//     text.setPosition(entitie._components[0]->_position.x, entitie._components[0]->_position.y);
-//     text.setString(entitie._components[0]->_text.text);
-//     window.draw(text);
-//     return;
+//     DrawText(text.c_str(), position.first, position.second, fontSize, color);
 // }
 
-void indie::Raylib::displayAll(std::map<std::vector<indie::type>, std::unique_ptr<indie::Entity>> &entities)
+void indie::Raylib::printSprite(std::unique_ptr<indie::IComponent> texture, std::unique_ptr<indie::IComponent> vector2d) const
 {
-    // auto drawable_entity = entities.find(std::vector<type>{indie::type::DRAWABLE});
-    // auto movable_entity = entities.find(std::vector<type>{indie::type::MOVABLE});
-    // auto playable_entity = entities.find(std::vector<type>{indie::type::PLAYABLE});
-    auto drawable_entity = entities.find(type::DRAWABLE);
-    auto entiti_vector = drawable_entity->second;
+    Sprite2D *sprite = dynamic_cast<Sprite2D *>(texture.get());
+    Vector2D *vector = dynamic_cast<Vector2D *>(vector2d.get());
+    Texture2D texture2d = LoadTexture(sprite->_texture.c_str());
+    BeginDrawing();
+        DrawTexture(texture2d, vector->_x, vector->_y, WHITE);
+    EndDrawing();
+    UnloadTexture(texture2d);
     return;
 }
+
+void indie::Raylib::displayAll(std::map<type ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
+{
+    auto drawable_entity = entities.find(indie::type::DRAWABLE);
+    for (int i = 0; i != drawable_entity->second.size(); i++) {
+        auto component = drawable_entity->second.at(i)->getComponents();
+        auto texture2d_compo = component.find(tag::TEXTURE2D);
+        auto vector2d_compo = component.find(tag::VECTOR2D);
+        if (texture2d_compo != component.end() && vector2d_compo != component.end())
+            printSprite(move(texture2d_compo->second), move(vector2d_compo->second));
+        // auto text_compo = component.find(tag::TEXT);
+        //     print_text(text_compo->second);
+    // }
+    return;
+    }

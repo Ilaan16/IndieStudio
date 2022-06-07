@@ -5,13 +5,6 @@
 ** Raylib
 */
 
-/*
-** EPITECH PROJECT, 2022
-** indie
-** File description:
-** ralib
-*/
-
 #ifndef encap
 #define encap
 
@@ -43,8 +36,9 @@ namespace indie {
             void createWindow(int screenWidth, int screenHeight, std::string const &title, std::size_t const Fps);
 
             bool gameLoop();
-            void displayAll(std::map<type ,std::vector<std::shared_ptr<indie::Entity>>> &entities);
+            void displayAll(std::map<type ,std::vector<std::shared_ptr<Entity>>> &entities);
 
+            void printSprite(std::unique_ptr<indie::IComponent> texture, std::unique_ptr<indie::IComponent> vector2) const;
             void printText(std::string const &text, std::pair<int, int> const position, int const fontSize, Color const color) const;
             void printCircle(typeLine const typeLine, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const;
             void printRectangle(typeLine const typeLine, std::pair<int, int> const position, std::pair<int, int> const size, std::pair<Color, Color> const color) const;
