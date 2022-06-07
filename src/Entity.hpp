@@ -15,9 +15,11 @@
 #include "components/Rect.hpp"
 #include "components/Scale.hpp"
 #include "components/SpriteText.hpp"
+#include "components/Vector2D.hpp"
 #include "components/Vector3D.hpp"
 #include "components/IncliAndZoom.hpp"
 #include "components/Sprite3D.hpp"
+#include "components/Sprite2D.hpp"
 #include "components/Model3D.hpp"
 #include "components/IAAlgorithmes.hpp"
 
@@ -42,8 +44,8 @@ namespace indie
             Entity();
             ~Entity();
 
-            std::map<indie::tag, std::unique_ptr<indie::IComponent>> &getComponents();
-            void putComponent(std::unique_ptr<indie::IComponent> component, indie::tag tag);
+            std::map<indie::tag, std::shared_ptr<indie::IComponent>> &getComponents();
+            void putComponent(std::shared_ptr<indie::IComponent> component, indie::tag tag);
             void addEventListener(std::shared_ptr<Entity> &entity);
             void addVelocity(std::shared_ptr<Entity> &entity);
             void addVector3D(std::shared_ptr<Entity> &entity, int x, int y, int z, int i);
@@ -55,7 +57,7 @@ namespace indie
             void addIncliAndZoom(std::shared_ptr<Entity> &entity, float x, int y);
             void addIAAlgo(std::shared_ptr<Entity> &entity);
         protected:
-            std::map<indie::tag, std::unique_ptr<indie::IComponent>> _components;
+            std::map<indie::tag, std::shared_ptr<indie::IComponent>> _components;
         private:
     };
 }

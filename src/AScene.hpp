@@ -13,13 +13,12 @@
 #include <string>
 #include <map>
 
-#include "Raylib.hpp"
 #include "IScene.hpp"
 #include "Entity.hpp"
 
 namespace indie
 {
-    enum type {
+    enum typeEntity {
         DRAWABLE,
         MOVABLE,
         PLAYABLE
@@ -29,10 +28,10 @@ namespace indie
         public:
             AScene() = default;
             virtual ~AScene() = default;
-            virtual Scenes run(Raylib &lib, Scenes const &prevScene) = 0;
-            virtual std::map<type ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities() = 0;
+            virtual Scenes run(Scenes const &prevScene) = 0;
+            virtual std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities() = 0;
         protected:
-            std::map<type ,std::vector<std::shared_ptr<indie::Entity>>> _entities;
+            std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> _entities;
         private:
     };
 }
