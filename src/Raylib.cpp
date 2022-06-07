@@ -61,45 +61,45 @@ bool indie::Raylib::isKeyReleased(int button) const noexcept
     return (IsKeyReleased(button));
 }
 
-void indie::Raylib::printCircle(typeLine const typeLine, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const
+void indie::Raylib::printCircle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const
 {
-    if (typeLine == BASIC)
+    if (typeEntityLine == BASIC)
         DrawCircle(position.first, position.second, radius, color.first);
-    else if (typeLine == GRADIENT)
+    else if (typeEntityLine == GRADIENT)
         DrawCircleGradient(position.first, position.second, radius, color.first, color.second);
-    else if (typeLine == LINES)
+    else if (typeEntityLine == LINES)
         DrawCircleLines(position.first, position.second, radius, color.first);
     else
         std::cout << "Unknow Circle Type\n";
 }
 
-void indie::Raylib::printRectangle(typeLine const typeLine, std::pair<int, int> const position, std::pair<int, int> const size, std::pair<Color, Color> const color) const
+void indie::Raylib::printRectangle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, std::pair<int, int> const size, std::pair<Color, Color> const color) const
 {
-    if (typeLine == BASIC)
+    if (typeEntityLine == BASIC)
         DrawRectangle(position.first, position.second, size.first, size.second, color.first);
-    else if (typeLine == GRADIENT)
+    else if (typeEntityLine == GRADIENT)
         DrawRectangleGradientH(position.first, position.second, size.first, size.second, color.first, color.second);
-    else if (typeLine == LINES)
+    else if (typeEntityLine == LINES)
         DrawRectangleLines(position.first, position.second, size.first, size.second, color.first);
     else
         std::cout << "Unknow Rectangle Type\n";
 }
 
-void indie::Raylib::printCube(typeLine const typeLine, Vector3 const position, Vector3 const size, Color const color) const
+void indie::Raylib::printCube(typeEntityLine const typeEntityLine, Vector3 const position, Vector3 const size, Color const color) const
 {
-    if (typeLine == BASIC)
+    if (typeEntityLine == BASIC)
         DrawCube(position, size.x, size.y, size.z, color);
-    else if (typeLine == WIRES)
+    else if (typeEntityLine == WIRES)
         DrawCubeWires(position, size.x, size.y, size.z, color);
     else
         std::cout << "Unknow Cube Type\n";
 }
 
-void indie::Raylib::printSphere(typeLine const typeLine, Vector3 const position, float const size, std::pair<int, int> const Vertex, Color const color) const
+void indie::Raylib::printSphere(typeEntityLine const typeEntityLine, Vector3 const position, float const size, std::pair<int, int> const Vertex, Color const color) const
 {
-    if (typeLine == BASIC)
+    if (typeEntityLine == BASIC)
         DrawSphere(position, size, color);
-    else if (typeLine == WIRES)
+    else if (typeEntityLine == WIRES)
         DrawSphereWires(position, size, Vertex.first, Vertex.second, color);
     else
         std::cout << "Unknow Shpere Type\n";
@@ -115,12 +115,12 @@ void indie::Raylib::printFps(std::pair<int, int> const pos) const
     DrawFPS(pos.first, pos.second);
 }
 
-// void indie::Raylib::printText(std::unique_ptr<indie::IComponent> text) const
+// void indie::Raylib::printText(std::shared_ptr<indie::IComponent> text) const
 // {
 //     DrawText(text.c_str(), position.first, position.second, fontSize, color);
 // }
 
-void indie::Raylib::printSprite(std::unique_ptr<indie::IComponent> texture, std::unique_ptr<indie::IComponent> vector2d) const
+void indie::Raylib::printSprite(std::shared_ptr<indie::IComponent> texture, std::shared_ptr<indie::IComponent> vector2d) const
 {
     Sprite2D *sprite = dynamic_cast<Sprite2D *>(texture.get());
     Vector2D *vector = dynamic_cast<Vector2D *>(vector2d.get());
@@ -132,9 +132,9 @@ void indie::Raylib::printSprite(std::unique_ptr<indie::IComponent> texture, std:
     return;
 }
 
-void indie::Raylib::displayAll(std::map<type ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
+void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
 {
-    auto drawable_entity = entities.find(indie::type::DRAWABLE);
+    auto drawable_entity = entities.find(typeEntity::DRAWABLE);
     for (int i = 0; i != drawable_entity->second.size(); i++) {
         auto component = drawable_entity->second.at(i)->getComponents();
         auto texture2d_compo = component.find(tag::TEXTURE2D);
@@ -143,6 +143,5 @@ void indie::Raylib::displayAll(std::map<type ,std::vector<std::shared_ptr<indie:
             printSprite(move(texture2d_compo->second), move(vector2d_compo->second));
         // auto text_compo = component.find(tag::TEXT);
         //     print_text(text_compo->second);
-    // }
-    return;
     }
+}

@@ -20,7 +20,7 @@
 
 namespace indie {
 
-    enum typeLine {
+    enum typeEntityLine {
         BASIC,
         GRADIENT,
         LINES,
@@ -36,15 +36,15 @@ namespace indie {
             void createWindow(int screenWidth, int screenHeight, std::string const &title, std::size_t const Fps);
 
             bool gameLoop();
-            void displayAll(std::map<type ,std::vector<std::shared_ptr<Entity>>> &entities);
+            void displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &entities);
 
-            void printSprite(std::unique_ptr<indie::IComponent> texture, std::unique_ptr<indie::IComponent> vector2) const;
+            void printSprite(std::shared_ptr<indie::IComponent> texture, std::shared_ptr<indie::IComponent> vector2) const;
             void printText(std::string const &text, std::pair<int, int> const position, int const fontSize, Color const color) const;
-            void printCircle(typeLine const typeLine, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const;
-            void printRectangle(typeLine const typeLine, std::pair<int, int> const position, std::pair<int, int> const size, std::pair<Color, Color> const color) const;
+            void printCircle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const;
+            void printRectangle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, std::pair<int, int> const size, std::pair<Color, Color> const color) const;
             void printGrid(int const slices, float const space) const;
-            void printCube(typeLine const typeLine, Vector3 const position, Vector3 const size, Color const color) const;
-            void printSphere(typeLine const typeLine, Vector3 const position, float const size, std::pair<int, int> const Vertex ,Color const color) const;
+            void printCube(typeEntityLine const typeEntityLine, Vector3 const position, Vector3 const size, Color const color) const;
+            void printSphere(typeEntityLine const typeEntityLine, Vector3 const position, float const size, std::pair<int, int> const Vertex ,Color const color) const;
             void printFps(std::pair<int, int> const pos) const;
 
             void setCamera(Vector3 pos, Vector3 target, Vector3 up, float fovy, int projection);
