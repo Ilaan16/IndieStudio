@@ -32,7 +32,7 @@ namespace indie
             SceneMenu();
             ~SceneMenu();
             Scenes run(Raylib &lib, Scenes const &prevScene) final;
-            std::map<std::vector<indie::type>, std::unique_ptr<indie::Entity>> &getEntities();
+            std::map<type ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
             bool clockGame();
 
         protected:
