@@ -43,7 +43,7 @@ namespace indie {
             void createWindow(int screenWidth, int screenHeight, std::string const &title, std::size_t const Fps);
 
             bool gameLoop();
-            void displayAll(std::map<std::vector<indie::type>, std::unique_ptr<indie::Entity>> &entities);
+            void displayAll(std::map<type ,std::vector<std::shared_ptr<indie::Entity>>> &entities);
 
             void printText(std::string const &text, std::pair<int, int> const position, int const fontSize, Color const color) const;
             void printCircle(typeLine const typeLine, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const;

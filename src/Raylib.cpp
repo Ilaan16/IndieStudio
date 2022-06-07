@@ -148,14 +148,10 @@ void print_sprite(indie::Entity &entitie, std::pair<int, int> _screensize)
 
 void indie::Raylib::displayAll(std::map<std::vector<indie::type>, std::unique_ptr<indie::Entity>> &entities)
 {
-    auto drawable_entity = entities.find(std::vector<type>{indie::type::DRAWABLE});
-    print_sprite();
-    for (int i = 0; i < entities.size(); i++) {
-        if (entities[i]->_components[0]->_sprite.path != "")
-            print_sprite(*entities[i], this->_screenSize);
-        else if (entities[i]->_components[0]->_text.text != "")
-            print_text(*entities[i], this->_screenSize);
-    }
-    BeginDrawing();
+    // auto drawable_entity = entities.find(std::vector<type>{indie::type::DRAWABLE});
+    // auto movable_entity = entities.find(std::vector<type>{indie::type::MOVABLE});
+    // auto playable_entity = entities.find(std::vector<type>{indie::type::PLAYABLE});
+    auto drawable_entity = entities.find(type::DRAWABLE);
+    auto entiti_vector = drawable_entity->second;
     return;
 }
