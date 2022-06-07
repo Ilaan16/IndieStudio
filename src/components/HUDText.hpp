@@ -15,7 +15,7 @@
     namespace indie {
         class HUDText : public IComponent {
             public:
-                typeEntitydef struct rgb_s {
+                typedef struct rgb_s {
                     uint16_t r;
                     uint16_t g;
                     uint16_t b;
