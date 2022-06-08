@@ -10,11 +10,11 @@
 
 enum Scenes {
     QUIT = -1,
-    OPTION = 0,
     MENU,
     NEW_GAME,
     GAME,
-    LOAD
+    LOAD,
+    OPTION
 };
 
 class IScene {
