@@ -7,7 +7,7 @@
 
 #include "Core.hpp"
 
-indie::Core::Core(): _scenePos(Scenes::MENU)
+indie::Core::Core(std::size_t const fps)
 {
     //std::cout << 1 << std::endl;
     //_vecScenes.emplace_back(std::make_unique<indie::SceneMenu>());

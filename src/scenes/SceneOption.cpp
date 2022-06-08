@@ -5,39 +5,51 @@
 ** SceneOption
 */
 
-#include "SceneOption.hpp"
+#include "scenes/SceneOption.hpp"
 
 namespace indie {
     SceneOption::SceneOption()
     {
-        _entities.emplace(std::vector{type::DRAWABLE, type::CLICKABLE}, createButton);
-        _entities.emplace(std::vector{type::DRAWABLE, type::CLICKABLE}, createButton);
-        _entities.emplace(std::vector{type::DRAWABLE, type::CLICKABLE}, createButton);
-        _entities.emplace(std::vector{type::DRAWABLE, type::CLICKABLE}, createSlider);
-        _entities.emplace(std::vector{type::DRAWABLE, type::CLICKABLE}, createSlider);
+        std::vector<std::shared_ptr<Entity>> drawable_ent;
+        std::vector<std::shared_ptr<Entity>> movable_ent;
+        std::vector<std::shared_ptr<Entity>> playable_ent;
+        std::vector<std::shared_ptr<Entity>> clickable_ent;
+        _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
+        _entities.emplace(typeEntity::MOVABLE, movable_ent);
+        _entities.emplace(typeEntity::PLAYABLE, playable_ent);
+        _entities.emplace(typeEntity::CLICKABLE, playable_ent);
+        createButton();
+        createSlider();
     }
 
     SceneOption::~SceneOption()
     {
     }
 
-    std::shared_ptr<Entity> SceneOption::createButton()
+    Scenes SceneOption::run(Scenes const &prevScene)
     {
-        std::shared_ptr<Entity> Button = std::make_shared<indie::Entity>();
-        Button->addEventListener(Button);
-        Button->addSprite2D(Button, "uwu.png");
-        return Button;
+
     }
 
-    std::shared_ptr<Entity> SceneOption::createSlider()
+    void SceneOption::createButton()
     {
-        std::shared_ptr<Entity> Slider = std::make_shared<indie::Entity>();
-        Slider->addEventListener(Slider);
-        Slider->addSprite2D(Slider, "uwu.png");
-        return Slider;
+        std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
+        button->addEventListener(button);
+        button->addSprite2D(button, "uwu.png");
+        _entities.find(indie::DRAWABLE)->second.push_back(button);
+        _entities.find(indie::CLICKABLE)->second.push_back(button);
     }
 
-    std::map<std::vector<indie::type>, std::shared_ptr<indie::Entity>> &SceneOption::getEntities()
+    void SceneOption::createSlider()
+    {
+        std::shared_ptr<Entity> slider = std::make_shared<indie::Entity>();
+        slider->addEventListener(slider);
+        slider->addSprite2D(slider, "uwu.png");
+        _entities.find(indie::DRAWABLE)->second.push_back(slider);
+        _entities.find(indie::CLICKABLE)->second.push_back(slider);
+    }
+
+    std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &SceneOption::getEntities()
     {
         return (this->_entities);
     }

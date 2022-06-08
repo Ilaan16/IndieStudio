@@ -10,16 +10,18 @@
 #include "Entity.hpp"
 
 namespace indie {
+    class Entity;
+
     class MouseEvent
     {
-    public:
-        ~MouseEvent() = default;
+        public:
+            ~MouseEvent() = default;
 
-        virtual void click(std::shared_ptr<Entity> &ownEntity) noexcept = 0;
+            virtual void click(std::shared_ptr<Entity> &ownEntity) noexcept = 0;
 
-    protected:
-        double _x;
-        double _y;
+        protected:
+            double _x;
+            double _y;
     };
 
     class TestMouse : MouseEvent {

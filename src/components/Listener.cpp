@@ -9,7 +9,7 @@
 #include "Listener.hpp"
 
 namespace indie {
-    bool Listener::addKeyboard(const KeyboardKey &key, std::unique_ptr<KeyBoardEvent> handler)
+    bool Listener::addKeyboard(const KeyboardKey &key, std::unique_ptr<KeyboardEvent> handler)
     {
         auto ret = keyboardEvents.emplace(key, move(handler));
         return ret.second;
@@ -42,7 +42,7 @@ namespace indie {
         auto place = keyboardEvents.find(oldKey);
         if (place == keyboardEvents.end())
             return false;
-        auto ret = keyboardEvents.emplace(newKey, place->second);
+        auto ret = keyboardEvents.emplace(newKey, move(place->second));
         if (ret.second == false)
             return false;
         keyboardEvents.erase(place);
@@ -53,7 +53,7 @@ namespace indie {
         auto place = mouseEvents.find(oldMouse);
         if (place == mouseEvents.end())
             return false;
-        auto ret = mouseEvents.emplace(newMouse, place->second);
+        auto ret = mouseEvents.emplace(newMouse, move(place->second));
         if (ret.second == false)
             return false;
         mouseEvents.erase(place);

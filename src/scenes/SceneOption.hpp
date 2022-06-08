@@ -8,7 +8,7 @@
 #ifndef SCENEOPTION_HPP_
     #define SCENEOPTION_HPP_
 
-    #include "AScene.hpp"
+    #include "scenes/AScene.hpp"
 
 namespace indie
 {
@@ -17,11 +17,11 @@ namespace indie
             SceneOption();
             ~SceneOption();
 
-            Scenes run(Raylib &lib, Scenes const &prevScene) final;
-            std::map<std::vector<indie::type>, std::shared_ptr<indie::Entity>> &getEntities();
+            Scenes run(Scenes const &prevScene) final;
+            std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
 
-            std::shared_ptr<Entity> createButton();
-            std::shared_ptr<Entity> createSlider();
+            void createButton();
+            void createSlider();
         private:
     };
 }

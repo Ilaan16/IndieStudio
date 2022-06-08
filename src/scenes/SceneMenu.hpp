@@ -10,7 +10,7 @@
 
 #include <array>
 #include <unordered_map>
-#include "AScene.hpp"
+#include "scenes/AScene.hpp"
 
 namespace indie
 {

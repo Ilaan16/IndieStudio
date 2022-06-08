@@ -5,22 +5,23 @@
 ** Event.hpp
 */
 
-#ifndef KEYBOARD_HPP
-    #define KEYBOARD_HPP
+#ifndef KEYBOARD_HPP_
+    #define KEYBOARD_HPP_
 
     #include "raylib/Event.hpp"
     #include "Entity.hpp"
 
-namespace indie
-{
-    class KeyBoardEvent {
+namespace indie {
+    class Entity;
+
+    class KeyboardEvent {
         public:
-            ~KeyBoardEvent() = default;
+            ~KeyboardEvent() = default;
 
             virtual void useKey(std::shared_ptr<Entity> &ownEntity) noexcept = 0;
     };
 
-    class TestKey : KeyBoardEvent {
+    class TestKey : KeyboardEvent {
         public:
             TestKey() = default;
             ~TestKey() = default;
@@ -29,4 +30,4 @@ namespace indie
     };
 }
 
-#endif KEYBOARD_HPP
+#endif

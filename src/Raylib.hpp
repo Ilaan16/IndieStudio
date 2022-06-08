@@ -15,7 +15,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <functional>
-#include "AScene.hpp"
+#include "scenes/AScene.hpp"
 #include "raylib.h"
 
 namespace indie {

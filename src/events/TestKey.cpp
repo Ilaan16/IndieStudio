@@ -6,10 +6,10 @@
 */
 
 #include <iostream>
-#include "KeyBoardEvent.hpp"
+#include "KeyboardEvent.hpp"
 
 namespace indie {
-    void TestKey::useKey(std::shared_ptr<Entity> &ownEntity)
+    void TestKey::useKey(std::shared_ptr<Entity> &ownEntity) noexcept
     {
         std::cout << "Test key" << std::endl;
     }

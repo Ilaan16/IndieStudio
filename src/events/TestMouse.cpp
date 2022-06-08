@@ -9,7 +9,7 @@
 #include "MouseEvent.hpp"
 
 namespace indie {
-    void TestMouse::click(std::shared_ptr<Entity> &ownEntity)
+    void TestMouse::click(std::shared_ptr<Entity> &ownEntity) noexcept
     {
         std::cout << "Test mouse" << std::endl;
     }
