@@ -9,6 +9,7 @@
 #define scenemenudef
 
 #include <array>
+#include <unordered_map>
 #include "AScene.hpp"
 
 namespace indie
@@ -31,8 +32,9 @@ namespace indie
         public:
             SceneMenu();
             ~SceneMenu();
-            Scenes run(Raylib &lib, Scenes const &prevScene) final;
-            std::map<std::vector<indie::type>, std::shared_ptr<indie::Entity>> &getEntities();
+
+            Scenes run(Scenes const &prevScene) final;
+            std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
             bool clockGame();
 
         protected:

@@ -24,13 +24,17 @@ namespace indie {
     void Listener::checkKeyboard(const KeyboardKey &key)
     {
         auto event = keyboardEvents.find(key);
-        event->second->useKey();
+        if (event == keyboardEvents.end())
+            return;
+        event->second->useKey(ownEntity);
     }
 
     void Listener::checkMouse(const MouseButton &mouse)
     {
         auto event = mouseEvents.find(mouse);
-        event->second->click();
+        if (event == mouseEvents.end())
+            return;
+        event->second->click(ownEntity);
     }
 
     bool Listener::modifyKey(const KeyboardKey &oldKey, const KeyboardKey &newKey)

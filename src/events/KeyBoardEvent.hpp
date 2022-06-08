@@ -9,14 +9,23 @@
     #define KEYBOARD_HPP
 
     #include "raylib/Event.hpp"
+    #include "Entity.hpp"
 
 namespace indie
 {
     class KeyBoardEvent {
-    public:
-        ~KeyBoardEvent() = default;
+        public:
+            ~KeyBoardEvent() = default;
 
-        virtual void useKey() noexcept = 0;
+            virtual void useKey(std::shared_ptr<Entity> &ownEntity) noexcept = 0;
+    };
+
+    class TestKey : KeyBoardEvent {
+        public:
+            TestKey() = default;
+            ~TestKey() = default;
+
+            void useKey(std::shared_ptr<Entity> &ownEntity) noexcept final;
     };
 }
 
