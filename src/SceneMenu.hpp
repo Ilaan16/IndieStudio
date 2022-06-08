@@ -33,12 +33,11 @@ namespace indie
             SceneMenu();
             ~SceneMenu();
 
-            std::shared_ptr<indie::Entity> createBackground();
-            std::shared_ptr<indie::Entity> startButton();
-            std::shared_ptr<indie::Entity> settingsButton();
-            std::shared_ptr<indie::Entity> quitButton();
-      
-            Scenes run(Scenes const &prevScene) final;
+            void createBackground();
+            void startButton();
+            void settingsButton();
+            void quitButton();
+
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
             bool clockGame();
 
