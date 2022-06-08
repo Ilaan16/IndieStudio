@@ -10,6 +10,7 @@
 
 #include "AScene.hpp"
 #include "IEvent.hpp"
+#include "Raylib.hpp"
 
 namespace indie {
 
@@ -23,6 +24,7 @@ namespace indie {
             IEvent *translateEvent();
         protected:
         private:
+            indie::Raylib _raylib;
     };
 }
 #endif /* !GRAPHICAL_HPP_ */

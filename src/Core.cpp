@@ -22,7 +22,6 @@ void indie::Core::start()
     std::cout << 2 << std::endl;
 
     while (_scenePos != QUIT) {
-        _gameLogic.updateSystem();
         _raylib.updateSystem(_gameLogic.getScene());
     }
 }
