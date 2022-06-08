@@ -32,5 +32,5 @@ void indie::Game::manageGame()
 
 std::unique_ptr<indie::AScene> &indie::Game::getScene()
 {
-    return (this->_scenes[sceneId]);
+    return (this->_scenes[this->sceneId]);
 }

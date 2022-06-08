@@ -50,6 +50,7 @@ namespace indie
             void addEventListener(std::shared_ptr<Entity> &entity);
             void addVelocity(std::shared_ptr<Entity> &entity);
             void addVector3D(std::shared_ptr<Entity> &entity, int x, int y, int z, int i);
+            void addVector2D(std::shared_ptr<Entity> &entity, int x, int y, int i);
             void addRect(std::shared_ptr<Entity> &entity, int x, int y, int h, int l);
             void addSprite3D(std::shared_ptr<Entity> &entity, const char *filename);
             void addSprite2D(std::shared_ptr<Entity> &entity, const char *filename);

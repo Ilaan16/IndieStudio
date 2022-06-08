@@ -9,6 +9,7 @@
 #define GRAPHICAL_HPP_
 
 #include "scenes/AScene.hpp"
+#include "Raylib.hpp"
 
 namespace indie {
 
@@ -21,6 +22,7 @@ namespace indie {
 
         protected:
         private:
+            indie::Raylib _raylib;
     };
 }
 #endif /* !GRAPHICAL_HPP_ */

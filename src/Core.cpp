@@ -21,7 +21,6 @@ indie::Core::~Core()
 void indie::Core::start()
 {
     while (_scenePos != QUIT) {
-        _gameLogic.updateSystem();
         _raylib.updateSystem(_gameLogic.getScene());
     }
 }
