@@ -32,6 +32,11 @@ namespace indie
         public:
             SceneMenu();
             ~SceneMenu();
+
+            std::shared_ptr<indie::Entity> createBackground();
+            std::shared_ptr<indie::Entity> startButton();
+            std::shared_ptr<indie::Entity> settingsButton();
+            std::shared_ptr<indie::Entity> quitButton();
       
             Scenes run(Scenes const &prevScene) final;
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
