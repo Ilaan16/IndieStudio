@@ -36,7 +36,7 @@ Scenes indie::MainScene::run(Scenes const &prevScene)
 
 void indie::MainScene::createPlayer()
 {
-    std::shared_ptr<Entity> player = std::make_unique<indie::Entity>();
+    std::shared_ptr<Entity> player = std::make_shared<indie::Entity>();
     player->addVector3D(player, 0.0f, 1.0f, 2.0f, 0);
     player->addVector3D(player, 1.0f, 2.0f, 1.0f, 1);
     player->addSprite3D(player, "");
@@ -48,7 +48,7 @@ void indie::MainScene::createPlayer()
 
 void indie::MainScene::createIA()
 {
-    std::shared_ptr<Entity> IA = std::make_unique<indie::Entity>();
+    std::shared_ptr<Entity> IA = std::make_shared<indie::Entity>();
     IA->addVector3D(IA, 0.0f, 1.0f, 2.0f, 0);
     IA->addVector3D(IA, 1.0f, 2.0f, 1.0f, 1);
     IA->addSprite3D(IA, "");
@@ -58,7 +58,7 @@ void indie::MainScene::createIA()
 
 void indie::MainScene::createCamera()
 {
-    std::shared_ptr<Entity> camera = std::make_unique<indie::Entity>();
+    std::shared_ptr<Entity> camera = std::make_shared<indie::Entity>();
     camera->addVector3D(camera, 10, 10, 10, 1);
     camera->addVector3D(camera, 10, 10, 10, 1);
     camera->addVector3D(camera, 10, 10, 10, 1);

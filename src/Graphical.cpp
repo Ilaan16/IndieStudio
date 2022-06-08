@@ -9,6 +9,7 @@
 
 indie::Graphical::Graphical()
 {
+    _raylib.createWindow(1920, 1080, "Independant Game", 60);
 }
 
 indie::Graphical::~Graphical()
@@ -17,7 +18,7 @@ indie::Graphical::~Graphical()
 
 int indie::Graphical::updateSystem(std::unique_ptr<indie::AScene> &scene)
 {
-    scene->getEntities();
+    this->_raylib.displayAll(scene->getEntities());
 }
 
 void indie::Graphical::destroyGame()
