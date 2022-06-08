@@ -10,23 +10,8 @@
 #include <chrono>
 #include "Raylib.hpp"
 
-namespace indie
-{
-    const std::vector<std::string> SceneMenu::_menuText {
-        "Start game",
-        "Load game",
-        "Settings",
-        "Quit"
-    };
-
-    const std::vector<std::array<std::pair<float, float>, 2>> SceneMenu::_menuPos {
-        {{{860.0f, 600.0f}, {200.0f, 50.0f}}},
-        {{{860.0f, 700.0f}, {200.0f, 50.0f}}},
-        {{{860.0f, 800.0f}, {200.0f, 50.0f}}},
-        {{{860.0f, 900.0f}, {200.0f, 50.0f}}}
-    };
-
-    SceneMenu::SceneMenu() : _select(menu_e::START)
+namespace indie {
+    SceneMenu::SceneMenu()
     {
     }
 
@@ -34,12 +19,46 @@ namespace indie
     {
     }
 
-    Scenes SceneMenu::run(Scenes const &prevScene)
+    void SceneMenu::createBackground()
     {
-
+        std::shared_ptr<Entity> background = std::make_shared<indie::Entity>();
+        background->addVector2D(background, 0.0f, 1.0f, 0);
+        background->addSprite2D(background, "assets/menu/background.png");
     }
 
-    std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &indie::SceneMenu::getEntities()
+    void SceneMenu::startButton()
+    {
+        std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
+        button->addVector2D(button, 0.0f, 1.0f, 0);
+        button->addVector2D(button, 1.0f, 2.0f, 1);
+        button->addText(button, "");
+        button->addSprite2D(button, "assets/menu/start.png");
+    }
+
+    void SceneMenu::settingsButton()
+    {
+        std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
+        button->addVector2D(button, 0.0f, 1.0f, 0);
+        button->addVector2D(button, 1.0f, 2.0f, 1);
+        button->addText(button, "");
+        button->addSprite2D(button, "assets/menu/settings.png");
+    }
+
+    void SceneMenu::quitButton()
+    {
+        std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
+        button->addVector2D(button, 0.0f, 1.0f, 0);
+        button->addVector2D(button, 1.0f, 2.0f, 1);
+        button->addText(button, "");
+        button->addSprite2D(button, "assets/menu/quit.png");
+    }
+
+    Scenes SceneMenu::run(Scenes const &prevScene)
+    {
+        return Scenes::QUIT;
+    }
+
+    std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &indie::SceneMenu::getEntities()
     {
         return (this->_entities);
     }

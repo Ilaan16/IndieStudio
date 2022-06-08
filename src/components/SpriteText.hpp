@@ -18,6 +18,7 @@
                 SpriteText(const std::string& text = "") : _text(text) {}
 
                 std::string _text;
+                float _fontSize;
             
             /* AN ENTITY MUST HAVE 2D AND TEXT VERSION TO ENSURE THAT ALL LIBRARIES CAN DREW IT */
         };
