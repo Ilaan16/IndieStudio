@@ -34,34 +34,34 @@ namespace indie
     {
     }
 
-    Scenes SceneMenu::run(Raylib &lib, Scenes const &prevScene)
+    Scenes SceneMenu::run(Scenes const &prevScene)
     {
-        bool enter = 0;
+        // bool enter = 0;
 
-        while (!lib.isKeyReleased(KEY_ENTER) && lib.gameLoop()) {
-            if (lib.isKeyPressed(KEY_ENTER))
-                enter = !enter;
-            if (lib.isKeyPressed(KEY_DOWN))
-                _select = (_select + 1) % (QUIT + 1);
-            if (lib.isKeyPressed(KEY_UP))
-                _select = !_select ? QUIT : _select - 1;
-            BeginDrawing();
-            for (auto &i : _menuPos)
-                lib.printRectangle(typeLine::BASIC, i.at(0), i.at(1), {ORANGE, ORANGE});
-            lib.printRectangle(typeLine::GRADIENT, _menuPos.at(_select).at(0), _menuPos.at(_select).at(1), {RED, RED});
-            if (enter)
-                lib.printRectangle(typeLine::GRADIENT, _menuPos.at(_select).at(0), _menuPos.at(_select).at(1), {PINK, PINK});
-            for (std::size_t i = 0; i <= QUIT; ++i)
-                lib.printText(_menuText[i], _menuPos[i].at(0), 20, BLACK);
-            EndDrawing();
-        }
-        if (_select == QUIT)
-            return (_returnScene.at(static_cast<menu_e>(_select)));
-        ClearBackground(RAYWHITE);
-        return (_returnScene.at(static_cast<menu_e>(_select)));
+        // while (!lib.isKeyReleased(KEY_ENTER) && lib.gameLoop()) {
+        //     if (lib.isKeyPressed(KEY_ENTER))
+        //         enter = !enter;
+        //     if (lib.isKeyPressed(KEY_DOWN))
+        //         _select = (_select + 1) % (QUIT + 1);
+        //     if (lib.isKeyPressed(KEY_UP))
+        //         _select = !_select ? QUIT : _select - 1;
+        //     BeginDrawing();
+        //     for (auto &i : _menuPos)
+        //         lib.printRectangle(typeEntityLine::BASIC, i.at(0), i.at(1), {ORANGE, ORANGE});
+        //     lib.printRectangle(typeEntityLine::GRADIENT, _menuPos.at(_select).at(0), _menuPos.at(_select).at(1), {RED, RED});
+        //     if (enter)
+        //         lib.printRectangle(typeEntityLine::GRADIENT, _menuPos.at(_select).at(0), _menuPos.at(_select).at(1), {PINK, PINK});
+        //     for (std::size_t i = 0; i <= QUIT; ++i)
+        //         lib.printText(_menuText[i], _menuPos[i].at(0), 20, BLACK);
+        //     EndDrawing();
+        // }
+        // if (_select == QUIT)
+        //     return (_returnScene.at(static_cast<menu_e>(_select)));
+        // ClearBackground(RAYWHITE);
+        // return (_returnScene.at(static_cast<menu_e>(_select)));
     }
 
-    std::map<type ,std::vector<std::shared_ptr<indie::Entity>>> &indie::SceneMenu::getEntities()
+    std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &indie::SceneMenu::getEntities()
     {
         return (this->_entities);
     }

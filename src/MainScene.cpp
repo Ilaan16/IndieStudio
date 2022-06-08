@@ -13,9 +13,9 @@ indie::MainScene::MainScene()
     std::vector<std::shared_ptr<Entity>> drawable_ent;
     std::vector<std::shared_ptr<Entity>> movable_ent;
     std::vector<std::shared_ptr<Entity>> playable_ent;
-    _entities.emplace(type::DRAWABLE, drawable_ent);
-    _entities.emplace(type::MOVABLE, movable_ent);
-    _entities.emplace(type::PLAYABLE, playable_ent);
+    _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
+    _entities.emplace(typeEntity::MOVABLE, movable_ent);
+    _entities.emplace(typeEntity::PLAYABLE, playable_ent);
     createPlayer();
     std::cout << "Player set" << std::endl;
     createCamera();
@@ -29,7 +29,7 @@ indie::MainScene::~MainScene()
     //clear objects
 }
 
-Scenes indie::MainScene::run(Raylib &lib, Scenes const &prevScene)
+Scenes indie::MainScene::run(Scenes const &prevScene)
 {
 
 }
@@ -65,7 +65,7 @@ void indie::MainScene::createCamera()
     camera->addIncliAndZoom(camera, 10, 0);
 }
 
-std::map<indie::type, std::vector<std::shared_ptr<indie::Entity>>> &indie::MainScene::getEntities()
+std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &indie::MainScene::getEntities()
 {
     return (this->_entities);
 }
