@@ -39,7 +39,7 @@ namespace indie {
             void displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &entities);
 
             void printSprite(std::shared_ptr<indie::IComponent> texture, std::shared_ptr<indie::IComponent> vector2) const;
-            void printText(std::string const &text, std::pair<int, int> const position, int const fontSize, Color const color) const;
+            void printText(std::shared_ptr<indie::IComponent> text_comp, std::shared_ptr<indie::IComponent> vector2) const;
             void printCircle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const;
             void printRectangle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, std::pair<int, int> const size, std::pair<Color, Color> const color) const;
             void printGrid(int const slices, float const space) const;
