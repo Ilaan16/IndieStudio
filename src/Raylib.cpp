@@ -115,10 +115,13 @@ void indie::Raylib::printFps(std::pair<int, int> const pos) const
     DrawFPS(pos.first, pos.second);
 }
 
-// void indie::Raylib::printText(std::shared_ptr<indie::IComponent> text) const
-// {
-//     DrawText(text.c_str(), position.first, position.second, fontSize, color);
-// }
+void indie::Raylib::printText(std::shared_ptr<indie::IComponent> text_comp, std::shared_ptr<indie::IComponent> vector2) const
+{
+    SpriteText *text = dynamic_cast<SpriteText *>(text_comp.get());
+    Vector2D *vector = dynamic_cast<Vector2D *>(vector2.get());
+    Font font = LoadFontEx("../../font/Minecrafter.Reg.ttf", text->_fontSize, 0, 0);
+    DrawTextEx(font, text->_text.c_str(), {vector->_x, vector->_y}, text->_fontSize, 0, BLACK);
+}
 
 void indie::Raylib::printSprite(std::shared_ptr<indie::IComponent> texture, std::shared_ptr<indie::IComponent> vector2d) const
 {
@@ -140,8 +143,10 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
         auto texture2d_compo = component.find(tag::TEXTURE2D);
         auto vector2d_compo = component.find(tag::VECTOR2D);
         if (texture2d_compo != component.end() && vector2d_compo != component.end())
-            printSprite(move(texture2d_compo->second), move(vector2d_compo->second));
-        // auto text_compo = component.find(tag::TEXT);
-        //     print_text(text_compo->second);
+            printSprite(texture2d_compo->second, vector2d_compo->second);
+        auto text_compo = component.find(tag::TEXT);
+        if (text_compo != component.end() && vector2d_compo != component.end())
+            printText(text_compo->second, vector2d_compo->second);
     }
-}
+    return;
+    }
