@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2022
 ** IndieStudio
 ** File description:
-** Randerable
+** Renderable
 */
 
 #ifndef RANDERABLE_HPP_
@@ -19,12 +19,12 @@ namespace indie {
         float z;
     };
 
-    class Randerable : public IComponent {
+    class Renderable : public IComponent {
         public:
-            Randerable(std::string model = "", std::string texture = "", std::string text = "",
+            Renderable(std::string model = "", std::string texture = "", std::string text = "",
                 float fontSize = 0, Vector3D position = {0}, float angle = 0, Vector3D size = {0})
                 :_model(model), _texture(texture), _text(text), _fontSize(fontSize), _position(position), _angle(angle), _size(size) {}
-            ~Randerable() = default;
+            ~Renderable() = default;
 
             std::string _model;
             std::string _texture;

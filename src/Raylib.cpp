@@ -118,14 +118,14 @@ void indie::Raylib::printFps(std::pair<int, int> const pos) const
 
 void indie::Raylib::printText(std::shared_ptr<indie::IComponent> text_comp, std::shared_ptr<indie::IComponent> vector2) const
 {
-    // Randerable *renderer = dynamic_cast<Randerable *>(text_comp.get());
+    // Renderable *renderer = dynamic_cast<Renderable *>(text_comp.get());
     // Font font = LoadFontEx("../../font/Minecrafter.Reg.ttf", text->_fontSize, 0, 0);
     // DrawTextEx(font, text->_text.c_str(), {renderer->_position.x, renderer->_position.y}, text->_fontSize, 0, BLACK);
 }
 
 void indie::Raylib::printSprite(std::shared_ptr<indie::IComponent> component) const
 {
-    indie::Randerable *renderer = dynamic_cast<indie::Randerable *>(component.get());
+    indie::Renderable *renderer = dynamic_cast<indie::Renderable *>(component.get());
     if (renderer == nullptr)
         std::cout << "Fuck off" << std::endl;
     //std::cout << renderer->_texture << std::endl;

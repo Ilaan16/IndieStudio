@@ -13,7 +13,7 @@
 #include <map>
 #include <iostream>
 #include "components/IComponent.hpp"
-#include "components/Randerable.hpp"
+#include "components/Renderable.hpp"
 #include "components/IAAlgorithmes.hpp"
 
 namespace indie 
