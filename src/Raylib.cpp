@@ -126,14 +126,11 @@ void indie::Raylib::printText(std::shared_ptr<indie::IComponent> text_comp, std:
 void indie::Raylib::printSprite(std::shared_ptr<indie::IComponent> component) const
 {
     indie::Renderable *renderer = dynamic_cast<indie::Renderable *>(component.get());
-    if (renderer == nullptr)
-        std::cout << "Fuck off" << std::endl;
-    //std::cout << renderer->_texture << std::endl;
-    //Texture2D texture2d = LoadTexture(renderer->_texture.c_str());
-    //BeginDrawing();
-    //    DrawTexture(texture2d, renderer->_position.x, renderer->_position.y, WHITE);
-    //EndDrawing();
-    //UnloadTexture(texture2d);
+    Texture2D texture2d = LoadTexture(renderer->_texture.c_str());
+    BeginDrawing();
+        DrawTexture(texture2d, renderer->_position.x, renderer->_position.y, WHITE);
+    EndDrawing();
+    UnloadTexture(texture2d);
     return;
 }
 
@@ -143,6 +140,6 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
     for (int i = 0; i < drawable_entity->second.size(); i++) {
         auto component = drawable_entity->second.at(i)->getComponents();
         auto renderer = component.find(tag::RENDERABLE);
-            printSprite(renderer->second);
+        indie::Renderable *entity = dynamic_cast<indie::Renderable *>(renderer->second.get());
     }
 }
