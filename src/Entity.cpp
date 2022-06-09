@@ -28,12 +28,6 @@ void indie::Entity::putComponent(std::shared_ptr<indie::IComponent> component, i
     _components.emplace(tag, component);
 }
 
-void indie::Entity::addEventListener(std::shared_ptr<Entity> &entity)
-{
-    std::unique_ptr<indie::IComponent> Listener = std::make_unique<indie::Listener>(entity);
-    entity->putComponent(move(Listener), indie::EVENT);
-}
-
 std::map<indie::tag, std::shared_ptr<indie::IComponent>> &indie::Entity::getComponents()
 {
     return (this->_components);

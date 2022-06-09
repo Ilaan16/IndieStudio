@@ -31,7 +31,6 @@ namespace indie
 
             std::map<indie::tag, std::shared_ptr<indie::IComponent>> &getComponents();
             void putComponent(std::shared_ptr<indie::IComponent> component, indie::tag tag);
-            void addEventListener(std::shared_ptr<Entity> &entity);
             void addRenderer(std::string model = "", std::string texture = "", std::string text = "",
                 float fontSize = 0, indie::Vector3D position = {0}, float angle = 0, indie::Vector3D size = {0});
             void addIAAlgo(std::shared_ptr<Entity> &entity);

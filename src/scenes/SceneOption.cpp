@@ -34,8 +34,7 @@ namespace indie {
     void SceneOption::createButton()
     {
         std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
-        button->addEventListener(button);
-        button->addSprite2D(button, "uwu.png");
+        button->addRenderer();
         _entities.find(indie::DRAWABLE)->second.push_back(button);
         _entities.find(indie::CLICKABLE)->second.push_back(button);
     }
@@ -43,8 +42,7 @@ namespace indie {
     void SceneOption::createSlider()
     {
         std::shared_ptr<Entity> slider = std::make_shared<indie::Entity>();
-        slider->addEventListener(slider);
-        slider->addSprite2D(slider, "uwu.png");
+        slider->addRenderer();
         _entities.find(indie::DRAWABLE)->second.push_back(slider);
         _entities.find(indie::CLICKABLE)->second.push_back(slider);
     }
