@@ -34,9 +34,7 @@ namespace indie
             ~SceneMenu();
 
             void createBackground();
-            void startButton();
-            void settingsButton();
-            void quitButton();
+            void createButton(const char *path, Vector2D pos, Vector2D rect);
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
             Scenes run(Scenes const &prevScene) final;

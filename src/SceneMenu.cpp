@@ -13,6 +13,10 @@
 namespace indie {
     SceneMenu::SceneMenu()
     {
+        createBackground();
+        createButton("./assets/menu/button.png", Vector2D(0, 0), Vector2D(0, 0));
+        createButton("./assets/menu/button.png", Vector2D(0, 200), Vector2D(200, 100));
+        createButton("./assets/menu/button.png", Vector2D(0, 300), Vector2D(200, 100));
     }
 
     SceneMenu::~SceneMenu()
@@ -26,31 +30,13 @@ namespace indie {
         background->addSprite2D(background, "assets/menu/background.png");
     }
 
-    void SceneMenu::startButton()
+    void SceneMenu::createButton(const char *path, Vector2D pos, Vector2D rect)
     {
         std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
         button->addVector2D(button, 0.0f, 1.0f, 0);
-        button->addVector2D(button, 1.0f, 2.0f, 1);
-        button->addText(button, "");
-        button->addSprite2D(button, "assets/menu/start.png");
-    }
-
-    void SceneMenu::settingsButton()
-    {
-        std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
-        button->addVector2D(button, 0.0f, 1.0f, 0);
-        button->addVector2D(button, 1.0f, 2.0f, 1);
-        button->addText(button, "");
-        button->addSprite2D(button, "assets/menu/settings.png");
-    }
-
-    void SceneMenu::quitButton()
-    {
-        std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
-        button->addVector2D(button, 0.0f, 1.0f, 0);
-        button->addVector2D(button, 1.0f, 2.0f, 1);
-        button->addText(button, "");
-        button->addSprite2D(button, "assets/menu/quit.png");
+        button->addVector2D(button, pos._x, pos._y, 0);
+        button->addVector2D(button, rect._x, rect._y, 1);
+        button->addSprite2D(button, path);
     }
 
     Scenes SceneMenu::run(Scenes const &prevScene)
