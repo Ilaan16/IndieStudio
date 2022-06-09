@@ -19,7 +19,7 @@
 namespace indie 
 {
     enum tag {
-        RANDERABLE,
+        RENDERABLE,
         MOVEMENT,
     };
 

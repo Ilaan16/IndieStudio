@@ -20,7 +20,7 @@ void indie::Entity::addRenderer(std::string model, std::string texture, std::str
                 float fontSize, indie::Vector3D position, float angle, indie::Vector3D size)
 {
     std::shared_ptr<indie::IComponent> renderer = std::make_shared<indie::Renderable>(model, texture, text, fontSize, position, angle, size);
-    this->putComponent(renderer, indie::RANDERABLE);
+    this->putComponent(renderer, indie::RENDERABLE);
 }
 
 void indie::Entity::putComponent(std::shared_ptr<indie::IComponent> component, indie::tag tag)

@@ -142,7 +142,7 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
     auto drawable_entity = entities.find(typeEntity::DRAWABLE);
     for (int i = 0; i < drawable_entity->second.size(); i++) {
         auto component = drawable_entity->second.at(i)->getComponents();
-        auto renderer = component.find(tag::RANDERABLE);
+        auto renderer = component.find(tag::RENDERABLE);
             printSprite(renderer->second);
     }
 }
