@@ -8,7 +8,7 @@
 #ifndef mainscenedef
 #define mainscenedef
 
-#include "AScene.hpp"
+#include "scenes/AScene.hpp"
 
 namespace indie
 {

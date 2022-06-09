@@ -5,7 +5,7 @@
 ** scenemenu
 */
 
-#include "SceneMenu.hpp"
+#include "scenes/SceneMenu.hpp"
 #include "Core.hpp"
 #include <chrono>
 #include "Raylib.hpp"

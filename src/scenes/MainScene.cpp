@@ -5,7 +5,7 @@
 ** main
 */
 
-#include "MainScene.hpp"
+#include "scenes/MainScene.hpp"
 #include "Core.hpp"
 
 indie::MainScene::MainScene()

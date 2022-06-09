@@ -20,13 +20,3 @@ int indie::Graphical::updateSystem(std::unique_ptr<indie::AScene> &scene)
 {
     this->_raylib.displayAll(scene->getEntities());
 }
-
-void indie::Graphical::destroyGame()
-{
-
-}
-
-indie::IEvent *indie::Graphical::translateEvent()
-{
-
-}

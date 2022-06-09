@@ -15,6 +15,7 @@
 #include "components/IComponent.hpp"
 #include "components/Renderable.hpp"
 #include "components/IAAlgorithmes.hpp"
+#include "components/Listener.hpp"
 
 namespace indie 
 {
