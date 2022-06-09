@@ -49,5 +49,19 @@ namespace indie {
         {
             return _fullScreen;
         }
+
+        void Window::setCamera(Vector3 pos, Vector3 target, Vector3 up, float fovy, int projection)
+        {
+            _camera.position = pos;
+            _camera.target = target;
+            _camera.up = up;
+            _camera.fovy = fovy;
+            _camera.projection = projection;
+        };
+
+        const Camera &Window::getCamera() const
+        {
+            return _camera;
+        };
     }
 }

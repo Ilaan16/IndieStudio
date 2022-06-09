@@ -24,11 +24,15 @@ namespace indie {
                 const int getHeight() const;
                 const bool isFullScreen() const;
 
+                void setCamera(Vector3 pos, Vector3 target, Vector3 up, float fovy, int projection);
+                const Camera &getCamera() const;
+
             private:
                 int _fps;
                 int _width;
                 int _height;
                 bool _fullScreen;
+                Camera _camera;
         };
     }
 }
