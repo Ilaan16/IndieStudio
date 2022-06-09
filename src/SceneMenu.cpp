@@ -13,6 +13,12 @@
 namespace indie {
     SceneMenu::SceneMenu()
     {
+        std::vector<std::shared_ptr<Entity>> drawable_ent;
+        _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
+        createBackground();
+        std::cout << "Player set" << std::endl;
+        std::cout << "Camera set" << std::endl;
+        std::cout << "IA set" << std::endl;
     }
 
     SceneMenu::~SceneMenu()
@@ -22,35 +28,15 @@ namespace indie {
     void SceneMenu::createBackground()
     {
         std::shared_ptr<Entity> background = std::make_shared<indie::Entity>();
-        background->addVector2D(background, 0.0f, 1.0f, 0);
-        background->addSprite2D(background, "assets/menu/background.png");
+        background->addRenderer("", "assets/menu/background.png", "", 0, {0.0f, 1.0f, 0.0f});
+        _entities.find(indie::DRAWABLE)->second.push_back(background);
     }
 
     void SceneMenu::startButton()
     {
         std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
-        button->addVector2D(button, 0.0f, 1.0f, 0);
-        button->addVector2D(button, 1.0f, 2.0f, 1);
-        button->addText(button, "");
-        button->addSprite2D(button, "assets/menu/start.png");
-    }
-
-    void SceneMenu::settingsButton()
-    {
-        std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
-        button->addVector2D(button, 0.0f, 1.0f, 0);
-        button->addVector2D(button, 1.0f, 2.0f, 1);
-        button->addText(button, "");
-        button->addSprite2D(button, "assets/menu/settings.png");
-    }
-
-    void SceneMenu::quitButton()
-    {
-        std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
-        button->addVector2D(button, 0.0f, 1.0f, 0);
-        button->addVector2D(button, 1.0f, 2.0f, 1);
-        button->addText(button, "");
-        button->addSprite2D(button, "assets/menu/quit.png");
+        button->addRenderer("", "assets/menu/start.png", "start", 0, {0.0f, 1.0f, 0.0f}, 1, {1.0f, 2.0f, 1});
+        _entities.find(indie::DRAWABLE)->second.push_back(button);
     }
 
     Scenes SceneMenu::run(Scenes const &prevScene)
