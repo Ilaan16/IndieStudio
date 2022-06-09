@@ -1,15 +1,32 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.16)
 
-project(IndieStudio VERSION 1.0 LANGUAGES CXX)
+project(map VERSION 1.0.0 LANGUAGES CXX)
 
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/modules/)
-FIND_PACKAGE(raylib REQUIRED)
+add_executable(${PROJECT_NAME})
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR})
+# Call the cmake that checks and pulls the raylib
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-FILE(GLOB_RECURSE MAIN_SOURCE src/*.cpp)
+find_package(raylib REQUIRED)
+target_link_libraries(${PROJECT_NAME} raylib -lstdc++fs)
 
-add_executable(indie ${MAIN_SOURCE})
-TARGET_LINK_LIBRARIES(indie raylib)
+set(CMAKE_CXX_STANDARD 17)
+
+target_sources(${PROJECT_NAME}
+    PRIVATE
+        src/main.cpp
+)
+
+target_include_directories(${PROJECT_NAME} PUBLIC include)
+
+target_compile_options(${PROJECT_NAME}
+    PRIVATE
+        -Wall
+        -Wextra
+)
+
+set_target_properties(
+    ${PROJECT_NAME} PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "../"
+)
+
