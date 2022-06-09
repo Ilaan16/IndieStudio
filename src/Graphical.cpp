@@ -9,7 +9,7 @@
 
 indie::Graphical::Graphical()
 {
-    _raylib.createWindow(1920, 1080, "Independant Game", 60);
+    _raylib.createWindow(1920, 1080, "Independant Game", 30);
 }
 
 indie::Graphical::~Graphical()

@@ -16,9 +16,7 @@ namespace indie {
         std::vector<std::shared_ptr<Entity>> drawable_ent;
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
         createBackground();
-        std::cout << "Player set" << std::endl;
-        std::cout << "Camera set" << std::endl;
-        std::cout << "IA set" << std::endl;
+        startButton();
     }
 
     SceneMenu::~SceneMenu()
@@ -35,7 +33,7 @@ namespace indie {
     void SceneMenu::startButton()
     {
         std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
-        button->addRenderer("", "assets/menu/start.png", "start", 0, {0.0f, 1.0f, 0.0f}, 1, {1.0f, 2.0f, 1});
+        button->addRenderer("", "assets/menu/buttons.png", "start", 0, {400.0f, 400, 0.0f}, 1, {0.0f, 0.0f, 0});
         _entities.find(indie::DRAWABLE)->second.push_back(button);
     }
 
