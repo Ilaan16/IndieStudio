@@ -33,4 +33,5 @@
 
 build/
 indie
+make
 .vscode/settings.json

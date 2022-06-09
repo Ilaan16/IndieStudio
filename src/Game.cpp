@@ -22,20 +22,10 @@ indie::Game::~Game()
 
 indie::AScene *indie::Game::updateSystem()
 {
-    this->getScene();
-}
-
-void indie::Game::manageGame()
-{
-
-}
-
-indie::AScene *indie::Game::initGame()
-{
     
 }
 
-void indie::Game::destroyGame()
+void indie::Game::manageGame()
 {
 
 }

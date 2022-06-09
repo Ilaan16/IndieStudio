@@ -5,7 +5,7 @@
 ** raylib
 */
 
-#include "AScene.hpp"
+#include "scenes/AScene.hpp"
 #include "Raylib.hpp"
 
 indie::Raylib::Raylib() :

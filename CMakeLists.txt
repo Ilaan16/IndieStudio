@@ -11,5 +11,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR})
 
 FILE(GLOB_RECURSE MAIN_SOURCE src/*.cpp)
 
+include_directories(src)
+
 add_executable(indie ${MAIN_SOURCE})
 TARGET_LINK_LIBRARIES(indie raylib)
