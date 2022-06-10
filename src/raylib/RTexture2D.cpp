@@ -10,16 +10,16 @@
 namespace indie {
     RTexture2D::RTexture2D(const std::string &filename)
     {
-        texture = LoadTexture(filename.c_str());
+        this->texture = LoadTexture(filename.c_str());
     }
 
     RTexture2D::~RTexture2D()
     {
-        UnloadTexture(texture);
+        UnloadTexture(this->texture);
     }
 
     void RTexture2D::draw(const float &x, const float &y)
     {
-        DrawTexture(texture, x, y, WHITE);
+        DrawTexture(this->texture, x, y, WHITE);
     }
 }
