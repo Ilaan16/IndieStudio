@@ -16,7 +16,9 @@ namespace indie {
     {
         EntitiesFactory Entities;
         std::vector<std::shared_ptr<Entity>> drawable_ent;
+        std::vector<std::shared_ptr<Entity>> clickable_ent;
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
+        _entities.emplace(typeEntity::CLICKABLE, clickable_ent);
         Entities.createBackground(_entities, "/assets/menu/background.png");
         Entities.createButton(_entities, "Play", {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
         Entities.createButton(_entities, "Settings", {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
