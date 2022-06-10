@@ -5,7 +5,7 @@
 ** scenemenu
 */
 
-#include "scenes/SceneMenu.hpp"
+#include "SceneMenu.hpp"
 #include "Core.hpp"
 #include <chrono>
 #include "Raylib.hpp"
@@ -14,12 +14,13 @@
 namespace indie {
     SceneMenu::SceneMenu()
     {
+        EntitiesFactory Entities;
         std::vector<std::shared_ptr<Entity>> drawable_ent;
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
-        EntitiesFactory::createBackground(_entities, "/assets/menu/background.png");
-        EntitiesFactory::createButton(_entities, "Play", {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
-        EntitiesFactory::createButton(_entities, "Settings", {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
-        EntitiesFactory::createButton(_entities, "Quit", {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createBackground(_entities, "/assets/menu/background.png");
+        Entities.createButton(_entities, "Play", {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createButton(_entities, "Settings", {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createButton(_entities, "Quit", {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
     }
 
     SceneMenu::~SceneMenu()
