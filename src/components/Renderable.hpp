@@ -22,8 +22,8 @@ namespace indie {
     class Renderable : public IComponent {
         public:
             Renderable(std::string model = "", std::string texture = "", std::string text = "",
-                float fontSize = 0, Vector3D position = {0}, float angle = 0, Vector3D size = {0})
-                :_model(model), _texture(texture), _text(text), _fontSize(fontSize), _position(position), _angle(angle), _size(size) {}
+                float fontSize = 0, Vector3D position = {0}, float angle = 0, Vector3D size = {0}, Vector3D rect = {0})
+                :_model(model), _texture(texture), _text(text), _fontSize(fontSize), _position(position), _angle(angle), _size(size), _rect(rect) {}
             ~Renderable() = default;
 
             std::string _model;
@@ -31,6 +31,7 @@ namespace indie {
             std::string _text;
             float _fontSize;
             Vector3D _position;
+            Vector3D _rect;
             float _angle;
             Vector3D _size;
         protected:
