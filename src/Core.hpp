@@ -11,10 +11,10 @@
 #include <utility>
 #include <string>
 #include <memory>
-#include "AScene.hpp"
+#include "scenes/AScene.hpp"
 #include "Raylib.hpp"
-#include "SceneMenu.hpp"
-#include "MainScene.hpp"
+#include "scenes/SceneMenu.hpp"
+#include "scenes/MainScene.hpp"
 #include "Graphical.hpp"
 #include "Game.hpp"
 

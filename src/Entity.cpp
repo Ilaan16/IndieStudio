@@ -16,49 +16,11 @@ indie::Entity::~Entity()
 {
 }
 
-void indie::Entity::addVector3D(std::shared_ptr<Entity> &entity, int x, int y, int z, int i)
+void indie::Entity::addRenderer(std::string model, std::string texture, std::string text,
+                float fontSize, indie::Vector3D position, float angle, indie::Vector3D size, indie::Vector3D rect)
 {
-    std::shared_ptr<indie::IComponent> vector = std::make_unique<indie::Vector3D>(x, y, z);
-    if (i == 0)
-        entity->putComponent(vector, indie::VECTOR3D);
-    if (i == 1)
-        entity->putComponent(vector, indie::MOVEMENT);
-}
-
-void indie::Entity::addSprite3D(std::shared_ptr<Entity> &entity, const char *filename)
-{
-    std::shared_ptr<indie::IComponent> sprite3D = std::make_unique<indie::Sprite3D>(filename);
-    entity->putComponent(sprite3D, indie::TEXTURE3D);
-}
-
-void indie::Entity::addModel3D(std::shared_ptr<Entity> &entity, const char *filename)
-{
-    std::shared_ptr<indie::IComponent> model3D = std::make_unique<indie::Model3D>(filename);
-    entity->putComponent(model3D, indie::MODEL3D);
-}
-
-void indie::Entity::addText(std::shared_ptr<Entity> &entity, const char *text)
-{
-    std::shared_ptr<indie::IComponent> sprite_text = std::make_unique<indie::SpriteText>(text);
-    entity->putComponent(sprite_text, indie::TEXT);
-}
-
-void indie::Entity::addSprite2D(std::shared_ptr<Entity> &entity, const char *filename)
-{
-    std::shared_ptr<indie::IComponent> sprite_text = std::make_unique<indie::SpriteText>(filename);
-    entity->putComponent(sprite_text, indie::TEXTURE2D);
-}
-
-void indie::Entity::addIncliAndZoom(std::shared_ptr<Entity> &entity, float x, int y)
-{
-    std::shared_ptr<indie::IComponent> inclination_zoom = std::make_unique<indie::IncliAndZoom>(x, y);
-    entity->putComponent(inclination_zoom, indie::CAMUTILS);
-}
-
-void indie::Entity::addIAAlgo(std::shared_ptr<Entity> &entity)
-{
-    std::shared_ptr<indie::IComponent> IA = std::make_unique<indie::IAAlgorithmes>();
-    entity->putComponent(IA, indie::IA);
+    std::shared_ptr<indie::IComponent> renderer = std::make_shared<indie::Renderable>(model, texture, text, fontSize, position, angle, size, rect);
+    this->putComponent(renderer, indie::RENDERABLE);
 }
 
 void indie::Entity::putComponent(std::shared_ptr<indie::IComponent> component, indie::tag tag)

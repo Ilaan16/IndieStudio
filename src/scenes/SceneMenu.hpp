@@ -10,7 +10,7 @@
 
 #include <array>
 #include <unordered_map>
-#include "AScene.hpp"
+#include "scenes/AScene.hpp"
 
 namespace indie
 {
@@ -32,8 +32,11 @@ namespace indie
         public:
             SceneMenu();
             ~SceneMenu();
+
+            void createBackground();
+
+            std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &getEntities();
             Scenes run(Scenes const &prevScene) final;
-            std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
             bool clockGame();
 
         protected:

@@ -8,8 +8,8 @@
 #ifndef GRAPHICAL_HPP_
 #define GRAPHICAL_HPP_
 
-#include "AScene.hpp"
-#include "IEvent.hpp"
+#include "scenes/AScene.hpp"
+#include "Raylib.hpp"
 
 namespace indie {
 
@@ -19,10 +19,10 @@ namespace indie {
             ~Graphical();
 
             int updateSystem(std::unique_ptr<AScene> &scene);
-            void destroyGame();
-            IEvent *translateEvent();
+
         protected:
         private:
+            indie::Raylib _raylib;
     };
 }
 #endif /* !GRAPHICAL_HPP_ */

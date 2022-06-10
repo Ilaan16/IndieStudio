@@ -10,7 +10,7 @@
 
 enum Scenes {
     QUIT = -1,
-    MENU,
+    MENU = 0,
     NEW_GAME,
     GAME,
     LOAD,

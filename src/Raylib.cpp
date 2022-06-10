@@ -5,12 +5,13 @@
 ** raylib
 */
 
-#include "AScene.hpp"
+#include "scenes/AScene.hpp"
 #include "Raylib.hpp"
 
 indie::Raylib::Raylib() :
     _camera({{0.0f, 10.0f, 10.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, 45.0f, 0})
 {
+    
 }
 
 indie::Raylib::~Raylib()
@@ -115,18 +116,19 @@ void indie::Raylib::printFps(std::pair<int, int> const pos) const
     DrawFPS(pos.first, pos.second);
 }
 
-// void indie::Raylib::printText(std::shared_ptr<indie::IComponent> text) const
-// {
-//     DrawText(text.c_str(), position.first, position.second, fontSize, color);
-// }
-
-void indie::Raylib::printSprite(std::shared_ptr<indie::IComponent> texture, std::shared_ptr<indie::IComponent> vector2d) const
+void indie::Raylib::printText(std::shared_ptr<indie::IComponent> text_comp, std::shared_ptr<indie::IComponent> vector2) const
 {
-    Sprite2D *sprite = dynamic_cast<Sprite2D *>(texture.get());
-    Vector2D *vector = dynamic_cast<Vector2D *>(vector2d.get());
-    Texture2D texture2d = LoadTexture(sprite->_texture.c_str());
+    // Renderable *renderer = dynamic_cast<Renderable *>(text_comp.get());
+    // Font font = LoadFontEx("../../font/Minecrafter.Reg.ttf", text->_fontSize, 0, 0);
+    // DrawTextEx(font, text->_text.c_str(), {renderer->_position.x, renderer->_position.y}, text->_fontSize, 0, BLACK);
+}
+
+void indie::Raylib::printSprite(std::shared_ptr<indie::IComponent> component) const
+{
+    indie::Renderable *renderer = dynamic_cast<indie::Renderable *>(component.get());
+    Texture2D texture2d = LoadTexture(renderer->_texture.c_str());
     BeginDrawing();
-        DrawTexture(texture2d, vector->_x, vector->_y, WHITE);
+        DrawTexture(texture2d, renderer->_position.x, renderer->_position.y, WHITE);
     EndDrawing();
     UnloadTexture(texture2d);
     return;
@@ -135,13 +137,9 @@ void indie::Raylib::printSprite(std::shared_ptr<indie::IComponent> texture, std:
 void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
 {
     auto drawable_entity = entities.find(typeEntity::DRAWABLE);
-    for (int i = 0; i != drawable_entity->second.size(); i++) {
+    for (int i = 0; i < drawable_entity->second.size(); i++) {
         auto component = drawable_entity->second.at(i)->getComponents();
-        auto texture2d_compo = component.find(tag::TEXTURE2D);
-        auto vector2d_compo = component.find(tag::VECTOR2D);
-        if (texture2d_compo != component.end() && vector2d_compo != component.end())
-            printSprite(move(texture2d_compo->second), move(vector2d_compo->second));
-        // auto text_compo = component.find(tag::TEXT);
-        //     print_text(text_compo->second);
+        auto renderer = component.find(tag::RENDERABLE);
+        indie::Renderable *entity = dynamic_cast<indie::Renderable *>(renderer->second.get());
     }
 }

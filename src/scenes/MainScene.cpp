@@ -5,7 +5,7 @@
 ** main
 */
 
-#include "MainScene.hpp"
+#include "scenes/MainScene.hpp"
 #include "Core.hpp"
 
 indie::MainScene::MainScene()
@@ -16,12 +16,12 @@ indie::MainScene::MainScene()
     _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
     _entities.emplace(typeEntity::MOVABLE, movable_ent);
     _entities.emplace(typeEntity::PLAYABLE, playable_ent);
+    createMap();
     createPlayer();
+    createIA();
     std::cout << "Player set" << std::endl;
     createCamera();
     std::cout << "Camera set" << std::endl;
-    createIA();
-    std::cout << "IA set" << std::endl;
 }
 
 indie::MainScene::~MainScene()
@@ -36,33 +36,26 @@ Scenes indie::MainScene::run(Scenes const &prevScene)
 
 void indie::MainScene::createPlayer()
 {
-    std::shared_ptr<Entity> player = std::make_unique<indie::Entity>();
-    player->addVector3D(player, 0.0f, 1.0f, 2.0f, 0);
-    player->addVector3D(player, 1.0f, 2.0f, 1.0f, 1);
-    player->addSprite3D(player, "");
-    player->addModel3D(player, "");
+    std::shared_ptr<Entity> player = std::make_shared<indie::Entity>();
+    player->addRenderer();
     _entities.find(indie::DRAWABLE)->second.push_back(player);
-    _entities.find(indie::MOVABLE)->second.push_back(player);
     _entities.find(indie::PLAYABLE)->second.push_back(player);
 }
 
 void indie::MainScene::createIA()
 {
-    std::shared_ptr<Entity> IA = std::make_unique<indie::Entity>();
-    IA->addVector3D(IA, 0.0f, 1.0f, 2.0f, 0);
-    IA->addVector3D(IA, 1.0f, 2.0f, 1.0f, 1);
-    IA->addSprite3D(IA, "");
-    IA->addModel3D(IA, "");
-    IA->addIAAlgo(IA);
+    std::shared_ptr<Entity> IA = std::make_shared<indie::Entity>();
+    IA->addRenderer("assets/characters/characters.iqm", "assets/characters/steve", "", 0, {1, 1, 1}, 0, {0, 0, 0});
+    _entities.find(indie::DRAWABLE)->second.push_back(IA);
+}
+
+void indie::MainScene::createMap()
+{
 }
 
 void indie::MainScene::createCamera()
 {
-    std::shared_ptr<Entity> camera = std::make_unique<indie::Entity>();
-    camera->addVector3D(camera, 10, 10, 10, 1);
-    camera->addVector3D(camera, 10, 10, 10, 1);
-    camera->addVector3D(camera, 10, 10, 10, 1);
-    camera->addIncliAndZoom(camera, 10, 0);
+    std::shared_ptr<Entity> camera = std::make_shared<indie::Entity>();
 }
 
 std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &indie::MainScene::getEntities()

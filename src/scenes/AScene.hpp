@@ -21,7 +21,8 @@ namespace indie
     enum typeEntity {
         DRAWABLE,
         MOVABLE,
-        PLAYABLE
+        PLAYABLE,
+        CLICKABLE
     };
 
     class AScene : public IScene {

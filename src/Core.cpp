@@ -8,9 +8,10 @@
 #include "Core.hpp"
 
 indie::Core::Core(std::size_t const fps)
-    : _fps(fps),  _scenePos(Scenes::MENU)
 {
-
+    //std::cout << 1 << std::endl;
+    //_vecScenes.emplace_back(std::make_unique<indie::SceneMenu>());
+    //_vecScenes.emplace_back(std::make_unique<indie::MainScene>());
 }
 
 indie::Core::~Core()
@@ -19,10 +20,7 @@ indie::Core::~Core()
 
 void indie::Core::start()
 {
-    std::cout << 2 << std::endl;
-
     while (_scenePos != QUIT) {
-        _gameLogic.updateSystem();
         _raylib.updateSystem(_gameLogic.getScene());
     }
 }

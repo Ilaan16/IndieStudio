@@ -8,10 +8,10 @@
 #ifndef GAME_HPP_
 #define GAME_HPP_
 
-#include "AScene.hpp"
-#include "MainScene.hpp"
-#include "SceneOption.hpp"
-#include "SceneMenu.hpp"
+#include "scenes/AScene.hpp"
+#include "scenes/MainScene.hpp"
+#include "scenes/SceneOption.hpp"
+#include "scenes/SceneMenu.hpp"
 
 namespace indie {
 
@@ -22,10 +22,8 @@ namespace indie {
 
             AScene *updateSystem();
             void manageGame();
-            AScene *initGame();
-            void destroyGame();
             std::unique_ptr<AScene> &getScene();
-        protected:
+
         private:
             int sceneId;
             std::vector<std::unique_ptr<AScene>> _scenes;
