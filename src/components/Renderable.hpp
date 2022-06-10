@@ -10,6 +10,9 @@
 
 #include <string>
 #include "IComponent.hpp"
+#include "raylib/RModel.hpp"
+#include "raylib/Rtext.hpp"
+#include "raylib/RTexture2D.hpp"
 
 namespace indie {
 
@@ -23,12 +26,12 @@ namespace indie {
         public:
             Renderable(std::string model = "", std::string texture = "", std::string text = "",
                 float fontSize = 0, Vector3D position = {0}, float angle = 0, Vector3D size = {0}, Vector3D rect = {0})
-                :_model(model), _texture(texture), _text(text), _fontSize(fontSize), _position(position), _angle(angle), _size(size), _rect(rect) {}
+                :_model(model), _texture(texture), _text(text, fontSize), _fontSize(fontSize), _position(position), _angle(angle), _size(size), _rect(rect) {}
             ~Renderable() = default;
 
-            std::string _model;
-            std::string _texture;
-            std::string _text;
+            indie::RModel _model;
+            indie::RTexture2D _texture;
+            indie::Rtext _text;
             float _fontSize;
             Vector3D _position;
             Vector3D _rect;

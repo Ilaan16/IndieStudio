@@ -7,11 +7,8 @@
 
 #include "Core.hpp"
 
-indie::Core::Core(std::size_t const fps)
+indie::Core::Core(std::size_t const fps) : _window("Bomberman")
 {
-    //std::cout << 1 << std::endl;
-    //_vecScenes.emplace_back(std::make_unique<indie::SceneMenu>());
-    //_vecScenes.emplace_back(std::make_unique<indie::MainScene>());
 }
 
 indie::Core::~Core()
@@ -21,6 +18,6 @@ indie::Core::~Core()
 void indie::Core::start()
 {
     while (_scenePos != QUIT) {
-        _raylib.updateSystem(_gameLogic.getScene());
+        _graphical.updateSystem(_gameLogic.getScene());
     }
 }

@@ -11,6 +11,7 @@
 #include "scenes/AScene.hpp"
 #include "Raylib.hpp"
 
+
 namespace indie {
 
     class Graphical {
@@ -19,7 +20,6 @@ namespace indie {
             ~Graphical();
 
             int updateSystem(std::unique_ptr<AScene> &scene);
-
         protected:
         private:
             indie::Raylib _raylib;
