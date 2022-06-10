@@ -8,18 +8,33 @@
 #include "raylib.h"
 #include <iostream>
 #include <stdlib.h>
+int* aleatoire();
+
+Vector3 calcul(int number)
+{
+    Vector3 mapPosition2 = { -6, 2, -4 };
+    int x = mapPosition2.x;
+
+    for (int nb = 1; nb != number; nb++) {
+        if ((nb % 13) == 0) {
+             mapPosition2.x = x - 1;
+             mapPosition2.z = mapPosition2.z + 1;
+        }
+        mapPosition2.x = mapPosition2.x + 1;
+    }
+
+    return (mapPosition2);
+}
 
 int main(void)
 {
     const int screenWidth = 800;
     const int screenHeight = 450;
-    float nb = 0;
-    int times = 60;
-    char const *num_char;
+    int *number = aleatoire();
 
     InitWindow(screenWidth, screenHeight, "map");
 
-    Camera camera = { { 0, 18, 8 }, { 0.0f, -2.0f, 0.0f }, { 0.0f, 1.0f, 0.0f }, 50.0f, 0 };
+    Camera camera = { { 0, 18, 8 }, { 0, -2, 0 }, { 0, 1, 0 }, 50, 0 };
 
     Image imMap = LoadImage("assets/map.png");
     Texture2D cubicmap = LoadTextureFromImage(imMap);
@@ -44,8 +59,6 @@ int main(void)
     UnloadImage(imMap1);
 
     Vector3 mapPosition = { -7, 2, -5 };
-    Vector3 mapPosition1 = { 4, 2, -4 };
-    Vector3 mapPosition2 = { 4, 2, -4 };
 
     SetCameraMode(camera, CAMERA_ORBITAL);
 
@@ -53,23 +66,15 @@ int main(void)
 
     while (!WindowShouldClose())
     {
-        mapPosition1 = mapPosition2;
-        nb += GetFrameTime();
-        times = 60 - (int)nb;
-        std::string tmp = std::to_string(times);
-        num_char = tmp.c_str();
-
         BeginDrawing();
 
             ClearBackground(RAYWHITE);
 
             BeginMode3D(camera);
                 DrawModel(model, mapPosition, 1.0f, WHITE);
-                for (int nb = 0; nb != 11; nb++) {
-                    DrawModel(model1, mapPosition1, 1.0f, WHITE);
-                    mapPosition1.z = mapPosition1.z + 1;
+                for (int nb = 0; nb != 143; nb++) {
+                    DrawModel(model1, calcul(67), 1.0f, WHITE);
                 }
-                DrawText(num_char, 200, 0, 40, BLACK);
             EndMode3D();
 
         EndDrawing();
