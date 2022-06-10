@@ -118,9 +118,9 @@ void indie::Raylib::printFps(std::pair<int, int> const pos) const
 
 void indie::Raylib::printText(std::shared_ptr<indie::IComponent> text_comp, std::shared_ptr<indie::IComponent> vector2) const
 {
-    // Renderable *renderer = dynamic_cast<Renderable *>(text_comp.get());
-    // Font font = LoadFontEx("../../font/Minecrafter.Reg.ttf", text->_fontSize, 0, 0);
-    // DrawTextEx(font, text->_text.c_str(), {renderer->_position.x, renderer->_position.y}, text->_fontSize, 0, BLACK);
+    Renderable *renderer = dynamic_cast<Renderable *>(text_comp.get());
+    Font font = LoadFontEx("../../font/Minecrafter.Reg.ttf", text->_fontSize, 0, 0);
+    DrawTextEx(font, text->_text.c_str(), {renderer->_position.x, renderer->_position.y}, text->_fontSize, 0, BLACK);
 }
 
 void indie::Raylib::printSprite(std::shared_ptr<indie::IComponent> component) const

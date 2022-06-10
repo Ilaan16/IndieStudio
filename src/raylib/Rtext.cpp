@@ -15,6 +15,7 @@ namespace indie {
 
     Rtext::~Rtext()
     {
+        UnloadFont(this->font);
     }
 
     void Rtext::draw(const float &x, const float &y, const std::string &text, const int &fontSize)
