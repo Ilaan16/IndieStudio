@@ -11,6 +11,7 @@
 #include "scenes/AScene.hpp"
 #include "Raylib.hpp"
 
+
 namespace indie {
 
     class Graphical {

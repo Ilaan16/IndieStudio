@@ -19,7 +19,7 @@
 
                 void draw(const float &x, const float &y, Texture2D texture);
             private:
-            Model model;
+            Model *model;
         };
     }
 

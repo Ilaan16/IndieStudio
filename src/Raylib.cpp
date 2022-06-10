@@ -40,6 +40,7 @@ void indie::Raylib::createWindow(int screenWidth, int screenHeight, std::string 
     _screenSize.second = screenHeight;
     InitWindow(screenWidth, screenHeight, title.c_str());
     SetTargetFPS(fps);
+    std::cout << "test" << std::endl;
 }
 
 bool indie::Raylib::gameLoop()

@@ -16,9 +16,9 @@ namespace indie {
         public:
             EntitiesFactory();
             ~EntitiesFactory();
-            void createButton(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, const char *text, Vector3D pos, Vector3D rect, Vector3D posRect);
-            void createBackground(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, const char *path);
-            void createPlayer2D(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, const char *text, Vector3D pos, Vector3D rect, Vector3D posRect);
+            void createButton(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string text, Vector3D pos, Vector3D rect, Vector3D posRect);
+            void createBackground(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string path);
+            void createPlayer2D(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string text, Vector3D pos, Vector3D rect, Vector3D posRect);
         protected:
         private:
     };

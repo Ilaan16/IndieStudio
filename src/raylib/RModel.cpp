@@ -11,16 +11,20 @@
 namespace indie {
     RModel::RModel(const std::string &filename)
     {
-        this->model = LoadModel(filename.c_str());
+        if (filename != "")
+            *this->model = LoadModel(filename.c_str());
+        else
+            this->model = NULL;
     }
 
     RModel::~RModel()
     {
-        UnloadModel(this->model);
+        UnloadModel(*this->model);
     }
 
     void RModel::draw(const float &x, const float &y, Texture2D texture)
-    {
-        SetMaterialTexture(&this->model.materials[0], MATERIAL_MAP_DIFFUSE, texture);
+    {   
+        //if (this->model != NULL)
+        //SetMaterialTexture(*this->model.materials[0], MATERIAL_MAP_DIFFUSE, texture);
     }
 }
