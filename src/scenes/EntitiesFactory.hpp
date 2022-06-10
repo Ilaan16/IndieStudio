@@ -8,7 +8,7 @@
 #ifndef ENTITIESFACTORY_HPP_
 #define ENTITIESFACTORY_HPP_
 
-#include "Renderable.hpp"
+#include "components/Renderable.hpp"
 #include "AScene.hpp"
 
 namespace indie {
