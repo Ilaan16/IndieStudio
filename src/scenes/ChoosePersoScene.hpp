@@ -19,8 +19,6 @@ namespace indie
             ChoosePersoScene();
             ~ChoosePersoScene();
 
-            void createBackground();
-            void createButton(const char *path ,const char *text, Vector3D pos);
             Scenes run(Scenes const &prevScene) final;
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
         protected:
