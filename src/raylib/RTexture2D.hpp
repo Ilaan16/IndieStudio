@@ -12,6 +12,7 @@
     #include "raylib.h"
 
 namespace indie {
+
     class RTexture2D {
         public:
             RTexture2D(const std::string &filename);

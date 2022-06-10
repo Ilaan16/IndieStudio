@@ -6,6 +6,7 @@
 */
 
 #include "RModel.hpp"
+#include <iostream>
 
 namespace indie {
     RModel::RModel(const std::string &filename)
@@ -18,8 +19,8 @@ namespace indie {
         UnloadModel(this->model);
     }
 
-    void RModel::draw(const float &x, const float &y)
+    void RModel::draw(const float &x, const float &y, Texture2D texture)
     {
-        SetMaterialTexture(&this->model.materials[0], MATERIAL_MAP_DIFFUSE,);
+        SetMaterialTexture(&this->model.materials[0], MATERIAL_MAP_DIFFUSE, texture);
     }
 }
