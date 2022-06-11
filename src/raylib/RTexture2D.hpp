@@ -20,7 +20,7 @@ namespace indie {
 
             void draw(const float &x, const float &y);
         private:
-            Texture2D *texture;
+            Texture2D _texture;
     };
 }
 
