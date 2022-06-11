@@ -10,7 +10,7 @@
 
 int main(void)
 {
-    indie::Core core;
+    indie::Core core(60);
 
     core.start();
     return (0);
