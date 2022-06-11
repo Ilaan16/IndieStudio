@@ -5,8 +5,8 @@
 ** RModel
 */
 
-#ifndef RTEXTURE2D_HPP_
-    #define RTEXTURE2D_HPP_
+#ifndef RMODEL_HPP_
+    #define RMODEL_HPP_
 
     #include <string>
     #include "raylib.h"
@@ -17,10 +17,10 @@
                 RModel(const std::string &filename);
                 ~RModel();
 
-                void draw(const float &x, const float &y);
+                void draw(const float &x, const float &y, Texture2D texture);
             private:
-            Model model;
+            Model *model;
         };
     }
 
-#endif /* !RTEXTURE2D_HPP_ */
+#endif /* !RMODEL_HPP_ */

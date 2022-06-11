@@ -40,6 +40,7 @@ void indie::Raylib::createWindow(int screenWidth, int screenHeight, std::string 
     _screenSize.second = screenHeight;
     InitWindow(screenWidth, screenHeight, title.c_str());
     SetTargetFPS(fps);
+    std::cout << "test" << std::endl;
 }
 
 bool indie::Raylib::gameLoop()
@@ -116,24 +117,6 @@ void indie::Raylib::printFps(std::pair<int, int> const pos) const
     DrawFPS(pos.first, pos.second);
 }
 
-void indie::Raylib::printText(std::shared_ptr<indie::IComponent> text_comp, std::shared_ptr<indie::IComponent> vector2) const
-{
-    Renderable *renderer = dynamic_cast<Renderable *>(text_comp.get());
-    Font font = LoadFontEx("../../font/Minecrafter.Reg.ttf", text->_fontSize, 0, 0);
-    DrawTextEx(font, text->_text.c_str(), {renderer->_position.x, renderer->_position.y}, text->_fontSize, 0, BLACK);
-}
-
-void indie::Raylib::printSprite(std::shared_ptr<indie::IComponent> component) const
-{
-    indie::Renderable *renderer = dynamic_cast<indie::Renderable *>(component.get());
-    Texture2D texture2d = LoadTexture(renderer->_texture.c_str());
-    BeginDrawing();
-        DrawTexture(texture2d, renderer->_position.x, renderer->_position.y, WHITE);
-    EndDrawing();
-    UnloadTexture(texture2d);
-    return;
-}
-
 void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
 {
     auto drawable_entity = entities.find(typeEntity::DRAWABLE);
@@ -141,5 +124,6 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
         auto component = drawable_entity->second.at(i)->getComponents();
         auto renderer = component.find(tag::RENDERABLE);
         indie::Renderable *entity = dynamic_cast<indie::Renderable *>(renderer->second.get());
+        entity->_texture.draw(entity->_position.x, entity->_position.y);
     }
 }

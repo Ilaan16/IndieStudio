@@ -12,6 +12,7 @@
     #include "raylib.h"
 
 namespace indie {
+
     class RTexture2D {
         public:
             RTexture2D(const std::string &filename);
@@ -19,7 +20,7 @@ namespace indie {
 
             void draw(const float &x, const float &y);
         private:
-            Texture2D texture;
+            Texture2D *texture;
     };
 }
 

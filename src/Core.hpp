@@ -17,6 +17,7 @@
 #include "scenes/MainScene.hpp"
 #include "Graphical.hpp"
 #include "Game.hpp"
+#include "raylib/Window.hpp"
 
 namespace indie {
 
@@ -34,8 +35,9 @@ namespace indie {
             Scenes _scenePos;
             std::string _title;
             std::size_t _fps;
+            indie::raylib::Window _window;
+            indie::Graphical _graphical;
             indie::Game _gameLogic;
-            indie::Graphical _raylib;
     };
 }
 
