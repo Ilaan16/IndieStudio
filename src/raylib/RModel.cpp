@@ -12,14 +12,14 @@ namespace indie {
     RModel::RModel(const std::string &filename)
     {
         if (filename != "")
-            *this->model = LoadModel(filename.c_str());
+            this->_model = LoadModel(filename.c_str());
         else
-            this->model = NULL;
+            this->_model = LoadModel("");
     }
 
     RModel::~RModel()
     {
-        UnloadModel(*this->model);
+        UnloadModel(this->_model);
     }
 
     void RModel::draw(const float &x, const float &y, Texture2D texture)
