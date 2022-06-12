@@ -125,7 +125,7 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
         auto component = drawable_entity->second.at(i)->getComponents();
         auto renderer = component.find(tag::RENDERABLE);
         indie::Renderable *entity = dynamic_cast<indie::Renderable *>(renderer->second.get());
-        entity->_texture.draw(entity->_position.x, entity->_position.y);
+        entity->_texture.draw(entity->_position.x, entity->_position.y, {entity->_rect.x, entity->_rect.y, entity->_size.x, entity->_size.y});
     }
     EndDrawing();
 }
