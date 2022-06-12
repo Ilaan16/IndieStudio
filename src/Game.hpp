@@ -12,6 +12,7 @@
 #include "scenes/MainScene.hpp"
 #include "scenes/SceneOption.hpp"
 #include "scenes/SceneMenu.hpp"
+#include "scenes/ChoosePersoScene.hpp"
 
 namespace indie {
 
