@@ -45,7 +45,7 @@ void indie::MainScene::createPlayer()
 void indie::MainScene::createIA()
 {
     std::shared_ptr<Entity> IA = std::make_shared<indie::Entity>();
-    IA->addRenderer("assets/characters/character.iqm", "assets/characters/steve", "", 0, {1, 1, 1}, 0, {0, 0, 0});
+    IA->addRenderer("./assets/characters/character.iqm", "./assets/characters/steve.png", "", 0, {1, 1, 1}, 0, {0, 0, 0});
     _entities.find(indie::DRAWABLE)->second.push_back(IA);
 }
 
