@@ -14,13 +14,13 @@
     namespace indie {
         class Rtext {
             public:
-                Rtext(const std::string &filename, const int fontSize);
+                Rtext(const int fontSize);
                 ~Rtext();
 
                 void draw(const float&x, const float &y, const std::string &text, const int &fontSize);
             protected:
             private:
-                Font *font;
+                Font font;
         };
     }
 
