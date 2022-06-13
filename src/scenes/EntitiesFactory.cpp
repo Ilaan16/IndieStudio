@@ -31,7 +31,7 @@ namespace indie {
 
     void EntitiesFactory::createPlayer2D(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string text, Vector3D pos, Vector3D rect, Vector3D posRect) {
         std::shared_ptr<Entity> button = std::make_shared<Entity>();
-        button->addRenderer("", "./assets/choosePerso/players.png", text, 0.0F, pos, 0.0F, posRect, rect);
+        button->addRenderer("", "./assets/choosePerso/players.png", text, 0.0F, pos, 0.0F, rect, posRect);
         _entities.find(DRAWABLE)->second.push_back(button);
         _entities.find(CLICKABLE)->second.push_back(button);
     }
