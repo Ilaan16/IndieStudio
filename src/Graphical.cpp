@@ -20,6 +20,4 @@ indie::Scenes indie::Graphical::updateSystem(std::unique_ptr<indie::AScene> &sce
 {
     this->_raylib.displayAll(scene->getEntities());
     scene->events.updateEvents();
-    if (WindowShouldClose())
-        Scenes::QUIT;
 }
