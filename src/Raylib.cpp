@@ -119,6 +119,7 @@ void indie::Raylib::printFps(std::pair<int, int> const pos) const
 
 void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
 {
+    BeginDrawing();
     auto drawable_entity = entities.find(typeEntity::DRAWABLE);
     for (int i = 0; i < drawable_entity->second.size(); i++) {
         auto component = drawable_entity->second.at(i)->getComponents();
@@ -126,4 +127,5 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
         indie::Renderable *entity = dynamic_cast<indie::Renderable *>(renderer->second.get());
         entity->_texture.draw(entity->_position.x, entity->_position.y);
     }
+    EndDrawing();
 }
