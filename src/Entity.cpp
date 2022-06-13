@@ -5,8 +5,8 @@
 ** Entity
 */
 
-#include "Entity.hpp"
 #include <iostream>
+#include "Entity.hpp"
 
 indie::Entity::Entity()
 {
@@ -17,9 +17,9 @@ indie::Entity::~Entity()
 }
 
 void indie::Entity::addRenderer(std::string model, std::string texture, std::string text,
-                float fontSize, indie::Vector3D position, float angle, indie::Vector3D size, indie::Vector3D rect, indie::Vector3D posText)
+                float fontSize, indie::Vector3D position, float angle, indie::Vector3D size, indie::Vector3D rect)
 {
-    std::shared_ptr<indie::IComponent> renderer = std::make_shared<indie::Renderable>(model, texture, text, fontSize, position, angle, size, rect, posText);
+    std::shared_ptr<indie::IComponent> renderer = std::make_shared<indie::Renderable>(model, texture, text, fontSize, position, angle, size, rect);
     this->putComponent(renderer, indie::RENDERABLE);
 }
 

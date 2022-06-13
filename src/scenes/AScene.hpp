@@ -6,31 +6,24 @@
 */
 
 #ifndef ascenedef
-#define ascenedef
+    #define ascenedef
 
-#include <vector>
-#include <memory>
-#include <string>
-#include <map>
+    #include <string>
+    #include <vector>
+    #include <memory>
+    #include <map>
 
-#include "IScene.hpp"
-#include "Entity.hpp"
+    #include "IScene.hpp"
+    #include "Entity.hpp"
+    #include "events/Listener.hpp"
 
-namespace indie
-{
-    enum typeEntity {
-        DRAWABLE,
-        MOVABLE,
-        PLAYABLE,
-        CLICKABLE
-    };
-
+namespace indie {
     class AScene : public IScene {
         public:
-            AScene() = default;
             virtual ~AScene() = default;
-            virtual Scenes run(Scenes const &prevScene) = 0;
             virtual std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities() = 0;
+            raylib::REvent events;
+            Listener listener;
         protected:
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> _entities;
         private:

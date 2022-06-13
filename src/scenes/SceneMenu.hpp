@@ -11,10 +11,11 @@
 #include <array>
 #include <unordered_map>
 #include "scenes/AScene.hpp"
+#include "raylib/REvent.hpp"
 
 namespace indie
 {
-    enum menu_e {
+    enum class menu_e {
         START,
         LOAD,
         OPTION,
@@ -31,12 +32,11 @@ namespace indie
     class SceneMenu : public AScene {
         public:
             SceneMenu();
-            ~SceneMenu();
+            ~SceneMenu() = default;
 
             void createBackground();
 
             std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &getEntities();
-            Scenes run(Scenes const &prevScene) final;
             bool clockGame();
 
         protected:
