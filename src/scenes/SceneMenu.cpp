@@ -30,6 +30,11 @@ namespace indie {
     {
     }
 
+    Scenes SceneMenu::run(Scenes const &prevScene)
+    {
+        return Scenes::QUIT;
+    }
+
     std::map<typeEntity, std::vector<std::shared_ptr<Entity>>> &SceneMenu::getEntities()
     {
         return (this->_entities);

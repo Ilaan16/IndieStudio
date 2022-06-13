@@ -24,7 +24,7 @@ indie::Game::~Game()
 {
 }
 
-void indie::Game::updateSystem()
+indie::AScene *indie::Game::updateSystem()
 {
     
 }
