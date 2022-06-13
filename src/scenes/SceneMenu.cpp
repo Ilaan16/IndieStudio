@@ -10,13 +10,16 @@
 #include <chrono>
 #include "Raylib.hpp"
 #include "EntitiesFactory.hpp"
+#include "events/Event.hpp"
 
 namespace indie {
     SceneMenu::SceneMenu()
     {
         EntitiesFactory Entities;
+
         std::vector<std::shared_ptr<Entity>> drawable_ent;
         std::vector<std::shared_ptr<Entity>> clicable_ent;
+
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
         _entities.emplace(typeEntity::CLICKABLE, clicable_ent);
         Entities.createBackground(_entities, "./assets/menu/background.png");
@@ -26,8 +29,9 @@ namespace indie {
         Entities.createButton(_entities, "Quit", {800.0f, 550.0f, 0.0f}, {400.0f, 40.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
     }
 
-    SceneMenu::~SceneMenu()
-    {
+        events = raylib::REvent({}, {std::make_pair(MouseButton::MOUSE_BUTTON_LEFT, ButtonState::None)});
+        std::unique_ptr<Event> test = std::make_unique<TestKey>();
+        listener.addEvent(MOUSE_BUTTON_LEFT, move(test));
     }
 
     Scenes SceneMenu::run(Scenes const &prevScene)

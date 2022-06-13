@@ -29,7 +29,7 @@ indie::MainScene::~MainScene()
     //clear objects
 }
 
-Scenes indie::MainScene::run(Scenes const &prevScene)
+indie::Scenes indie::MainScene::run(Scenes const &prevScene)
 {
 
 }

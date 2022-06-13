@@ -5,8 +5,8 @@
 ** Entity
 */
 
-#include "Entity.hpp"
 #include <iostream>
+#include "Entity.hpp"
 
 indie::Entity::Entity()
 {
