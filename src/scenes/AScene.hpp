@@ -21,7 +21,6 @@ namespace indie {
     class AScene : public IScene {
         public:
             virtual ~AScene() = default;
-            virtual Scenes run(Scenes const &prevScene) = 0;
             virtual std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities() = 0;
             raylib::REvent events;
             Listener listener;

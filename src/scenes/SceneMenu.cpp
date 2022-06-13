@@ -34,11 +34,6 @@ namespace indie {
         listener.addEvent(MOUSE_BUTTON_LEFT, move(test));
     }
 
-    Scenes SceneMenu::run(Scenes const &prevScene)
-    {
-        return Scenes::QUIT;
-    }
-
     std::map<typeEntity, std::vector<std::shared_ptr<Entity>>> &SceneMenu::getEntities()
     {
         return (this->_entities);
