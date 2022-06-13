@@ -29,11 +29,6 @@ indie::MainScene::~MainScene()
     //clear objects
 }
 
-Scenes indie::MainScene::run(Scenes const &prevScene)
-{
-
-}
-
 void indie::MainScene::createPlayer()
 {
     std::shared_ptr<Entity> player = std::make_shared<indie::Entity>();

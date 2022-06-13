@@ -32,7 +32,7 @@ namespace indie {
             std::vector<std::unique_ptr<indie::AScene>> _vecScenes;
             int _screenWidth;
             int _screenHeight;
-            Scenes _scenePos;
+            indie::menu_e _scenePos;
             std::string _title;
             std::size_t _fps;
             indie::raylib::Window _window;

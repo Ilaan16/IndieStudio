@@ -32,11 +32,6 @@ namespace indie {
     {
     }
 
-    Scenes ChoosePersoScene::run(Scenes const &prevScene)
-    {
-
-    }
-
     std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &ChoosePersoScene::getEntities()
     {
         return (this->_entities);
