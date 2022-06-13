@@ -19,7 +19,6 @@ namespace indie
             ChoosePersoScene();
             ~ChoosePersoScene();
 
-            Scenes run(Scenes const &prevScene) final;
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
         protected:
         private:
