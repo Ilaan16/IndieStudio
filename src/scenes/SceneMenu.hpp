@@ -36,6 +36,7 @@ namespace indie
             void createBackground();
 
             std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &getEntities();
+            Scenes run(Scenes const &prevScene) final;
             bool clockGame();
 
         protected:

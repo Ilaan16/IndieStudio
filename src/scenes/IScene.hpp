@@ -20,7 +20,8 @@ enum Scenes {
 class IScene {
     public:
         virtual ~IScene() {};
-        
+        virtual Scenes run(Scenes const &prevScene) = 0;
+
     protected:
     private:
 };
