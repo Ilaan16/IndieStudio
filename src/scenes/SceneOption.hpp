@@ -17,6 +17,7 @@ namespace indie
             SceneOption();
             ~SceneOption();
 
+            Scenes run(Scenes const &prevScene) final;
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
 
             void createButton();

@@ -26,6 +26,11 @@ namespace indie {
     {
     }
 
+    Scenes SceneOption::run(Scenes const &prevScene)
+    {
+
+    }
+
     void SceneOption::createButton()
     {
         std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
