@@ -22,7 +22,8 @@ namespace indie {
 
         Window::~Window()
         {
-            CloseWindow();
+            if (IsWindowReady())
+                CloseWindow();
         }
 
         void Window::toggleFull(void)
