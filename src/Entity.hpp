@@ -11,17 +11,16 @@
 #include <vector>
 #include <memory>
 #include <map>
-#include <iostream>
 #include "components/IComponent.hpp"
 #include "components/Renderable.hpp"
 #include "components/IAAlgorithmes.hpp"
-#include "components/Listener.hpp"
 
-namespace indie 
+namespace indie
 {
     enum tag {
         RENDERABLE,
         MOVEMENT,
+        LISTENER
     };
 
     class Entity {

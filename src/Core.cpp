@@ -17,7 +17,8 @@ indie::Core::~Core()
 
 void indie::Core::start()
 {
-    while (_scenePos != QUIT) {
-        _graphical.updateSystem(_gameLogic.getScene());
+    while (_scenePos != Scenes::QUIT) {
+        _scenePos = _graphical.updateSystem(_gameLogic.getScene());
+        _gameLogic.updateSystem();
     }
 }

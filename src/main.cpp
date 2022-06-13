@@ -10,8 +10,8 @@
 
 int main(void)
 {
-    indie::Core core(60);
+    indie::Core core;
 
     core.start();
-    return (0);
+    return 0;
 }
