@@ -20,9 +20,10 @@ namespace indie {
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
         _entities.emplace(typeEntity::CLICKABLE, clicable_ent);
         Entities.createBackground(_entities, "./assets/menu/background.png");
-        Entities.createButton(_entities, "Play", {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {50.0f, 50.0f, 0.0f});
-        Entities.createButton(_entities, "Settings", {50.0f, 50.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
-        Entities.createButton(_entities, "Quit", {150.0f, 150.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createLogo(_entities, "Play", {700.0f, 150.0f, 0.0f}, {558.0f, 78.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createButton(_entities, "Play", {800.0f, 450.0f, 0.0f}, {400.0f, 40.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createButton(_entities, "Settings", {800.0f, 500.0f, 0.0f}, {400.0f, 40.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createButton(_entities, "Quit", {800.0f, 550.0f, 0.0f}, {400.0f, 40.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
     }
 
     SceneMenu::~SceneMenu()
