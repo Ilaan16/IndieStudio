@@ -26,12 +26,13 @@ namespace indie {
         public:
             Renderable(std::string model = "", std::string texture = "", std::string text = "",
                 float fontSize = 0, Vector3D position = {0}, float angle = 0, Vector3D size = {0}, Vector3D rect = {0})
-                :_model(model), _texture(texture), _text(text, fontSize), _fontSize(fontSize), _position(position), _angle(angle), _size(size), _rect(rect) {}
+                :_model(model), _texture(texture), _text(fontSize), _fontSize(fontSize), _position(position), _angle(angle), _size(size), _rect(rect) {}
             ~Renderable() = default;
 
             indie::RModel _model;
             indie::RTexture2D _texture;
             indie::Rtext _text;
+            //std::string _strString;
             float _fontSize;
             Vector3D _position;
             Vector3D _rect;
