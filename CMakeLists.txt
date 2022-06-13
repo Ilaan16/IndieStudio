@@ -11,6 +11,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR})
 
 FILE(GLOB_RECURSE MAIN_SOURCE src/*.cpp)
 
+add_compile_options(-fsanitize=address -g)
+add_link_options(-fsanitize=address)
+
 include_directories(src)
 
 add_executable(indie ${MAIN_SOURCE})

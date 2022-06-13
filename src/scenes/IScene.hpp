@@ -6,24 +6,30 @@
 */
 
 #ifndef iscenedef
-#define iscenedef
+    #define iscenedef
 
-enum Scenes {
-    QUIT = -1,
-    MENU = 0,
-    NEW_GAME,
-    GAME,
-    LOAD,
-    OPTION
-};
+namespace indie {
+    enum typeEntity {
+        DRAWABLE,
+        MOVABLE,
+        PLAYABLE,
+        CLICKABLE
+    };
 
-class IScene {
-    public:
-        virtual ~IScene() {};
-        virtual Scenes run(Scenes const &prevScene) = 0;
+    enum class Scenes {
+        QUIT = -1,
+        MENU = 0,
+        NEW_GAME,
+        GAME,
+        LOAD,
+        OPTION
+    };
 
-    protected:
-    private:
-};
-
+    class IScene {
+        public:
+            virtual ~IScene() {};
+        protected:
+        private:
+    };
+}
 #endif /* !iscenedef */
