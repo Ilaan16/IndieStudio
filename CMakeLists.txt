@@ -14,8 +14,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 target_sources(${PROJECT_NAME}
     PRIVATE
-        src/main.cpp
-        src/all.cpp
+        src/map.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
