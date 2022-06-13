@@ -16,7 +16,8 @@ indie::Raylib::Raylib() :
 
 indie::Raylib::~Raylib()
 {
-    CloseWindow();
+    if (IsWindowReady())
+        CloseWindow();
 }
 
 void indie::Raylib::setCamera(Vector3 pos, Vector3 target, Vector3 up, float fovy, int projection)

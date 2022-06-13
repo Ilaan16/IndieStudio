@@ -11,11 +11,10 @@
 #include <array>
 #include <unordered_map>
 #include "scenes/AScene.hpp"
-#include "raylib/REvent.hpp"
 
 namespace indie
 {
-    enum class menu_e {
+    enum menu_e {
         START,
         LOAD,
         OPTION,
@@ -32,7 +31,7 @@ namespace indie
     class SceneMenu : public AScene {
         public:
             SceneMenu();
-            ~SceneMenu() = default;
+            ~SceneMenu();
 
             void createBackground();
 

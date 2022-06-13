@@ -26,14 +26,7 @@ indie::Game::~Game()
 
 void indie::Game::updateSystem()
 {
-    std::vector<std::pair<KeyboardKey, indie::ButtonState>> keys = _scenes[sceneId]->events.getKeyboard();
-    std::vector<std::pair<MouseButton, indie::ButtonState>> mouses = _scenes[sceneId]->events.getMouse();
-
-    for (auto it = keys.begin(); it != keys.end(); it++)
-        _scenes[sceneId]->listener.checkEvent(it->first, it->second, _scenes[sceneId]);
-    for (auto it = mouses.begin(); it != mouses.end(); it++)
-        if (_scenes[sceneId]->events.isHover(0, 0, 121, 900))
-            _scenes[sceneId]->listener.checkEvent(it->first, it->second, _scenes[sceneId]);
+    
 }
 
 void indie::Game::manageGame()
