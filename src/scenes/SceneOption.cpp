@@ -26,11 +26,6 @@ namespace indie {
     {
     }
 
-    Scenes SceneOption::run(Scenes const &prevScene)
-    {
-        return Scenes::QUIT;
-    }
-
     std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &SceneOption::getEntities()
     {
         return (this->_entities);
