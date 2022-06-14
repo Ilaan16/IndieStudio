@@ -8,14 +8,14 @@
 #include "RMap.hpp"
 
 namespace indie {
-    RMap::RMap(std::string &texture_border, std::string &texture_destruct)
+    RMap::RMap()
     {
         Image imMap = LoadImage("assets/map.png");
         this->_cubicmap = LoadTextureFromImage(imMap);
         Mesh mesh = GenMeshCubicmap(imMap, (Vector3){ 1.0f, 1.0f, 1.0f });
         Model model = LoadModelFromMesh(mesh);
 
-        this->_texture = LoadTexture(texture_border.c_str());
+        this->_texture = LoadTexture("assets/cubicmap_atlas.png");
         model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = this->_texture;
 
         Color *mapPixels = LoadImageColors(imMap);
@@ -26,7 +26,7 @@ namespace indie {
         Mesh mesh1 = GenMeshCubicmap(imMap1, (Vector3){ 1.0f, 1.0f, 1.0f });
         Model model1 = LoadModelFromMesh(mesh1);
 
-        Texture2D texture1 = LoadTexture(texture_destruct.c_str());
+        Texture2D texture1 = LoadTexture("assets/planche.png");
         model1.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture1;
 
         UnloadImage(imMap1);
