@@ -19,11 +19,10 @@ namespace indie {
                 ~Window();
 
                 void toggleFull(void);
-                const int &getFps() const;
-                const int &getWidth() const;
-                const int &getHeight() const;
-                const bool &isFullScreen() const;
-                const bool closing() const;
+                const int getFps() const;
+                const int getWidth() const;
+                const int getHeight() const;
+                const bool isFullScreen() const;
 
             private:
                 int _fps;
