@@ -18,7 +18,7 @@ namespace indie {
             RTexture2D(const std::string &filename);
             ~RTexture2D();
 
-            void draw(const float &x, const float &y);
+            void draw(const float &x, const float &y, Rectangle source);
         private:
             Texture2D _texture;
     };

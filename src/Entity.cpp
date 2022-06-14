@@ -17,9 +17,9 @@ indie::Entity::~Entity()
 }
 
 void indie::Entity::addRenderer(std::string model, std::string texture, std::string text,
-                float fontSize, indie::Vector3D position, float angle, indie::Vector3D size, indie::Vector3D rect)
+                float fontSize, indie::Vector3D position, float angle, indie::Vector3D size, indie::Vector3D rect, indie::Vector3D posText)
 {
-    std::shared_ptr<indie::IComponent> renderer = std::make_shared<indie::Renderable>(model, texture, text, fontSize, position, angle, size, rect);
+    std::shared_ptr<indie::IComponent> renderer = std::make_shared<indie::Renderable>(model, texture, text, fontSize, position, angle, size, rect, posText);
     this->putComponent(renderer, indie::RENDERABLE);
 }
 

@@ -29,7 +29,6 @@ namespace indie
         public:
             AScene() = default;
             virtual ~AScene() = default;
-            virtual Scenes run(Scenes const &prevScene) = 0;
             virtual std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities() = 0;
         protected:
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> _entities;
