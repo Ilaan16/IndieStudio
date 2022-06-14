@@ -21,7 +21,6 @@ namespace indie {
 
     void RTexture2D::draw(const float &x, const float &y, Rectangle source)
     {
-        // DrawTexture(this->_texture, x, y, WHITE);
         DrawTextureRec(this->_texture, source, {x, y}, WHITE);
     }
 }
