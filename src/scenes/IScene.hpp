@@ -9,13 +9,6 @@
     #define iscenedef
 
 namespace indie {
-    enum typeEntity {
-        DRAWABLE,
-        MOVABLE,
-        PLAYABLE,
-        CLICKABLE
-    };
-
     enum class Scenes {
         QUIT = -1,
         MENU = 0,
