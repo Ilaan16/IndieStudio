@@ -17,7 +17,6 @@ namespace indie
             MainScene();
             ~MainScene();
 
-            Scenes run(Scenes const &prevScene) final;
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
 
             void createMap();

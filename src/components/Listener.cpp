@@ -46,6 +46,7 @@ namespace indie {
         if (ret.second == false)
             return false;
         keyboardEvents.erase(place);
+        return true;
     }
 
     bool Listener::modifyMouse(const MouseButton &oldMouse, const MouseButton &newMouse)
@@ -57,5 +58,6 @@ namespace indie {
         if (ret.second == false)
             return false;
         mouseEvents.erase(place);
+        return true;
     }
 }
