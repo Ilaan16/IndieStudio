@@ -33,25 +33,6 @@ indie::MainScene::~MainScene()
     //clear objects
 }
 
-void indie::MainScene::createPlayer()
-{
-    std::shared_ptr<Entity> player = std::make_shared<indie::Entity>();
-    player->addRenderer();
-    _entities.find(indie::DRAWABLE)->second.push_back(player);
-    _entities.find(indie::PLAYABLE)->second.push_back(player);
-}
-
-void indie::MainScene::createIA()
-{
-    std::shared_ptr<Entity> IA = std::make_shared<indie::Entity>();
-    IA->addRenderer("./assets/characters/character.iqm", "./assets/characters/steve.png", "", 0, {1, 1, 1}, 0, {0, 0, 0}, {0}, {0}, true);
-    _entities.find(indie::DRAWABLE)->second.push_back(IA);
-}
-
-void indie::MainScene::createMap()
-{
-}
-
 void indie::MainScene::createCamera()
 {
     std::shared_ptr<Entity> camera = std::make_shared<indie::Entity>();

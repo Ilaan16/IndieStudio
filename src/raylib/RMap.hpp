@@ -20,7 +20,7 @@
 
                 void draw(Camera3D camera);
                 Vector3 calcul(int number, Vector3 mapPosition2);
-                int RMap::verif(std::vector <int> tab, int temp);
+                int verif(std::vector <int> tab, int temp);
                 std::vector <int> aleatoire();
             protected:
             private:
