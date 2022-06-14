@@ -19,7 +19,7 @@ namespace indie {
             Graphical();
             ~Graphical();
 
-            Scenes updateSystem(std::unique_ptr<AScene> &scene);
+            void updateSystem(std::unique_ptr<AScene> &scene);
         protected:
         private:
             indie::Raylib _raylib;

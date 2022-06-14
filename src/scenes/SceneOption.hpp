@@ -15,12 +15,9 @@ namespace indie
     class SceneOption : public AScene {
         public:
             SceneOption();
-            ~SceneOption();
+            ~SceneOption() = default;
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
-
-            void createButton();
-            void createSlider();
         private:
     };
 }
