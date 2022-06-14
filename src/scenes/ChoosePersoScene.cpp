@@ -19,13 +19,12 @@ namespace indie {
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
         _entities.emplace(typeEntity::CLICKABLE, clickable_ent);
         Entities.createBackground(_entities, "./assets/choosePerso/background.png");
-        Entities.createButton(_entities, "P1", {80, 458, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
-        Entities.createButton(_entities, "P2", {1540, 458, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
-        Entities.createButton(_entities, "P3", {80, 993, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
-        Entities.createButton(_entities, "P4", {1540, 993, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
-        Entities.createButton(_entities, "START", {800, 905, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
-        Entities.createPlayer2D(_entities, "", {545, 132, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
-        Entities.createPlayer2D(_entities, "", {846, 132, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createButton(_entities, "P1", {30.0f, 436.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408, 0.0f, 0.0f}, {201.0f, 457.0f, 0.0f});
+        Entities.createButton(_entities, "P2", {1498.0f, 436.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408.0f, 0.0f, 0.0f}, {1669.0f, 457.0f, 0.0f});
+        Entities.createButton(_entities, "P3", {30.0f, 978.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408.0f, 0.0f, 0.0f}, {201.0f, 999.0f, 0.0f});
+        Entities.createButton(_entities, "P4", {1498.0f, 978.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408.0f, 0.0f, 0.0f}, {1669.0f, 999.0f, 0.0f});
+        Entities.createButton(_entities, "START", {763.0f, 892.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408.0f, 0.0f, 0.0f}, {888.0f, 913.0f, 0.0f});
+        Entities.createPlayer2D(_entities, "", {561.5f, 112.0f, 0.0f}, {200.0f, 288.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
     }
 
     ChoosePersoScene::~ChoosePersoScene()
