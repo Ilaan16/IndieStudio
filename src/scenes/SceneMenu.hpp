@@ -9,10 +9,11 @@
 #define scenemenudef
 
 #include <array>
-#include "AScene.hpp"
+#include <unordered_map>
+#include "scenes/AScene.hpp"
 
-namespace menu {
-
+namespace indie
+{
     enum menu_e {
         START,
         LOAD,
@@ -31,7 +32,11 @@ namespace menu {
         public:
             SceneMenu();
             ~SceneMenu();
-            Scenes run(Raylib &lib, Scenes const &prevScene) final;
+
+            void createBackground();
+
+            std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &getEntities();
+            Scenes run(Scenes const &prevScene) final;
             bool clockGame();
 
         protected:
@@ -42,5 +47,4 @@ namespace menu {
             static const std::vector<std::string> _menuText;
     };
 }
-
 #endif /* !scenemenudef */

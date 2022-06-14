@@ -8,11 +8,9 @@
 #ifndef iscenedef
 #define iscenedef
 
-#include "Raylib.hpp"
-
 enum Scenes {
     QUIT = -1,
-    MENU,
+    MENU = 0,
     NEW_GAME,
     GAME,
     LOAD,
@@ -22,7 +20,7 @@ enum Scenes {
 class IScene {
     public:
         virtual ~IScene() {};
-        virtual Scenes run(Raylib &lib, Scenes const &prevScene) = 0;
+        virtual Scenes run(Scenes const &prevScene) = 0;
 
     protected:
     private:

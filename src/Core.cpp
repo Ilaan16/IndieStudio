@@ -6,31 +6,18 @@
 */
 
 #include "Core.hpp"
-#include "Raylib.hpp"
-#include "AScene.hpp"
-#include "SceneMenu.hpp"
-#include "MainScene.hpp"
 
-
-Core::Core(int screenWidth, int screenHeight, std::string const &title, std::size_t const fps)
-    : _screenWidth(screenWidth), _screenHeight(screenHeight), _title(title), _fps(fps),  _scenePos(Scenes::MENU)
-{
-    _vecScenes.emplace_back(std::make_unique<menu::SceneMenu>());
-    _vecScenes.emplace_back(std::make_unique<MainScene>());
-}
-
-Core::~Core()
+indie::Core::Core(std::size_t const fps) : _window("Bomberman")
 {
 }
 
-void Core::start()
+indie::Core::~Core()
 {
-    Raylib lib;
-    menu::SceneMenu menu;
-    MainScene game;
+}
 
-    lib.createWindow(_screenWidth, _screenHeight, _title, _fps);
+void indie::Core::start()
+{
     while (_scenePos != QUIT) {
-        _scenePos = _vecScenes.at(_scenePos)->run(lib, _scenePos);
+        _graphical.updateSystem(_gameLogic.getScene());
     }
 }

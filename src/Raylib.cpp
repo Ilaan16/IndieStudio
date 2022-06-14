@@ -5,20 +5,22 @@
 ** raylib
 */
 
+#include "scenes/AScene.hpp"
 #include "Raylib.hpp"
 
-Raylib::Raylib() :
+indie::Raylib::Raylib() :
     _camera({{0.0f, 10.0f, 10.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, 45.0f, 0})
 {
+    
 }
 
-Raylib::~Raylib()
+indie::Raylib::~Raylib()
 {
     if (IsWindowReady())
         CloseWindow();
 }
 
-void Raylib::setCamera(Vector3 pos, Vector3 target, Vector3 up, float fovy, int projection)
+void indie::Raylib::setCamera(Vector3 pos, Vector3 target, Vector3 up, float fovy, int projection)
 {
     _camera.position = pos;
     _camera.target = target;
@@ -27,94 +29,104 @@ void Raylib::setCamera(Vector3 pos, Vector3 target, Vector3 up, float fovy, int 
     _camera.projection = projection;
 };
 
-Camera Raylib::getCamera() const
+Camera indie::Raylib::getCamera() const
 {
     return _camera;
 };
 
-void Raylib::createWindow(int screenWidth, int screenHeight, std::string const &title, std::size_t const fps)
+void indie::Raylib::createWindow(int screenWidth, int screenHeight, std::string const &title, std::size_t const fps)
 {
     _screenSize.first = screenWidth;
     _screenSize.second = screenHeight;
     InitWindow(screenWidth, screenHeight, title.c_str());
     SetTargetFPS(fps);
+    std::cout << "test" << std::endl;
 }
 
-bool Raylib::gameLoop()
+bool indie::Raylib::gameLoop()
 {
     return !WindowShouldClose();
 }
 
-bool Raylib::isKeyDown(int button) const noexcept
+bool indie::Raylib::isKeyDown(int button) const noexcept
 {
     return (IsKeyDown(button));
 }
 
-bool Raylib::isKeyPressed(int button) const noexcept
+bool indie::Raylib::isKeyPressed(int button) const noexcept
 {
     return (IsKeyPressed(button));
 }
 
-bool Raylib::isKeyReleased(int button) const noexcept
+bool indie::Raylib::isKeyReleased(int button) const noexcept
 {
     return (IsKeyReleased(button));
 }
 
-void Raylib::printText(std::string const &text, std::pair<int, int> const position, int const fontSize, Color const color) const
+void indie::Raylib::printCircle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const
 {
-    DrawText(text.c_str(), position.first, position.second, fontSize, color);
-}
-
-void Raylib::printCircle(type const type, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const
-{
-    if (type == BASIC)
+    if (typeEntityLine == BASIC)
         DrawCircle(position.first, position.second, radius, color.first);
-    else if (type == GRADIENT)
+    else if (typeEntityLine == GRADIENT)
         DrawCircleGradient(position.first, position.second, radius, color.first, color.second);
-    else if (type == LINES)
+    else if (typeEntityLine == LINES)
         DrawCircleLines(position.first, position.second, radius, color.first);
     else
         std::cout << "Unknow Circle Type\n";
 }
 
-void Raylib::printRectangle(type const type, std::pair<int, int> const position, std::pair<int, int> const size, std::pair<Color, Color> const color) const
+void indie::Raylib::printRectangle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, std::pair<int, int> const size, std::pair<Color, Color> const color) const
 {
-    if (type == BASIC)
+    if (typeEntityLine == BASIC)
         DrawRectangle(position.first, position.second, size.first, size.second, color.first);
-    else if (type == GRADIENT)
+    else if (typeEntityLine == GRADIENT)
         DrawRectangleGradientH(position.first, position.second, size.first, size.second, color.first, color.second);
-    else if (type == LINES)
+    else if (typeEntityLine == LINES)
         DrawRectangleLines(position.first, position.second, size.first, size.second, color.first);
     else
         std::cout << "Unknow Rectangle Type\n";
 }
 
-void Raylib::printCube(type const type, Vector3 const position, Vector3 const size, Color const color) const
+void indie::Raylib::printCube(typeEntityLine const typeEntityLine, Vector3 const position, Vector3 const size, Color const color) const
 {
-    if (type == BASIC)
+    if (typeEntityLine == BASIC)
         DrawCube(position, size.x, size.y, size.z, color);
-    else if (type == WIRES)
+    else if (typeEntityLine == WIRES)
         DrawCubeWires(position, size.x, size.y, size.z, color);
     else
         std::cout << "Unknow Cube Type\n";
 }
 
-void Raylib::printSphere(type const type, Vector3 const position, float const size, std::pair<int, int> const Vertex, Color const color) const
+void indie::Raylib::printSphere(typeEntityLine const typeEntityLine, Vector3 const position, float const size, std::pair<int, int> const Vertex, Color const color) const
 {
-    if (type == BASIC)
+    if (typeEntityLine == BASIC)
         DrawSphere(position, size, color);
-    else if (type == WIRES)
+    else if (typeEntityLine == WIRES)
         DrawSphereWires(position, size, Vertex.first, Vertex.second, color);
     else
         std::cout << "Unknow Shpere Type\n";
 }
 
-void Raylib::printGrid(int const slices, float const space) const
+void indie::Raylib::printGrid(int const slices, float const space) const
 {
     DrawGrid(slices, space);
 }
 
-void Raylib::printFps(std::pair<int, int> const pos) const
+void indie::Raylib::printFps(std::pair<int, int> const pos) const
 {
     DrawFPS(pos.first, pos.second);
+}
+
+void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
+{
+    BeginDrawing();
+    auto drawable_entity = entities.find(typeEntity::DRAWABLE);
+    for (int i = 0; i < drawable_entity->second.size(); i++) {
+        auto component = drawable_entity->second.at(i)->getComponents();
+        auto renderer = component.find(tag::RENDERABLE);
+        indie::Renderable *entity = dynamic_cast<indie::Renderable *>(renderer->second.get());
+        entity->_texture.draw(entity->_position.x, entity->_position.y, {entity->_rect.x, entity->_rect.y, entity->_size.x, entity->_size.y});
+        entity->_text.draw(entity->_textPos.x, entity->_textPos.y, entity->_strString, entity->_fontSize);
+    }
+    EndDrawing();
 }

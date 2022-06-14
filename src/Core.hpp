@@ -11,22 +11,34 @@
 #include <utility>
 #include <string>
 #include <memory>
-#include "AScene.hpp"
+#include "scenes/AScene.hpp"
+#include "Raylib.hpp"
+#include "scenes/SceneMenu.hpp"
+#include "scenes/MainScene.hpp"
+#include "Graphical.hpp"
+#include "Game.hpp"
+#include "raylib/Window.hpp"
 
-class Core {
-    public:
-        Core(int screenWidth = 1920, int screenHeight = 1080, std::string const &title = "default", std::size_t const fps = 60);
-        ~Core();
-        void start();
+namespace indie {
 
-    protected:
-    private:
-        std::vector<std::unique_ptr<AScene>> _vecScenes;
-        int _screenWidth;
-        int _screenHeight;
-        Scenes _scenePos;
-        std::string _title;
-        std::size_t _fps;
-};
+    class Core {
+        public:
+            Core(std::size_t const fps = 60);
+            ~Core();
+            void start();
+
+        protected:
+        private:
+            std::vector<std::unique_ptr<indie::AScene>> _vecScenes;
+            int _screenWidth;
+            int _screenHeight;
+            Scenes _scenePos;
+            std::string _title;
+            std::size_t _fps;
+            indie::raylib::Window _window;
+            indie::Graphical _graphical;
+            indie::Game _gameLogic;
+    };
+}
 
 #endif /* !coredef */

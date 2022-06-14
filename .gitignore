@@ -34,3 +34,5 @@
 build/
 indie
 indie.pdb
+make
+.vscode/
