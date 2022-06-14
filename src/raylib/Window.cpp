@@ -67,5 +67,10 @@ namespace indie {
             float volume = size / max;
             SetMasterVolume(volume);
         }
+
+        const bool Window::closing(void) const
+        {
+            return WindowShouldClose();
+        }
     }
 }

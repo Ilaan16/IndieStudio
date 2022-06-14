@@ -15,6 +15,7 @@
 #include "raylib/RTexture2D.hpp"
 #include "raylib/RShape.hpp"
 #include "raylib/RMusicManager.hpp"
+#include "raylib/RMap.hpp"
 
 namespace indie {
 
@@ -36,6 +37,7 @@ namespace indie {
             indie::raylib::RMusicManager _music;
             indie::RTexture2D _texture;
             indie::Rtext _text;
+            indie::RMap _map;
             std::string _strString;
             float _fontSize;
             Vector3D _position;
