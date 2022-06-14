@@ -21,7 +21,7 @@ namespace indie {
             Game();
             ~Game();
 
-            void *updateSystem();
+            void updateSystem();
             void manageGame();
             std::unique_ptr<AScene> &getScene();
 

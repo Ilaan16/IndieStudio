@@ -24,7 +24,7 @@ indie::Game::~Game()
 {
 }
 
-void *indie::Game::updateSystem()
+void indie::Game::updateSystem()
 {
     
 }
