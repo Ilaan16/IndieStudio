@@ -31,9 +31,9 @@ namespace indie {
 
         UnloadImage(imMap1);
 
-         this->_mapPos = { -7, 2, -5 };
-         this->_mapPos2 = { -6, 2, -4 };
-         this->_mapPos3 = { -6, 2, -4 };
+        this->_mapPos = { -7, 2, -5 };
+        this->_mapPos2 = { -6, 2, -4 };
+        this->_mapPos3 = { -6, 2, -4 };
     }
 
     std::vector<int> RMap::aleatoire()
@@ -83,24 +83,25 @@ namespace indie {
 
     RMap::~RMap()
     {
-        UnloadImageColors(this->_mapPixels);
+        // free in comments cause segfault on closeWindow
+        // UnloadImageColors(this->_mapPixels);
         UnloadTexture(this->_cubicmap);
         UnloadTexture(this->_texture);
-        UnloadModel(this->_model);
+        // UnloadModel(this->_model);
         UnloadTexture(this->_cubicmap_wood);
         UnloadTexture(this->_texture_wood);
-        UnloadModel(this->_model_wood);
+        // UnloadModel(this->_model_wood);
     }
     
     void RMap::draw(Camera3D camera)
     {
         BeginMode3D(camera);
         DrawModel(this->_model, this->_mapPos, 1.0f, WHITE);
-        for (int nb = 0; nb < 143; nb++) {
-            this->_mapPos2 = this->_mapPos3;
-            if (tab.at(nb) > 0)
-                DrawModel(this->_model_wood, calcul(tab.at(nb), this->_mapPos2), 1.0f, WHITE);
-        }
+        // for (int nb = 0; nb < 143; nb++) {
+        //     this->_mapPos2 = this->_mapPos3;
+        //     if (tab.at(nb) > 0)
+        //         DrawModel(this->_model_wood, calcul(tab.at(nb), this->_mapPos2), 1.0f, WHITE);
+        // }
         EndMode3D();
     }
 }

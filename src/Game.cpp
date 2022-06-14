@@ -6,6 +6,9 @@
 */
 
 #include "Game.hpp"
+#include "components/Listener.hpp"
+
+int indie::Game::sceneId = 0;
 
 indie::Game::Game()
 {
@@ -24,9 +27,49 @@ indie::Game::~Game()
 {
 }
 
-void indie::Game::updateSystem()
+indie::Scenes indie::Game::updateSystem()
 {
-    
+    std::vector<std::pair<KeyboardKey, indie::ButtonState>> keys = _scenes[sceneId]->events.getKeyboard();
+    std::vector<std::pair<MouseButton, indie::ButtonState>> mouses = _scenes[sceneId]->events.getMouse();
+
+    std::vector<std::shared_ptr<Entity>> &move = _scenes[sceneId]->getEntities().find(MOVABLE)->second;
+    std::vector<std::shared_ptr<Entity>> &click = _scenes[sceneId]->getEntities().find(CLICKABLE)->second;
+
+    for (auto key = keys.begin(); key != keys.end(); key++)
+        for (auto ent = move.begin(); ent != move.end(); ent++) {
+            callEvent(*ent, *key, _scenes[sceneId]);
+        }
+
+    for (auto mouse = mouses.begin(); mouse != mouses.end(); mouse++)
+        for (auto ent = click.begin(); ent != click.end(); ent++) {
+            callEvent(*ent, *mouse, _scenes[sceneId]);
+        }
+    return static_cast<Scenes>(sceneId);
+}
+
+void indie::Game::callEvent(std::shared_ptr<Entity> &ent, std::pair<KeyboardKey, indie::ButtonState> &key,
+    std::unique_ptr<AScene> &scene)
+{
+    auto comp = ent->getComponents().find(LISTENER);
+    if (comp == ent->getComponents().end())
+        return;
+    std::shared_ptr<Listener> listener = std::static_pointer_cast<Listener, IComponent>(comp->second);
+    listener->checkEvent(key.first, key.second, scene);
+}
+
+void indie::Game::callEvent(std::shared_ptr<Entity> &ent, std::pair<MouseButton, indie::ButtonState> &key,
+    std::unique_ptr<AScene> &scene)
+{
+    auto comp = ent->getComponents().find(LISTENER);
+    if (comp == ent->getComponents().end())
+        return;
+    std::shared_ptr<Listener> listener = std::static_pointer_cast<Listener, IComponent>(comp->second);
+    listener->checkEvent(key.first, key.second, scene);
+}
+
+void indie::Game::setScene(const int &id)
+{
+    sceneId = id;
 }
 
 void indie::Game::manageGame()

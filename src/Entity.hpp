@@ -11,17 +11,16 @@
 #include <vector>
 #include <memory>
 #include <map>
-#include <iostream>
 #include "components/IComponent.hpp"
 #include "components/Renderable.hpp"
 #include "components/IAAlgorithmes.hpp"
-#include "components/Listener.hpp"
 
-namespace indie 
+namespace indie
 {
     enum tag {
         RENDERABLE,
         MOVEMENT,
+        LISTENER
     };
 
     class Entity {
@@ -32,7 +31,8 @@ namespace indie
             std::map<indie::tag, std::shared_ptr<indie::IComponent>> &getComponents();
             void putComponent(std::shared_ptr<indie::IComponent> component, indie::tag tag);
             void addRenderer(std::string model = "", std::string texture = "", std::string text = "",
-            float fontSize = 0, indie::Vector3D position = {0}, float angle = 0, indie::Vector3D size = {0}, indie::Vector3D rect = {0}, indie::Vector3D posText = {0});
+                float fontSize = 0, indie::Vector3D position = {0}, float angle = 0, indie::Vector3D size = {0}, indie::Vector3D rect = {0}, indie::Vector3D posText = {0});
+            void addListener(std::shared_ptr<Entity> &entity);
             void addIAAlgo(std::shared_ptr<Entity> &entity);
         protected:
             std::map<indie::tag, std::shared_ptr<indie::IComponent>> _components;

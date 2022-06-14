@@ -13,6 +13,7 @@
 #include "raylib/RModel.hpp"
 #include "raylib/Rtext.hpp"
 #include "raylib/RTexture2D.hpp"
+#include "raylib/RMap.hpp"
 
 namespace indie {
 
@@ -26,12 +27,13 @@ namespace indie {
         public:
             Renderable(std::string model = "", std::string texture = "", std::string text = "",
                 float fontSize = 0, Vector3D position = {0}, float angle = 0, Vector3D size = {0}, Vector3D rect = {0}, Vector3D textPosition = {0})
-                :_model(model), _texture(texture), _text(fontSize), _strString(text), _fontSize(fontSize), _position(position), _angle(angle), _size(size), _rect(rect), _textPos(textPosition) {}
+                :_model(model, texture), _texture(texture), _text(fontSize), _strString(text), _fontSize(fontSize), _position(position), _angle(angle), _size(size), _rect(rect), _textPos(textPosition) {}
             ~Renderable() = default;
 
             indie::RModel _model;
             indie::RTexture2D _texture;
             indie::Rtext _text;
+            indie::RMap _map;
             std::string _strString;
             float _fontSize;
             Vector3D _position;

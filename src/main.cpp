@@ -6,6 +6,7 @@
 */
 
 #include "Core.hpp"
+#include "Raylib.hpp"
 
 int main(void)
 {

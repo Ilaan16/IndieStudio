@@ -20,6 +20,10 @@ namespace indie
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
 
+            void createMap();
+            void createPlayer();
+            void createCamera();
+            void createIA();
         protected:
         private:
             RMap map;

@@ -6,18 +6,18 @@
 */
 
 #ifndef ascenedef
-#define ascenedef
+    #define ascenedef
 
-#include <vector>
-#include <memory>
-#include <string>
-#include <map>
+    #include <string>
+    #include <vector>
+    #include <memory>
+    #include <map>
 
-#include "IScene.hpp"
-#include "Entity.hpp"
+    #include "IScene.hpp"
+    #include "Entity.hpp"
+    #include "raylib/REvent.hpp"
 
-namespace indie
-{
+namespace indie {
     enum typeEntity {
         DRAWABLE,
         MOVABLE,
@@ -27,9 +27,9 @@ namespace indie
 
     class AScene : public IScene {
         public:
-            AScene() = default;
             virtual ~AScene() = default;
             virtual std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities() = 0;
+            raylib::REvent events;
         protected:
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> _entities;
         private:
