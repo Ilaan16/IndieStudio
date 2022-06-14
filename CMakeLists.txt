@@ -31,3 +31,10 @@ set_target_properties(
     RUNTIME_OUTPUT_DIRECTORY "../"
 )
 
+add_compile_options(-fsanitize=address -g)
+add_link_options(-fsanitize=address)
+
+include_directories(src)
+
+add_executable(indie ${MAIN_SOURCE})
+TARGET_LINK_LIBRARIES(indie raylib)
