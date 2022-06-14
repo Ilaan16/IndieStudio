@@ -21,6 +21,6 @@ namespace indie {
 
     void Rtext::draw(const float &x, const float &y, const std::string &text, const int &fontSize)
     {
-        DrawTextEx(this->font, text.c_str(), {x, y}, fontSize, 0, BLACK);
+        DrawTextEx(this->font, text.c_str(), {x, y}, fontSize, 0, WHITE);
     }
 }
