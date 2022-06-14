@@ -10,23 +10,23 @@
 namespace indie {
     RMap::RMap()
     {
-        Image imMap = LoadImage("assets/map.png");
+        Image imMap = LoadImage("assets/map/map.png");
         this->_cubicmap = LoadTextureFromImage(imMap);
         Mesh mesh = GenMeshCubicmap(imMap, (Vector3){ 1.0f, 1.0f, 1.0f });
         Model model = LoadModelFromMesh(mesh);
 
-        this->_texture = LoadTexture("assets/cubicmap_atlas.png");
+        this->_texture = LoadTexture("assets/map/cubicmap_atlas.png");
         model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = this->_texture;
 
         Color *mapPixels = LoadImageColors(imMap);
         UnloadImage(imMap);
             
-        Image imMap1 = LoadImage("assets/pixel.png");
+        Image imMap1 = LoadImage("assets/map/pixel.png");
         Texture2D cubicmap1 = LoadTextureFromImage(imMap1);
         Mesh mesh1 = GenMeshCubicmap(imMap1, (Vector3){ 1.0f, 1.0f, 1.0f });
         Model model1 = LoadModelFromMesh(mesh1);
 
-        Texture2D texture1 = LoadTexture("assets/planche.png");
+        Texture2D texture1 = LoadTexture("assets/map/planche.png");
         model1.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture1;
 
         UnloadImage(imMap1);
