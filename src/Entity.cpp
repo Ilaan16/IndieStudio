@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include "components/Listener.hpp"
 #include "Entity.hpp"
 
 indie::Entity::Entity()
@@ -21,6 +22,12 @@ void indie::Entity::addRenderer(std::string model, std::string texture, std::str
 {
     std::shared_ptr<indie::IComponent> renderer = std::make_shared<indie::Renderable>(model, texture, text, fontSize, position, angle, size, rect, posText);
     this->putComponent(renderer, indie::RENDERABLE);
+}
+
+void indie::Entity::addListener(std::shared_ptr<Entity> &entity)
+{
+    std::shared_ptr<indie::IComponent> listener = std::make_shared<indie::Listener>(entity);
+    putComponent(listener, indie::LISTENER);
 }
 
 void indie::Entity::putComponent(std::shared_ptr<indie::IComponent> component, indie::tag tag)

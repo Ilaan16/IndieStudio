@@ -8,13 +8,13 @@
 #include "Listener.hpp"
 
 namespace indie {
-    bool Listener::addEvent(const KeyboardKey &key, std::unique_ptr<Event> handler)
+    bool Listener::addEvent(const KeyboardKey &key, std::unique_ptr<Event> &handler)
     {
         auto ret = keyboardEvents.emplace(key, move(handler));
         return ret.second;
     }
 
-    bool Listener::addEvent(const MouseButton &mouse, std::unique_ptr<Event> handler)
+    bool Listener::addEvent(const MouseButton &mouse, std::unique_ptr<MouseEvent> &handler)
     {
         auto ret = mouseEvents.emplace(mouse, move(handler));
         return ret.second;
@@ -27,13 +27,13 @@ namespace indie {
             return;
         switch(state) {
             case ButtonState::Down:
-                event->second->useDown(ownScene);
+                event->second->useDown(ownScene, ownEntity);
                 break;
             case ButtonState::Pressed:
-                event->second->usePressed(ownScene);
+                event->second->usePressed(ownScene, ownEntity);
                 break;
             case ButtonState::Released:
-                event->second->useReleased(ownScene);
+                event->second->useReleased(ownScene, ownEntity);
                 break;
         }
     }
@@ -45,13 +45,16 @@ namespace indie {
             return;
         switch(state) {
             case ButtonState::Down:
-                event->second->useDown(ownScene);
+                event->second->useDown(ownScene, ownEntity);
                 break;
             case ButtonState::Pressed:
-                event->second->usePressed(ownScene);
+                event->second->usePressed(ownScene, ownEntity);
                 break;
             case ButtonState::Released:
-                event->second->useReleased(ownScene);
+                event->second->useReleased(ownScene, ownEntity);
+                break;
+            case ButtonState::None:
+                event->second->useNone(ownScene, ownEntity);
                 break;
         }
     }
@@ -65,6 +68,7 @@ namespace indie {
         if (ret.second == false)
             return false;
         keyboardEvents.erase(place);
+        return true;
     }
 
     bool Listener::modifyEvent(const MouseButton &oldMouse, const MouseButton &newMouse)
@@ -76,5 +80,6 @@ namespace indie {
         if (ret.second == false)
             return false;
         mouseEvents.erase(place);
+        return true;
     }
 }

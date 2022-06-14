@@ -16,7 +16,8 @@ indie::Graphical::~Graphical()
 {
 }
 
-void indie::Graphical::updateSystem(std::unique_ptr<indie::AScene> &scene)
+indie::Scenes indie::Graphical::updateSystem(std::unique_ptr<indie::AScene> &scene)
 {
     this->_raylib.displayAll(scene->getEntities());
+    scene->events.updateEvents();
 }

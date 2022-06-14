@@ -9,7 +9,6 @@
     #define SCENEOPTION_HPP_
 
     #include "scenes/AScene.hpp"
-    #include "EntitiesFactory.hpp"
 
 namespace indie
 {

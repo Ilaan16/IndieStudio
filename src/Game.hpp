@@ -21,12 +21,17 @@ namespace indie {
             Game();
             ~Game();
 
-            void updateSystem();
+            indie::Scenes updateSystem();
             void manageGame();
             std::unique_ptr<AScene> &getScene();
+            static void setScene(const int &id);
 
         private:
-            int sceneId;
+            void callEvent(std::shared_ptr<Entity> &ent, std::pair<KeyboardKey, indie::ButtonState> &key,
+                std::unique_ptr<AScene> &scene);
+            void callEvent(std::shared_ptr<Entity> &ent, std::pair<MouseButton, indie::ButtonState> &key,
+                std::unique_ptr<AScene> &scene);
+            static int sceneId;
             std::vector<std::unique_ptr<AScene>> _scenes;
     };
 }

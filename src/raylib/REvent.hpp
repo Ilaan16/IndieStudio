@@ -28,10 +28,10 @@ namespace indie {
                     const std::vector<std::pair<MouseButton, ButtonState>> &mEvents = {});
                 ~REvent() = default;
 
-                ButtonState checkState(const KeyboardKey &key);
-                ButtonState checkState(const MouseButton &mouse);
+                static ButtonState checkState(const KeyboardKey &key);
+                static ButtonState checkState(const MouseButton &mouse);
 
-                bool isHover(const float &x, const float &y, const float &height, const float &width);
+                static bool isHover(const float &x, const float &y, const float &height, const float &width);
 
                 const std::vector<std::pair<KeyboardKey, ButtonState>> &getKeyboard() const;
                 const std::vector<std::pair<MouseButton, ButtonState>> &getMouse() const;

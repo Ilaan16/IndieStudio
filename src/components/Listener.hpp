@@ -9,18 +9,16 @@
     #define LISTENER_HPP_
 
     #include <unordered_map>
-    #include "Event.hpp"
+    #include "events/Event.hpp"
 
 namespace indie {
-    class AScene;
-
-    class Listener {
+    class Listener : public IComponent {
         public:
-            Listener() = default;
+            Listener(std::shared_ptr<Entity> &ent): ownEntity(ent) {}
             ~Listener() = default;
 
-            bool addEvent(const KeyboardKey &key, std::unique_ptr<Event> handler);
-            bool addEvent(const MouseButton &mouse, std::unique_ptr<Event> handler);
+            bool addEvent(const KeyboardKey &key, std::unique_ptr<Event> &handler);
+            bool addEvent(const MouseButton &mouse, std::unique_ptr<MouseEvent> &handler);
 
             void checkEvent(const KeyboardKey &key, const ButtonState &state, std::unique_ptr<AScene> &ownScene);
             void checkEvent(const MouseButton &mouse, const ButtonState &state, std::unique_ptr<AScene> &ownScene);
@@ -30,7 +28,8 @@ namespace indie {
 
         private:
             std::unordered_map<KeyboardKey, std::unique_ptr<indie::Event>> keyboardEvents;
-            std::unordered_map<MouseButton, std::unique_ptr<indie::Event>> mouseEvents;
+            std::unordered_map<MouseButton, std::unique_ptr<indie::MouseEvent>> mouseEvents;
+            std::shared_ptr<Entity> ownEntity;
     };
 }
 
