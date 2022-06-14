@@ -17,7 +17,8 @@ indie::MainScene::MainScene()
     _entities.emplace(typeEntity::MOVABLE, movable_ent);
     _entities.emplace(typeEntity::PLAYABLE, playable_ent);
     createMap();
-    createPlayer();
+    EntitiesFactory Entities;
+    Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png");
     createIA();
     std::cout << "Player set" << std::endl;
     createCamera();

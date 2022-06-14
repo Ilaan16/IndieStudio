@@ -14,10 +14,10 @@
     namespace indie {
         class RModel {
             public:
-                RModel(const std::string &filename, Texture2D texture);
+                RModel(const std::string &filename, const std::string &filename_texture);
                 ~RModel();
 
-                void draw(const float &x, const float &y);
+                void draw(const float &x, const float &y, Camera camera);
             private:
             Model _model;
             Texture2D _texture;
