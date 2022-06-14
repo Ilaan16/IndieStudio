@@ -38,10 +38,9 @@ namespace indie {
         _entities.find(CLICKABLE)->second.push_back(button);
     }
 
-    void EntitiesFactory::createPlayer2D(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string text, Vector3D pos, Vector3D rect, Vector3D posRect) {
+    void EntitiesFactory::createPlayer2D(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string text, Vector3D pos, Vector3D rect, Vector3D posRect, Vector3D posText) {
         std::shared_ptr<Entity> button = std::make_shared<Entity>();
-        button->addRenderer("", "./assets/choosePerso/players.png", text, 0.0F, pos, 0.0F, posRect, rect);
-        button->addListener(button);
+        button->addRenderer("", "./assets/choosePerso/players.png", text, 0.0f, pos, 0.0F, rect, posRect, posText);
         _entities.find(DRAWABLE)->second.push_back(button);
         _entities.find(CLICKABLE)->second.push_back(button);
     }
@@ -51,5 +50,12 @@ namespace indie {
         std::shared_ptr<Entity> background = std::make_shared<Entity>();
         background->addRenderer("", path, "", 0.0F, {0, 0, 0}, 0.0F, {1920, 1080, 0}, {0, 0, 0});
         _entities.find(DRAWABLE)->second.push_back(background);
+    }
+
+    void EntitiesFactory::createPlayer(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string model, std::string texture)
+    {
+        std::shared_ptr<Entity> player = std::make_shared<Entity>();
+        player->addRenderer(model, texture, "", 0.0F, {0, 0, 0}, 0.0F, {1920, 1080, 0}, {0, 0, 0});
+        _entities.find(DRAWABLE)->second.push_back(player);
     }
 }

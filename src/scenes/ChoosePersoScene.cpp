@@ -24,8 +24,8 @@ namespace indie {
         Entities.createButton(_entities, "P3", {80, 993, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
         Entities.createButton(_entities, "P4", {1540, 993, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
         Entities.createButton(_entities, "START", {800, 905, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
-        Entities.createPlayer2D(_entities, "", {545, 132, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
-        Entities.createPlayer2D(_entities, "", {846, 132, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createPlayer2D(_entities, "", {545, 132, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createPlayer2D(_entities, "", {846, 132, 0}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
     }
 
     ChoosePersoScene::~ChoosePersoScene()
