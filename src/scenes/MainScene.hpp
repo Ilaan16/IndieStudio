@@ -9,6 +9,7 @@
 #define mainscenedef
 
 #include "scenes/AScene.hpp"
+#include "raylib/RMap.hpp"
 
 namespace indie
 {
@@ -17,15 +18,11 @@ namespace indie
             MainScene();
             ~MainScene();
 
-            Scenes run(Scenes const &prevScene) final;
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
 
-            void createMap();
-            void createPlayer();
-            void createCamera();
-            void createIA();
         protected:
         private:
+            RMap map;
     };
 }
 
