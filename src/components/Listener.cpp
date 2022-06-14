@@ -5,39 +5,61 @@
 ** Listener
 */
 
-#include <memory>
 #include "Listener.hpp"
 
 namespace indie {
-    bool Listener::addKeyboard(const KeyboardKey &key, std::unique_ptr<KeyboardEvent> handler)
+    bool Listener::addEvent(const KeyboardKey &key, std::unique_ptr<Event> &handler)
     {
         auto ret = keyboardEvents.emplace(key, move(handler));
         return ret.second;
     }
 
-    bool Listener::addMouse(const MouseButton &mouse, std::unique_ptr<MouseEvent> handler)
+    bool Listener::addEvent(const MouseButton &mouse, std::unique_ptr<MouseEvent> &handler)
     {
         auto ret = mouseEvents.emplace(mouse, move(handler));
         return ret.second;
     }
 
-    void Listener::checkKeyboard(const KeyboardKey &key)
+    void Listener::checkEvent(const KeyboardKey &key, const ButtonState &state, std::unique_ptr<AScene> &ownScene)
     {
         auto event = keyboardEvents.find(key);
         if (event == keyboardEvents.end())
             return;
-        event->second->useKey(ownEntity);
+        switch(state) {
+            case ButtonState::Down:
+                event->second->useDown(ownScene, ownEntity);
+                break;
+            case ButtonState::Pressed:
+                event->second->usePressed(ownScene, ownEntity);
+                break;
+            case ButtonState::Released:
+                event->second->useReleased(ownScene, ownEntity);
+                break;
+        }
     }
 
-    void Listener::checkMouse(const MouseButton &mouse)
+    void Listener::checkEvent(const MouseButton &mouse, const ButtonState &state, std::unique_ptr<AScene> &ownScene)
     {
         auto event = mouseEvents.find(mouse);
         if (event == mouseEvents.end())
             return;
-        event->second->click(ownEntity);
+        switch(state) {
+            case ButtonState::Down:
+                event->second->useDown(ownScene, ownEntity);
+                break;
+            case ButtonState::Pressed:
+                event->second->usePressed(ownScene, ownEntity);
+                break;
+            case ButtonState::Released:
+                event->second->useReleased(ownScene, ownEntity);
+                break;
+            case ButtonState::None:
+                event->second->useNone(ownScene, ownEntity);
+                break;
+        }
     }
 
-    bool Listener::modifyKey(const KeyboardKey &oldKey, const KeyboardKey &newKey)
+    bool Listener::modifyEvent(const KeyboardKey &oldKey, const KeyboardKey &newKey)
     {
         auto place = keyboardEvents.find(oldKey);
         if (place == keyboardEvents.end())
@@ -49,7 +71,7 @@ namespace indie {
         return true;
     }
 
-    bool Listener::modifyMouse(const MouseButton &oldMouse, const MouseButton &newMouse)
+    bool Listener::modifyEvent(const MouseButton &oldMouse, const MouseButton &newMouse)
     {
         auto place = mouseEvents.find(oldMouse);
         if (place == mouseEvents.end())

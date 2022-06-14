@@ -31,7 +31,7 @@ namespace indie {
         public:
 
             Raylib();
-            ~Raylib();
+            ~Raylib() = default;
 
             void createWindow(int screenWidth, int screenHeight, std::string const &title, std::size_t const Fps);
 

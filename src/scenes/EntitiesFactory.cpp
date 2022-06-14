@@ -25,6 +25,7 @@ namespace indie {
     void EntitiesFactory::createButton(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string text, Vector3D pos, Vector3D rect, Vector3D posRect, Vector3D posText) {
         std::shared_ptr<Entity> button = std::make_shared<Entity>();
         button->addRenderer("", "./assets/menu/buttons.png", text, 50, pos, 0.0F, rect, posRect, posText);
+        button->addListener(button);
         _entities.find(DRAWABLE)->second.push_back(button);
         _entities.find(CLICKABLE)->second.push_back(button);
     }
@@ -32,6 +33,7 @@ namespace indie {
     void EntitiesFactory::createSlider(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string text, Vector3D pos, Vector3D rect, Vector3D posRect, Vector3D posText) {
         std::shared_ptr<Entity> button = std::make_shared<Entity>();
         button->addRenderer("", "./assets/options/slider.png", text, 50, pos, 0.0F, rect, posRect, posText);
+        button->addListener(button);
         _entities.find(DRAWABLE)->second.push_back(button);
         _entities.find(CLICKABLE)->second.push_back(button);
     }
