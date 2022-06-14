@@ -10,36 +10,20 @@
 namespace indie {
     SceneOption::SceneOption()
     {
+        EntitiesFactory Entities;
         std::vector<std::shared_ptr<Entity>> drawable_ent;
-        std::vector<std::shared_ptr<Entity>> movable_ent;
-        std::vector<std::shared_ptr<Entity>> playable_ent;
-        std::vector<std::shared_ptr<Entity>> clickable_ent;
+        std::vector<std::shared_ptr<Entity>> clicable_ent;
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
-        _entities.emplace(typeEntity::MOVABLE, movable_ent);
-        _entities.emplace(typeEntity::PLAYABLE, playable_ent);
-        _entities.emplace(typeEntity::CLICKABLE, playable_ent);
-        createButton();
-        createSlider();
+        _entities.emplace(typeEntity::CLICKABLE, clicable_ent);
+        Entities.createBackground(_entities, "./assets/options/dirt_background.png");
+        Entities.createLogo(_entities, "./assets/options/settings.png", "Play", {650.0f, 150.0f, 0.0f}, {530.0f, 95.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createSlider(_entities, "Sound", {750.0f, 450.0f, 0.0f}, {300.0f, 40.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {890.0f, 470.0f, 0.0f});
+        Entities.createLogo(_entities, "./assets/options/slider.png", "Play", {750.0f, 450.0f, 0.0f}, {15.0f, 40.0f, 0.0f}, {300.0f, 0.0f, 0.0f});
+        Entities.createButton(_entities, "FULLSCREEN", {550.0f, 650.0f, 0.0f}, {800.0f, 80.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {790.0f, 670.0f, 0.0f});
     }
 
     SceneOption::~SceneOption()
     {
-    }
-
-    void SceneOption::createButton()
-    {
-        std::shared_ptr<Entity> button = std::make_shared<indie::Entity>();
-        button->addRenderer();
-        _entities.find(indie::DRAWABLE)->second.push_back(button);
-        _entities.find(indie::CLICKABLE)->second.push_back(button);
-    }
-
-    void SceneOption::createSlider()
-    {
-        std::shared_ptr<Entity> slider = std::make_shared<indie::Entity>();
-        slider->addRenderer();
-        _entities.find(indie::DRAWABLE)->second.push_back(slider);
-        _entities.find(indie::CLICKABLE)->second.push_back(slider);
     }
 
     std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &SceneOption::getEntities()

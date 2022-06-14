@@ -5,7 +5,6 @@
 ** Window
 */
 
-#include <iostream>
 #include "Window.hpp"
 
 namespace indie {
@@ -17,7 +16,7 @@ namespace indie {
             if (!IsWindowReady())
                 throw ;
             SetTargetFPS(fps);
-            SetWindowState(FLAG_WINDOW_RESIZABLE);
+            _fullScreen = IsWindowFullscreen();
         }
 
         Window::~Window()
@@ -32,29 +31,24 @@ namespace indie {
             _fullScreen = !_fullScreen;
         }
 
-        const int &Window::getFps(void) const
+        const int Window::getFps(void) const
         {
             return _fps;
         }
 
-        const int &Window::getWidth(void) const
+        const int Window::getWidth(void) const
         {
             return _width;
         }
 
-        const int &Window::getHeight(void) const
+        const int Window::getHeight(void) const
         {
             return _height;
         }
 
-        const bool &Window::isFullScreen(void) const
+        const bool Window::isFullScreen(void) const
         {
             return _fullScreen;
-        }
-
-        const bool Window::closing(void) const
-        {
-            return WindowShouldClose();
         }
     }
 }
