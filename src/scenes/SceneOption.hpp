@@ -9,6 +9,7 @@
     #define SCENEOPTION_HPP_
 
     #include "scenes/AScene.hpp"
+    #include "EntitiesFactory.hpp"
 
 namespace indie
 {
@@ -17,7 +18,6 @@ namespace indie
             SceneOption();
             ~SceneOption();
 
-            Scenes run(Scenes const &prevScene) final;
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
 
             void createButton();

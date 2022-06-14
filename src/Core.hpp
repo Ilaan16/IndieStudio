@@ -29,9 +29,10 @@ namespace indie {
 
         protected:
         private:
+            std::vector<std::unique_ptr<indie::AScene>> _vecScenes;
             int _screenWidth;
             int _screenHeight;
-            indie::Scenes _scenePos;
+            Scenes _scenePos;
             std::string _title;
             std::size_t _fps;
             indie::raylib::Window _window;

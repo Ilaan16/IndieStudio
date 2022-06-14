@@ -13,7 +13,7 @@ indie::Game::Game()
     std::unique_ptr<indie::AScene> menuScene = std::make_unique<indie::SceneMenu>();
     std::unique_ptr<indie::AScene> persoScene = std::make_unique<indie::ChoosePersoScene>();
     std::unique_ptr<indie::AScene> mainScene = std::make_unique<indie::MainScene>();
-    std::unique_ptr<indie::AScene> optionScene = std::make_unique<indie::MainScene>();
+    std::unique_ptr<indie::AScene> optionScene = std::make_unique<indie::SceneOption>();
     this->_scenes.push_back(move(menuScene));
     this->_scenes.push_back(move(persoScene));
     this->_scenes.push_back(move(mainScene));
@@ -24,7 +24,7 @@ indie::Game::~Game()
 {
 }
 
-indie::AScene *indie::Game::updateSystem()
+void indie::Game::updateSystem()
 {
     
 }
