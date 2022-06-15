@@ -6,6 +6,7 @@
 */
 
 #include "raylib.h"
+#include "raymath.h"
 #include <iostream>
 #include <stdlib.h>
 #include <random>
@@ -120,6 +121,7 @@ int main(void)
                 }
             }
         }
+        modelPlayer.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*-90 });
         BeginDrawing();
 
             ClearBackground(RAYWHITE);
