@@ -56,60 +56,6 @@ bool indie::Raylib::isKeyReleased(int button) const noexcept
     return (IsKeyReleased(button));
 }
 
-void indie::Raylib::printCircle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const
-{
-    if (typeEntityLine == BASIC)
-        DrawCircle(position.first, position.second, radius, color.first);
-    else if (typeEntityLine == GRADIENT)
-        DrawCircleGradient(position.first, position.second, radius, color.first, color.second);
-    else if (typeEntityLine == LINES)
-        DrawCircleLines(position.first, position.second, radius, color.first);
-    else
-        std::cout << "Unknow Circle Type\n";
-}
-
-void indie::Raylib::printRectangle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, std::pair<int, int> const size, std::pair<Color, Color> const color) const
-{
-    if (typeEntityLine == BASIC)
-        DrawRectangle(position.first, position.second, size.first, size.second, color.first);
-    else if (typeEntityLine == GRADIENT)
-        DrawRectangleGradientH(position.first, position.second, size.first, size.second, color.first, color.second);
-    else if (typeEntityLine == LINES)
-        DrawRectangleLines(position.first, position.second, size.first, size.second, color.first);
-    else
-        std::cout << "Unknow Rectangle Type\n";
-}
-
-void indie::Raylib::printCube(typeEntityLine const typeEntityLine, Vector3 const position, Vector3 const size, Color const color) const
-{
-    if (typeEntityLine == BASIC)
-        DrawCube(position, size.x, size.y, size.z, color);
-    else if (typeEntityLine == WIRES)
-        DrawCubeWires(position, size.x, size.y, size.z, color);
-    else
-        std::cout << "Unknow Cube Type\n";
-}
-
-void indie::Raylib::printSphere(typeEntityLine const typeEntityLine, Vector3 const position, float const size, std::pair<int, int> const Vertex, Color const color) const
-{
-    if (typeEntityLine == BASIC)
-        DrawSphere(position, size, color);
-    else if (typeEntityLine == WIRES)
-        DrawSphereWires(position, size, Vertex.first, Vertex.second, color);
-    else
-        std::cout << "Unknow Shpere Type\n";
-}
-
-void indie::Raylib::printGrid(int const slices, float const space) const
-{
-    DrawGrid(slices, space);
-}
-
-void indie::Raylib::printFps(std::pair<int, int> const pos) const
-{
-    DrawFPS(pos.first, pos.second);
-}
-
 void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
 {
     Camera camera;
