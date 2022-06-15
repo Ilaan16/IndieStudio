@@ -36,6 +36,17 @@ namespace indie {
          this->_mapPos3 = { -6, 2, -4 };
     }
 
+    RMap::~RMap()
+    {
+        UnloadImageColors(this->_mapPixels);
+        UnloadTexture(this->_cubicmap);
+        UnloadTexture(this->_texture);
+        UnloadModel(this->_model);
+        UnloadTexture(this->_cubicmap_wood);
+        UnloadTexture(this->_texture_wood);
+        UnloadModel(this->_model_wood);
+    }
+    
     std::vector<int> RMap::aleatoire()
     {
         std::vector<int> tab(143, 0);
@@ -81,16 +92,6 @@ namespace indie {
         return (mapPosition2);
     }
 
-    RMap::~RMap()
-    {
-        UnloadImageColors(this->_mapPixels);
-        UnloadTexture(this->_cubicmap);
-        UnloadTexture(this->_texture);
-        UnloadModel(this->_model);
-        UnloadTexture(this->_cubicmap_wood);
-        UnloadTexture(this->_texture_wood);
-        UnloadModel(this->_model_wood);
-    }
     
     void RMap::draw(Camera3D camera)
     {

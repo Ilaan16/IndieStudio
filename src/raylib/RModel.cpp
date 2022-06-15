@@ -9,12 +9,11 @@
 #include <iostream>
 
 namespace indie {
-    RModel::RModel(const std::string &filename)
+    RModel::RModel(const std::string &filename, const std::string &filename_texture)
     {
-        if (filename != "")
-            this->_model = LoadModel(filename.c_str());
-        else
-            this->_model = LoadModel("");
+        this->_model = LoadModel(filename.c_str());
+        Texture2D texture = LoadTexture(filename_texture.c_str());
+        SetMaterialTexture(&this->_model.materials[0], MATERIAL_MAP_DIFFUSE, texture);
     }
 
     RModel::~RModel()
@@ -22,9 +21,10 @@ namespace indie {
         UnloadModel(this->_model);
     }
 
-    void RModel::draw(const float &x, const float &y, Texture2D texture)
-    {   
-        //if (this->model != NULL)
-        //SetMaterialTexture(*this->model.materials[0], MATERIAL_MAP_DIFFUSE, texture);
+    void RModel::draw(const float &x, const float &y, Camera camera)
+    {
+        BeginMode3D(camera);
+        DrawModelEx(this->_model, (Vector3){ 0.0f, 0.0f, 0.0f }, (Vector3){ 1.0f, 0.0f, 0.0f }, -90.0f, (Vector3){ 5.0f, 5.0f, 5.0f }, WHITE);
+        EndMode3D();
     }
 }
