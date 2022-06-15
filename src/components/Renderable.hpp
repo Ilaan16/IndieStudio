@@ -13,6 +13,7 @@
 #include "raylib/RModel.hpp"
 #include "raylib/Rtext.hpp"
 #include "raylib/RTexture2D.hpp"
+#include "raylib/RMap.hpp"
 
 namespace indie {
 
@@ -32,6 +33,7 @@ namespace indie {
             indie::RModel _model;
             indie::RTexture2D _texture;
             indie::Rtext _text;
+            indie::RMap _map;
             std::string _strString;
             float _fontSize;
             Vector3D _position;

@@ -12,7 +12,7 @@ int indie::Game::sceneId = 0;
 
 indie::Game::Game()
 {
-    this->sceneId = 2;
+    this->sceneId = 0;
     std::unique_ptr<indie::AScene> menuScene = std::make_unique<indie::SceneMenu>();
     std::unique_ptr<indie::AScene> persoScene = std::make_unique<indie::ChoosePersoScene>();
     std::unique_ptr<indie::AScene> mainScene = std::make_unique<indie::MainScene>();

@@ -28,9 +28,11 @@
                 Texture2D _cubicmap;
                 Texture2D _texture;
                 Model _model;
+                Mesh _mesh;
                 Texture2D _cubicmap_wood;
                 Texture2D _texture_wood;
                 Model _model_wood;
+                Mesh _mesh_wood;
                 Vector3 _mapPos;
                 Vector3 _mapPos2;
                 Vector3 _mapPos3;

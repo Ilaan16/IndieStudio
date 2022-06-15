@@ -6,45 +6,50 @@
 */
 
 #include "RMap.hpp"
+#include <iostream>
 
 namespace indie {
     RMap::RMap()
     {
         Image imMap = LoadImage("assets/map/map.png");
+        std::cout << "image load" << std::endl;
         this->_cubicmap = LoadTextureFromImage(imMap);
-        Mesh mesh = GenMeshCubicmap(imMap, (Vector3){ 1.0f, 1.0f, 1.0f });
-        Model model = LoadModelFromMesh(mesh);
+        std::cout << "Text from image" << std::endl;
+        this->_mesh = GenMeshCubicmap(imMap, (Vector3){ 1.0f, 1.0f, 1.0f });
+        std::cout << "gen mesh" << std::endl;
+        this->_model = LoadModelFromMesh(this->_mesh);
+        std::cout << "load model" << std::endl;
 
         this->_texture = LoadTexture("assets/map/cubicmap_atlas.png");
-        model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = this->_texture;
+        this->_model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = this->_texture;
 
         Color *mapPixels = LoadImageColors(imMap);
         UnloadImage(imMap);
             
         Image imMap1 = LoadImage("assets/map/pixel.png");
-        Texture2D cubicmap1 = LoadTextureFromImage(imMap1);
-        Mesh mesh1 = GenMeshCubicmap(imMap1, (Vector3){ 1.0f, 1.0f, 1.0f });
-        Model model1 = LoadModelFromMesh(mesh1);
+        this->_cubicmap_wood = LoadTextureFromImage(imMap1);
+        this->_mesh_wood = GenMeshCubicmap(imMap1, (Vector3){ 1.0f, 1.0f, 1.0f });
+        this->_model_wood = LoadModelFromMesh(this->_mesh_wood);
 
         Texture2D texture1 = LoadTexture("assets/map/planche.png");
-        model1.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture1;
+        this->_model_wood.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture1;
 
         UnloadImage(imMap1);
 
-         this->_mapPos = { -7, 2, -5 };
-         this->_mapPos2 = { -6, 2, -4 };
-         this->_mapPos3 = { -6, 2, -4 };
+        this->_mapPos = { -7, 2, -5 };
+        this->_mapPos2 = { -6, 2, -4 };
+        this->_mapPos3 = { -6, 2, -4 };
     }
 
     RMap::~RMap()
     {
-        UnloadImageColors(this->_mapPixels);
-        UnloadTexture(this->_cubicmap);
+        //UnloadModel(this->_model);
+        //UnloadImageColors(this->_mapPixels);
         UnloadTexture(this->_texture);
-        UnloadModel(this->_model);
-        UnloadTexture(this->_cubicmap_wood);
+        UnloadTexture(this->_cubicmap);
+        //UnloadModel(this->_model_wood);
         UnloadTexture(this->_texture_wood);
-        UnloadModel(this->_model_wood);
+        UnloadTexture(this->_cubicmap_wood);
     }
     
     std::vector<int> RMap::aleatoire()
@@ -91,7 +96,6 @@ namespace indie {
 
         return (mapPosition2);
     }
-
     
     void RMap::draw(Camera3D camera)
     {

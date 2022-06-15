@@ -20,6 +20,7 @@ namespace indie
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
 
+            void createPlayer();
             void createCamera();
         protected:
         private:
