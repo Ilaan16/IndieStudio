@@ -1,0 +1,85 @@
+/*
+** EPITECH PROJECT, 2022
+** B-YEP-400-TLS-4-1-indiestudio-ilan.chekroun
+** File description:
+** Game
+*/
+
+#include "Game.hpp"
+#include "components/Listener.hpp"
+
+int indie::Game::sceneId = 0;
+
+indie::Game::Game()
+{
+    this->sceneId = 0;
+    std::unique_ptr<indie::AScene> menuScene = std::make_unique<indie::SceneMenu>();
+    std::unique_ptr<indie::AScene> persoScene = std::make_unique<indie::ChoosePersoScene>();
+    std::unique_ptr<indie::AScene> mainScene = std::make_unique<indie::MainScene>();
+    std::unique_ptr<indie::AScene> optionScene = std::make_unique<indie::SceneOption>();
+    std::unique_ptr<indie::AScene> endScene = std::make_unique<indie::SceneEnd>();
+    this->_scenes.push_back(move(menuScene));
+    this->_scenes.push_back(move(persoScene));
+    this->_scenes.push_back(move(mainScene));
+    this->_scenes.push_back(move(optionScene));
+    this->_scenes.push_back(move(endScene));
+}
+
+indie::Game::~Game()
+{
+}
+
+indie::Scenes indie::Game::updateSystem()
+{
+    std::vector<std::pair<KeyboardKey, indie::ButtonState>> keys = _scenes[sceneId]->events.getKeyboard();
+    std::vector<std::pair<MouseButton, indie::ButtonState>> mouses = _scenes[sceneId]->events.getMouse();
+
+    std::vector<std::shared_ptr<Entity>> &move = _scenes[sceneId]->getEntities().find(MOVABLE)->second;
+    std::vector<std::shared_ptr<Entity>> &click = _scenes[sceneId]->getEntities().find(CLICKABLE)->second;
+
+    for (auto key = keys.begin(); key != keys.end(); key++)
+        for (auto ent = move.begin(); ent != move.end(); ent++) {
+            callEvent(*ent, *key, _scenes[sceneId]);
+        }
+
+    for (auto mouse = mouses.begin(); mouse != mouses.end(); mouse++)
+        for (auto ent = click.begin(); ent != click.end(); ent++) {
+            callEvent(*ent, *mouse, _scenes[sceneId]);
+        }
+    return static_cast<Scenes>(sceneId);
+}
+
+void indie::Game::callEvent(std::shared_ptr<Entity> &ent, std::pair<KeyboardKey, indie::ButtonState> &key,
+    std::unique_ptr<AScene> &scene)
+{
+    auto comp = ent->getComponents().find(LISTENER);
+    if (comp == ent->getComponents().end())
+        return;
+    std::shared_ptr<Listener> listener = std::static_pointer_cast<Listener, IComponent>(comp->second);
+    listener->checkEvent(key.first, key.second, scene);
+}
+
+void indie::Game::callEvent(std::shared_ptr<Entity> &ent, std::pair<MouseButton, indie::ButtonState> &key,
+    std::unique_ptr<AScene> &scene)
+{
+    auto comp = ent->getComponents().find(LISTENER);
+    if (comp == ent->getComponents().end())
+        return;
+    std::shared_ptr<Listener> listener = std::static_pointer_cast<Listener, IComponent>(comp->second);
+    listener->checkEvent(key.first, key.second, scene);
+}
+
+void indie::Game::setScene(const int &id)
+{
+    sceneId = id;
+}
+
+void indie::Game::manageGame()
+{
+
+}
+
+std::unique_ptr<indie::AScene> &indie::Game::getScene()
+{
+    return (this->_scenes[this->sceneId]);
+}

@@ -1,0 +1,24 @@
+{
+    "buttons": {
+        "path": "assets/menu/buttons.png",
+        "space": 2,
+        "states": 3,
+        "list": [
+            {
+                "id": 1,
+                "length": 400,
+                "width": 40
+            },
+            {
+                "id": 2,
+                "length": 300,
+                "width": 40
+            },
+            {
+                "id": 3,
+                "length": 196,
+                "width": 40
+            }
+        ]
+    }
+}
