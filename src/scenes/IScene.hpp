@@ -6,23 +6,23 @@
 */
 
 #ifndef iscenedef
-#define iscenedef
+    #define iscenedef
 
-enum Scenes {
-    QUIT = -1,
-    MENU = 0,
-    NEW_GAME,
-    GAME,
-    LOAD,
-    OPTION
-};
+namespace indie {
+    enum class Scenes {
+        QUIT = -1,
+        MENU = 0,
+        PERSO,
+        GAME,
+        OPTION,
+        END
+    };
 
-class IScene {
-    public:
-        virtual ~IScene() {};
-
-    protected:
-    private:
-};
-
+    class IScene {
+        public:
+            virtual ~IScene() {};
+        protected:
+        private:
+    };
+}
 #endif /* !iscenedef */

@@ -6,6 +6,7 @@
 */
 
 #include "scenes/MainScene.hpp"
+#include "EntitiesFactory.hpp"
 #include "Core.hpp"
 
 indie::MainScene::MainScene()

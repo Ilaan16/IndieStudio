@@ -5,12 +5,14 @@
 ** SceneOption
 */
 
-#include "scenes/SceneOption.hpp"
+#include "EntitiesFactory.hpp"
+#include "SceneOption.hpp"
 
 namespace indie {
     SceneOption::SceneOption()
     {
         EntitiesFactory Entities;
+
         std::vector<std::shared_ptr<Entity>> drawable_ent;
         std::vector<std::shared_ptr<Entity>> clicable_ent;
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
@@ -20,10 +22,6 @@ namespace indie {
         Entities.createSlider(_entities, "Sound", {750.0f, 450.0f, 0.0f}, {300.0f, 40.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {890.0f, 470.0f, 0.0f});
         Entities.createLogo(_entities, "./assets/options/slider.png", "Play", {750.0f, 450.0f, 0.0f}, {15.0f, 40.0f, 0.0f}, {300.0f, 0.0f, 0.0f});
         Entities.createButton(_entities, "FULLSCREEN", {550.0f, 650.0f, 0.0f}, {800.0f, 80.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {790.0f, 670.0f, 0.0f});
-    }
-
-    SceneOption::~SceneOption()
-    {
     }
 
     std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &SceneOption::getEntities()
