@@ -125,9 +125,12 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
         auto component = drawable_entity->second.at(i)->getComponents();
         auto renderer = component.find(tag::RENDERABLE);
         indie::Renderable *entity = dynamic_cast<indie::Renderable *>(renderer->second.get());
-        entity->_texture.draw(entity->_position.x, entity->_position.y, {entity->_rect.x, entity->_rect.y, entity->_size.x, entity->_size.y});
-        entity->_text.draw(entity->_textPos.x, entity->_textPos.y, entity->_strString, entity->_fontSize);
-        entity->_model.draw(50, 50, camera);
+        std::cout << entity->_is3D << std::endl;
+        if (entity->_is3D == false) {
+            entity->_texture.draw(entity->_position.x, entity->_position.y, {entity->_rect.x, entity->_rect.y, entity->_size.x, entity->_size.y});
+            entity->_text.draw(entity->_textPos.x, entity->_textPos.y, entity->_strString, entity->_fontSize);
+        } else
+            entity->_model.draw(50, 50, camera);
     }
     EndDrawing();
 }
