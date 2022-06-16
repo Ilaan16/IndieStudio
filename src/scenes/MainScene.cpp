@@ -20,7 +20,7 @@ indie::MainScene::MainScene()
     createMap();
     EntitiesFactory Entities;
     Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png");
-    Entities.createPlayer(_entities,"", "./assets/characters/texture.png");
+    Entities.createShape(_entities,"./assets/characters/texture.png");
     createIA();
     std::cout << "Player set" << std::endl;
     createCamera();

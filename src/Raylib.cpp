@@ -75,8 +75,10 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
         if (entity->_is3D == false) {
             entity->_texture.draw(entity->_position.x, entity->_position.y, {entity->_rect.x, entity->_rect.y, entity->_size.x, entity->_size.y});
             entity->_text.draw(entity->_textPos.x, entity->_textPos.y, entity->_strString, entity->_fontSize);
-        } else
+        } else {
             entity->_model.draw(50, 50, camera);
+            entity->_shape.draw(50, 50, camera);
+        }
     }
     EndDrawing();
 }

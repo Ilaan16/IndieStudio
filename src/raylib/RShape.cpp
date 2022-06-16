@@ -11,7 +11,7 @@
 namespace indie {
     RShape::RShape(const std::string &filename)
     {
-        _texture = LoadTexture(filename.c_str());
+        this->_texture = LoadTexture(filename.c_str());
     }
 
     RShape::~RShape()
@@ -22,7 +22,7 @@ namespace indie {
     void RShape::draw(const float &x, const float &y, Camera camera)
     {
         BeginMode3D(camera);
-        DrawCubeTexture(_texture, (Vector3){ 0.0f, 0.0f, 0.0f }, 50, 50, 50, WHITE);
+        DrawCubeTexture(this->_texture, (Vector3){ 0.0f, 0.0f, 0.0f }, 50, 50, 50, WHITE);
         EndMode3D();
     }
 }
