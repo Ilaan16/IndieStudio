@@ -19,7 +19,9 @@ namespace indie {
     void EntitiesFactory::createLogo(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string path, std::string text, Vector3D pos, Vector3D rect, Vector3D posRect) {
         std::shared_ptr<Entity> button = std::make_shared<Entity>();
         button->addRenderer("", path, text, 0.0F, pos, 0.0F, rect, posRect, {0}, false);
+        button->addListener(button);
         _entities.find(DRAWABLE)->second.push_back(button);
+        _entities.find(CLICKABLE)->second.push_back(button);
     }
 
     void EntitiesFactory::createButton(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string text, Vector3D pos, Vector3D rect, Vector3D posRect, Vector3D posText) {

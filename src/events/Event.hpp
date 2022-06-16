@@ -64,6 +64,19 @@ namespace indie {
         private:
             Scenes scene;
     };
+    class Slider : public MouseEvent {
+        public:
+            Slider() = default;
+            ~Slider() = default;
+
+            void useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void usePressed(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void useReleased(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void useNone(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+
+        private:
+            Vector2 mouse;
+    };
 }
 
 #endif /* !EVENT_HPP_ */
