@@ -27,7 +27,7 @@ namespace indie {
         Entities.createSlider(_entities, "SOUND", {750.0f, 450.0f, 0.0f}, {300.0f, 40.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {750.0f, 400.0f, 0.0f});
         Entities.createLogo(_entities, "./assets/options/slider.png", "Play", {750.0f, 450.0f, 0.0f}, {15.0f, 40.0f, 0.0f}, {300.0f, 0.0f, 0.0f});
         Entities.createButton(_entities, "FULLSCREEN", {550.0f, 650.0f, 0.0f}, {800.0f, 80.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {790.0f, 670.0f, 0.0f});
-        Entities.createButton(_entities, "BACK", {550.0f, 750.0f, 0.0f}, {800.0f, 80.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {790.0f, 770.0f, 0.0f});
+        Entities.createButton(_entities, "BACK", {550.0f, 750.0f, 0.0f}, {800.0f, 80.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {880.0f, 770.0f, 0.0f});
         this->addEventToLastEntity(MouseButton::MOUSE_BUTTON_LEFT, back);
         events = raylib::REvent({}, {std::make_pair(MouseButton::MOUSE_BUTTON_LEFT, ButtonState::None)});
     }
