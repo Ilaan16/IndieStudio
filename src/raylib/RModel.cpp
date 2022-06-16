@@ -25,7 +25,7 @@ namespace indie {
     void RModel::draw(const float &x, const float &y, const float &z, Camera camera)
     {
         BeginMode3D(camera);
-        DrawModelEx(this->_model, (Vector3){ x, y, z }, (Vector3){ 1.0f, 0.0f, 0.0f }, -90.0f, (Vector3){ 5.0f, 5.0f, 5.0f }, WHITE);
+        DrawModelEx(this->_model, (Vector3){ x, y, z }, (Vector3){ 1.0f, 0.0f, 0.0f }, -90.0f, (Vector3){ 2.0f, 2.0f, 2.0f }, WHITE);
         EndMode3D();
     }
 }
