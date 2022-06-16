@@ -66,7 +66,7 @@ namespace indie {
     };
     class Slider : public MouseEvent {
         public:
-            Slider() = default;
+            Slider(): mouse({0,0}), mouse_last({0,0}) {}
             ~Slider() = default;
 
             void useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
@@ -76,6 +76,7 @@ namespace indie {
 
         private:
             Vector2 mouse;
+            Vector2 mouse_last;
     };
 }
 
