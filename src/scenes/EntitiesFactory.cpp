@@ -63,6 +63,8 @@ namespace indie {
     {
         std::shared_ptr<Entity> player = std::make_shared<Entity>();
         player->addRenderer(model, texture, "", image, 0.0F, {0, 0, 0}, 0.0F, {1920, 1080, 0}, {0, 0, 0}, {0, 0, 0}, true);
+        player->addListener(player);
+        _entities.find(MOVABLE)->second.push_back(player);
         _entities.find(DRAWABLE)->second.push_back(player);
     }
 }

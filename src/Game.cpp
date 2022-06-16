@@ -12,7 +12,7 @@ int indie::Game::sceneId = 0;
 
 indie::Game::Game()
 {
-    this->sceneId = 0;
+    this->sceneId = 2;
     std::unique_ptr<indie::AScene> menuScene = std::make_unique<indie::SceneMenu>();
     std::unique_ptr<indie::AScene> persoScene = std::make_unique<indie::ChoosePersoScene>();
     std::unique_ptr<indie::AScene> mainScene = std::make_unique<indie::MainScene>();
@@ -33,10 +33,10 @@ indie::Scenes indie::Game::updateSystem()
 {
     std::vector<std::pair<KeyboardKey, indie::ButtonState>> keys = _scenes[sceneId]->events.getKeyboard();
     std::vector<std::pair<MouseButton, indie::ButtonState>> mouses = _scenes[sceneId]->events.getMouse();
-
     std::vector<std::shared_ptr<Entity>> &move = _scenes[sceneId]->getEntities().find(MOVABLE)->second;
+    // std::vector<std::shared_ptr<Entity>> &play = _scenes[sceneId]->getEntities().find(PLAYABLE)->second;
     std::vector<std::shared_ptr<Entity>> &click = _scenes[sceneId]->getEntities().find(CLICKABLE)->second;
-
+    // move.insert(move.end(), play.begin(), play.end());
     for (auto key = keys.begin(); key != keys.end(); key++)
         for (auto ent = move.begin(); ent != move.end(); ent++) {
             callEvent(*ent, *key, _scenes[sceneId]);
@@ -82,4 +82,9 @@ void indie::Game::manageGame()
 std::unique_ptr<indie::AScene> &indie::Game::getScene()
 {
     return (this->_scenes[this->sceneId]);
+}
+
+int &indie::Game::getSceneId()
+{
+    return (sceneId);
 }

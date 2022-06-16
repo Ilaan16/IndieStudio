@@ -25,6 +25,7 @@ namespace indie {
             indie::Scenes updateSystem();
             void manageGame();
             std::unique_ptr<AScene> &getScene();
+            static int &getSceneId();
             static void setScene(const int &id);
 
         private:

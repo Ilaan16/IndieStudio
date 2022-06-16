@@ -23,9 +23,9 @@ namespace indie {
         this->_texture = LoadTexture(filename_texture.c_str());
         this->_model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = this->_texture;
 
-        Color *mapPixels = LoadImageColors(imMap);
+        _mapPixels = LoadImageColors(imMap);
         UnloadImage(imMap);
-            
+    
         Image imMap1 = LoadImage("assets/map/pixel.png");
         this->_cubicmap_wood = LoadTextureFromImage(imMap1);
         this->_mesh_wood = GenMeshCubicmap(imMap1, (Vector3){ 1.0f, 1.0f, 1.0f });
@@ -43,11 +43,11 @@ namespace indie {
 
     RMap::~RMap()
     {
-        //UnloadModel(this->_model);
-        //UnloadImageColors(this->_mapPixels);
+        UnloadModel(this->_model);
+        UnloadImageColors(this->_mapPixels);
         UnloadTexture(this->_texture);
         UnloadTexture(this->_cubicmap);
-        //UnloadModel(this->_model_wood);
+        UnloadModel(this->_model_wood);
         UnloadTexture(this->_texture_wood);
         UnloadTexture(this->_cubicmap_wood);
     }
@@ -96,7 +96,7 @@ namespace indie {
 
         return (mapPosition2);
     }
-    
+
     void RMap::draw(Camera3D camera)
     {
         BeginMode3D(camera);
