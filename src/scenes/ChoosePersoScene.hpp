@@ -11,6 +11,8 @@
 #include "scenes/AScene.hpp"
 #include <array>
 #include <unordered_map>
+#include "raylib/REvent.hpp"
+#include "events/Event.hpp"
 
 namespace indie
 {
@@ -22,6 +24,8 @@ namespace indie
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
         protected:
         private:
+            void addEventToLastEntity(const MouseButton &mouse, std::unique_ptr<MouseEvent> &evt);
+            std::size_t _select;
     };
 }
 

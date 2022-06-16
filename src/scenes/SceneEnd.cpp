@@ -8,19 +8,38 @@
 #include "scenes/SceneEnd.hpp"
 #include "EntitiesFactory.hpp"
 #include "Core.hpp"
+#include "components/Listener.hpp"
+
 
 namespace indie {
 
     SceneEnd::SceneEnd()
     {
         EntitiesFactory Entities;
+
         std::vector<std::shared_ptr<Entity>> drawable_ent;
         std::vector<std::shared_ptr<Entity>> clickable_ent;
+
+        std::unique_ptr<MouseEvent> restart = std::make_unique<GoScene>(Scenes::PERSO);
+        std::unique_ptr<MouseEvent> exit = std::make_unique<GoScene>(Scenes::MENU);
+
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
         _entities.emplace(typeEntity::CLICKABLE, clickable_ent);
         Entities.createBackground(_entities, "./assets/end/background.png");
         Entities.createButton(_entities, "restart", {555.0f, 842.5f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408, 0.0f, 0.0f}, {632.0f, 863.0f, 0.0f});
+        this->addEventToLastEntity(MouseButton::MOUSE_BUTTON_LEFT, restart);
         Entities.createButton(_entities, "exit", {991.0f, 842.5f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408, 0.0f, 0.0f}, {1125.0f, 863.0f, 0.0f});
+        this->addEventToLastEntity(MouseButton::MOUSE_BUTTON_LEFT, exit);
+
+        events = raylib::REvent({}, {std::make_pair(MouseButton::MOUSE_BUTTON_LEFT, ButtonState::None)});
+    }
+
+    void SceneEnd::addEventToLastEntity(const MouseButton &mouse, std::unique_ptr<MouseEvent> &evt)
+    {
+        std::shared_ptr<indie::IComponent> comp = _entities.find(CLICKABLE)->second.back()->getComponents().find(LISTENER)->second;
+        std::shared_ptr<indie::Listener> listener = std::static_pointer_cast<Listener, IComponent>(comp);
+
+        listener->addEvent(mouse, evt);
     }
 
     SceneEnd::~SceneEnd()
