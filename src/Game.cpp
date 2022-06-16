@@ -17,10 +17,12 @@ indie::Game::Game()
     std::unique_ptr<indie::AScene> persoScene = std::make_unique<indie::ChoosePersoScene>();
     std::unique_ptr<indie::AScene> mainScene = std::make_unique<indie::MainScene>();
     std::unique_ptr<indie::AScene> optionScene = std::make_unique<indie::SceneOption>();
+    std::unique_ptr<indie::AScene> endScene = std::make_unique<indie::SceneEnd>();
     this->_scenes.push_back(move(menuScene));
     this->_scenes.push_back(move(persoScene));
     this->_scenes.push_back(move(mainScene));
     this->_scenes.push_back(move(optionScene));
+    this->_scenes.push_back(move(endScene));
 }
 
 indie::Game::~Game()

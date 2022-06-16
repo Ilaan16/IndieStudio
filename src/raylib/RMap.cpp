@@ -9,9 +9,9 @@
 #include <iostream>
 
 namespace indie {
-    RMap::RMap()
+    RMap::RMap(const std::string &image, const std::string &filename_texture)
     {
-        Image imMap = LoadImage("assets/map/map.png");
+        Image imMap = LoadImage(image.c_str());
         std::cout << "image load" << std::endl;
         this->_cubicmap = LoadTextureFromImage(imMap);
         std::cout << "Text from image" << std::endl;
@@ -20,7 +20,7 @@ namespace indie {
         this->_model = LoadModelFromMesh(this->_mesh);
         std::cout << "load model" << std::endl;
 
-        this->_texture = LoadTexture("assets/map/cubicmap_atlas.png");
+        this->_texture = LoadTexture(filename_texture.c_str());
         this->_model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = this->_texture;
 
         Color *mapPixels = LoadImageColors(imMap);

@@ -15,7 +15,7 @@
     namespace indie {
         class RMap {
             public:
-                RMap();
+                RMap(const std::string &image, const std::string &filename_texture);
                 ~RMap();
 
                 void draw(Camera3D camera);

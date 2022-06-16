@@ -24,7 +24,6 @@ namespace indie
             void createCamera();
         protected:
         private:
-            RMap map;
     };
 }
 
