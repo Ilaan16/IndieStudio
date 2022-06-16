@@ -18,9 +18,9 @@ namespace indie {
         this->_texture = LoadTexture("assets/map/cubicmap_atlas.png");
         model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = this->_texture;
 
-        Color *mapPixels = LoadImageColors(imMap);
+        _mapPixels = LoadImageColors(imMap);
         UnloadImage(imMap);
-            
+    
         Image imMap1 = LoadImage("assets/map/pixel.png");
         Texture2D cubicmap1 = LoadTextureFromImage(imMap1);
         Mesh mesh1 = GenMeshCubicmap(imMap1, (Vector3){ 1.0f, 1.0f, 1.0f });
@@ -36,6 +36,17 @@ namespace indie {
         this->_mapPos3 = { -6, 2, -4 };
     }
 
+    RMap::~RMap()
+    {
+        UnloadModel(this->_model);
+        UnloadImageColors(this->_mapPixels);
+        UnloadTexture(this->_texture);
+        UnloadTexture(this->_cubicmap);
+        UnloadModel(this->_model_wood);
+        UnloadTexture(this->_texture_wood);
+        UnloadTexture(this->_cubicmap_wood);
+    }
+    
     std::vector<int> RMap::aleatoire()
     {
         std::vector<int> tab(143, 0);
@@ -81,18 +92,6 @@ namespace indie {
         return (mapPosition2);
     }
 
-    RMap::~RMap()
-    {
-        // free in comments cause segfault on closeWindow
-        // UnloadImageColors(this->_mapPixels);
-        UnloadTexture(this->_cubicmap);
-        UnloadTexture(this->_texture);
-        // UnloadModel(this->_model);
-        UnloadTexture(this->_cubicmap_wood);
-        UnloadTexture(this->_texture_wood);
-        // UnloadModel(this->_model_wood);
-    }
-    
     void RMap::draw(Camera3D camera)
     {
         BeginMode3D(camera);
