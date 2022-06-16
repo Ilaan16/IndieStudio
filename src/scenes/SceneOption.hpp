@@ -9,6 +9,8 @@
     #define SCENEOPTION_HPP_
 
     #include "scenes/AScene.hpp"
+    #include "raylib/REvent.hpp"
+    #include "events/Event.hpp"
 
 namespace indie
 {
@@ -19,6 +21,7 @@ namespace indie
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
         private:
+            void addEventToLastEntity(const MouseButton &mouse, std::unique_ptr<MouseEvent> &evt);
     };
 }
 #endif /* !SCENEOPTION_HPP_ */
