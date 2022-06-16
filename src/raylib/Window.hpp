@@ -19,6 +19,7 @@ namespace indie {
                 ~Window();
 
                 void toggleFull(void);
+                void clear(void);
                 const int &getFps() const;
                 const int &getWidth() const;
                 const int &getHeight() const;

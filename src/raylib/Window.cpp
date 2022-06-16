@@ -56,5 +56,10 @@ namespace indie {
         {
             return WindowShouldClose();
         }
+
+        void Window::clear(void)
+        {
+            ClearBackground(RAYWHITE);
+        }
     }
 }

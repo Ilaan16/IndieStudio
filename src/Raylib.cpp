@@ -133,7 +133,7 @@ void indie::Raylib::displayAll(int sceneId, std::map<typeEntity ,std::vector<std
             entity->_text.draw(entity->_textPos.x, entity->_textPos.y, entity->_strString, entity->_fontSize);
         } else
             if (sceneId == 2) {
-                entity->_model.draw(50, 50, camera);
+                entity->_model.draw(entity->_position.x, entity->_position.y, entity->_position.z, camera);
                 entity->_map.draw(camera);
             }
     }
