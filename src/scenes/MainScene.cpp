@@ -20,7 +20,7 @@ indie::MainScene::MainScene()
     createMap();
     EntitiesFactory Entities;
     Entities.createSound(_entities, "assets/sound/C418 - Aria Math, but its an EPIC Soundtrack.mp3");
-    Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png");
+    Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png", {2, 2, 2}, 0.0F, {1920, 1080, 0});
     Entities.createShape(_entities,"./assets/characters/texture.png");
     createIA();
     std::cout << "Player set" << std::endl;

@@ -54,7 +54,14 @@ namespace indie {
         _entities.find(DRAWABLE)->second.push_back(background);
     }
 
-    void EntitiesFactory::createPlayer(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string model, std::string texture)
+    void EntitiesFactory::createPlayer(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string model, std::string texture, Vector3D pos, float angle, Vector3D size)
+    {
+        std::shared_ptr<Entity> player = std::make_shared<Entity>();
+        player->addRenderer(model, texture, "", "", 0.0F, pos, 0.0F, {1920, 1080, 0}, {0, 0, 0}, {0, 0, 0}, true);
+        _entities.find(DRAWABLE)->second.push_back(player);
+    }
+
+    void EntitiesFactory::createMap(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string model, std::string texture, Vector3D pos, float angle, Vector3D size, std::string image)
     {
         std::shared_ptr<Entity> player = std::make_shared<Entity>();
         player->addRenderer(model, texture, "", image, 0.0F, {0, 0, 0}, 0.0F, {1920, 1080, 0}, {0, 0, 0}, {0, 0, 0}, true);
