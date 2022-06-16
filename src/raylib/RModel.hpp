@@ -19,8 +19,8 @@
 
                 void draw(const float &x, const float &y, Camera camera);
                 Model _model;
+                Texture2D _texture;
             private:
-            Texture2D _texture;
         };
     }
 
