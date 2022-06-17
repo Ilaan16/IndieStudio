@@ -86,8 +86,8 @@ namespace indie {
         *(position2) += movement;
         float playerRadius = 0.1f;
         Vector2 playerPos = { position.x, position.z };
-        int playerCellX = (int)(playerPos.x - _mapPos.x + 0.5f);
-        int playerCellY = (int)(playerPos.y - _mapPos.z + 0.5f);
+        int playerCellX = (int)(position1 - position2 + 0.5f);
+        int playerCellY = (int)(position2 - position1 + 0.5f);
 
 
         if (playerCellX < 0) {
@@ -112,49 +112,52 @@ namespace indie {
     }
 
 
-    Player RMap::putBomb(Player player, KeyboardKey action)
+    void RMap::putBomb(float *x, float *y, float *z, Player *player, Camera3D camera)
     {
-        if (IsKeyDown(action) && player._putBomb == false) {
-            player._putBomb = true;
-            player.StartTimer(&player._timer, player._life);
-            player._tnt = player._playerPosition;
-            player._up._bomb = player._playerPosition;
-            player._down._bomb = player._playerPosition;
-            player._left._bomb = player._playerPosition;
-            player._right._bomb = player._playerPosition;
-            player._explosion = 4;
-            player._up_stillalive = true;
-            player._down_stillalive = true;
-            player._left_stillalive = true;
-            player._right_stillalive = true;
+        // if (IsKeyDown(action) && player._putBomb == false) {
+        //     player._putBomb = true;
+        //     player.StartTimer(&player._timer, player._life);
+        //     player._tnt = player._playerPosition;
+        //     player._up._bomb = player._playerPosition;
+        //     player._down._bomb = player._playerPosition;
+        //     player._left._bomb = player._playerPosition;
+        //     player._right._bomb = player._playerPosition;
+        //     player._explosion = 4;
+        //     player._up_stillalive = true;
+        //     player._down_stillalive = true;
+        //     player._left_stillalive = true;
+        //     player._right_stillalive = true;
+        // }
+
+        BeginMode3D(camera);
+        (*player).UpdateTimer(&(*player)._timer);
+
+        if ((*player)._putBomb == true && !(*player).TimerDone(&(*player)._timer)) {
+            DrawCubeV((*player)._tnt, { 1.0f, 1.0f, 1.0f }, RED);
         }
 
-        player.UpdateTimer(&player._timer);
-
-        if (player._putBomb == true && !player.TimerDone(&player._timer)) {
-            DrawCubeV(player._tnt, { 1.0f, 1.0f, 1.0f }, RED);
+        if ((*player).TimerDone(&(*player)._timer) && (*player)._putBomb == true) {
+            std::cout << "pd!!!!\n\n\n\n";
+            // DrawCubeV((*player)._tnt, { 4.0f, 4.0f, 4.0f }, RED);
+            (*player)._putBomb = false;
+            // if ((*player)._up_stillalive == true) {
+            //     (*player)._up_stillalive = checkHit((*player)._up._bomb, x, z, -0.2f, &(*player)._explosion);
+            //     DrawCubeV((*player)._up._bomb, { 1.0f, 2.0f, 1.0f }, RED);
+            // }
+            // if ((*player)._down_stillalive == true) {
+            //     (*player)._down_stillalive = checkHit((*player)._down._bomb, x, z, 0.2f, &(*player)._explosion);
+            //     DrawCubeV((*player)._down._bomb, { 1.0f, 2.0f, 1.0f }, RED);
+            // }
+            // if ((*player)._left_stillalive == true) {
+            //     (*player)._left_stillalive = checkHit((*player)._left._bomb, z, x, -0.2f, &(*player)._explosion);
+            //     DrawCubeV((*player)._left._bomb, { 1.0f, 2.0f, 1.0f }, RED);
+            // }
+            // if ((*player)._right_stillalive == true) {
+            //     (*player)._right_stillalive = checkHit((*player)._right._bomb, z, x, 0.2f, &(*player)._explosion);
+            //     DrawCubeV((*player)._right._bomb, { 1.0f, 2.0f, 1.0f }, RED);
+            // }
         }
-
-        if (player.TimerDone(&player._timer) && (player._explosion > 0 || player._putBomb == true)) {
-            player._putBomb = false;
-            if (player._up_stillalive == true) {
-                player._up_stillalive = checkHit(player._up._bomb, &player._up._bomb.x, &player._up._bomb.z, -0.2f, &player._explosion);
-                DrawCubeV(player._up._bomb, { 1.0f, 2.0f, 1.0f }, RED);
-            }
-            if (player._down_stillalive == true) {
-                player._down_stillalive = checkHit(player._down._bomb, &player._down._bomb.x, &player._down._bomb.z, 0.2f, &player._explosion);
-                DrawCubeV(player._down._bomb, { 1.0f, 2.0f, 1.0f }, RED);
-            }
-            if (player._left_stillalive == true) {
-                player._left_stillalive = checkHit(player._left._bomb, &player._left._bomb.z, &player._left._bomb.x, -0.2f, &player._explosion);
-                DrawCubeV(player._left._bomb, { 1.0f, 2.0f, 1.0f }, RED);
-            }
-            if (player._right_stillalive == true) {
-                player._right_stillalive = checkHit(player._right._bomb, &player._right._bomb.z, &player._right._bomb.x, 0.2f, &player._explosion);
-                DrawCubeV(player._right._bomb, { 1.0f, 2.0f, 1.0f }, RED);
-            }
-        }
-        return (player);
+        EndMode3D();
     }
 
 

@@ -55,6 +55,18 @@ namespace indie {
         private:
             int _direction;
     };
+
+    class Action : public Event {
+        public:
+            Action() = default;
+            ~Action() = default;
+
+            void useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void usePressed(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void useReleased(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+        protected:
+        private:
+    };
     
     class TestKey : public Event {
         public:

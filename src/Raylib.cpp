@@ -31,6 +31,7 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
         } else
             if (sceneId == 2) {
                 entity->_model.draw(entity->_position.x, entity->_position.y, entity->_position.z, camera);
+                entity->_map.putBomb(&entity->_position.x, &entity->_position.y, &entity->_position.z, &entity->_inventory, camera);
                 entity->_map.draw(camera);
             }
     }

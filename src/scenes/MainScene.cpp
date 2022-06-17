@@ -23,6 +23,7 @@ indie::MainScene::MainScene()
     std::shared_ptr<Event> move_down = std::make_shared<Movement>(3);
     std::shared_ptr<Event> move_up = std::make_shared<Movement>(4);
 
+    std::shared_ptr<Event> put_bomb = std::make_shared<Action>();
 
     _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
     _entities.emplace(typeEntity::MOVABLE, movable_ent);
@@ -39,11 +40,15 @@ indie::MainScene::MainScene()
     this->addEventToLastEntity(KeyboardKey::KEY_DOWN, move_down);
     this->addEventToLastEntity(KeyboardKey::KEY_UP, move_up);
 
+    this->addEventToLastEntity(KeyboardKey::KEY_ENTER, put_bomb);
+
     Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png", {6.0f, 2.0f, 6.0f}, 0.0F, {1920, 1080, 0});
     this->addEventToLastEntity(KeyboardKey::KEY_D, move_right);
     this->addEventToLastEntity(KeyboardKey::KEY_A, move_left);
     this->addEventToLastEntity(KeyboardKey::KEY_S, move_down);
     this->addEventToLastEntity(KeyboardKey::KEY_W, move_up);
+
+    this->addEventToLastEntity(KeyboardKey::KEY_SPACE, put_bomb);
 
     Entities.createMap(_entities,"", "assets/map/cubicmap_atlas.png", {0, 0, 0}, 0.0F, {1920, 1080, 0}, "assets/map/map.png");
 
@@ -57,6 +62,9 @@ indie::MainScene::MainScene()
     input.push_back(std::make_pair(KeyboardKey::KEY_A, ButtonState::None));
     input.push_back(std::make_pair(KeyboardKey::KEY_S, ButtonState::None));
     input.push_back(std::make_pair(KeyboardKey::KEY_W, ButtonState::None));
+
+    input.push_back(std::make_pair(KeyboardKey::KEY_ENTER, ButtonState::None));
+    input.push_back(std::make_pair(KeyboardKey::KEY_SPACE, ButtonState::None));
 
     events = raylib::REvent({input}, {});
 }

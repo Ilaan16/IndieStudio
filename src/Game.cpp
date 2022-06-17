@@ -9,7 +9,7 @@
 #include "components/Listener.hpp"
 #include "raylib/RMusicManager.hpp"
 
-int indie::Game::sceneId = 0;
+int indie::Game::sceneId = 3;
 
 indie::Game::Game(raylib::Window &window)
 {
