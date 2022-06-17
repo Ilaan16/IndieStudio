@@ -12,7 +12,8 @@ int indie::Game::sceneId = 0;
 
 indie::Game::Game()
 {
-    this->sceneId = 0;
+    this->sceneId = 1;
+    splashTimer = std::chrono::steady_clock::now();
     std::unique_ptr<indie::AScene> splashScene = std::make_unique<indie::SceneSplash>();
     std::unique_ptr<indie::AScene> menuScene = std::make_unique<indie::SceneMenu>();
     std::unique_ptr<indie::AScene> persoScene = std::make_unique<indie::ChoosePersoScene>();
@@ -76,9 +77,16 @@ void indie::Game::setScene(const int &id)
     sceneId = id;
 }
 
-void indie::Game::manageGame()
+indie::Scenes indie::Game::manageGame()
 {
-
+    if (sceneId == 0) {
+        if (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - splashTimer).count() >= 3) {
+            sceneId = 1;
+            return Scenes::MENU;
+        }
+        return Scenes::SPLASH;
+    }
+    return updateSystem();
 }
 
 std::unique_ptr<indie::AScene> &indie::Game::getScene()
