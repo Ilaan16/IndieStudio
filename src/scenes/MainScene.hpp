@@ -24,7 +24,7 @@ namespace indie
 
         protected:
         private:
-            void addEventToLastEntity(const KeyboardKey &key, std::unique_ptr<Event> &evt);
+            void addEventToLastEntity(const KeyboardKey &key, std::shared_ptr<Event> &evt);
     };
 }
 

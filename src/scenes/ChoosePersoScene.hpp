@@ -24,7 +24,7 @@ namespace indie
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
         protected:
         private:
-            void addEventToLastEntity(const MouseButton &mouse, std::unique_ptr<MouseEvent> &evt);
+            void addEventToLastEntity(const MouseButton &mouse, std::shared_ptr<MouseEvent> &evt);
             std::size_t _select;
     };
 }

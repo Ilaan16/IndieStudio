@@ -40,7 +40,7 @@ namespace indie {
         events = raylib::REvent({}, {std::make_pair(MouseButton::MOUSE_BUTTON_LEFT, ButtonState::None)});
     }
 
-    void SceneMenu::addEventToLastEntity(const MouseButton &mouse, std::unique_ptr<MouseEvent> &evt)
+    void SceneMenu::addEventToLastEntity(const MouseButton &mouse, std::shared_ptr<MouseEvent> &evt)
     {
         std::shared_ptr<indie::IComponent> comp = _entities.find(CLICKABLE)->second.back()->getComponents().find(LISTENER)->second;
         std::shared_ptr<indie::Listener> listener = std::static_pointer_cast<Listener, IComponent>(comp);

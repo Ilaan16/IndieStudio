@@ -42,7 +42,7 @@ namespace indie
 
         protected:
         private:
-            void addEventToLastEntity(const MouseButton &mouse, std::unique_ptr<MouseEvent> &evt);
+            void addEventToLastEntity(const MouseButton &mouse, std::shared_ptr<MouseEvent> &evt);
             std::size_t _select;
             static const std::vector<std::array<std::pair<float, float>, 2>> _menuPos;
             static const std::vector<std::string> _assetsPath;
