@@ -24,7 +24,6 @@
                 ~RMap();
 
                 void draw(Camera3D camera);
-                Player collision(Player player, KeyboardKey right, KeyboardKey left, KeyboardKey down, KeyboardKey up);
                 void putBomb(float *x, float *y, float *z, Player *player, Camera3D camera);
                 bool checkHit(Vector3 position, float *position1, float *position2, float movement, int *explose);
             protected:

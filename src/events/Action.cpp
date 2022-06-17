@@ -21,6 +21,7 @@ namespace indie {
     {
         std::shared_ptr<Renderable> renderer = std::static_pointer_cast<Renderable, IComponent>(ownEntity->getComponents().find(indie::RENDERABLE)->second);
         if (renderer->_inventory._putBomb == false) {
+            renderer->_inventory._explosion = 4;
             renderer->_inventory._putBomb = true;
             renderer->_inventory.StartTimer(&renderer->_inventory._timer, renderer->_inventory._life);
             renderer->_inventory._tnt = {renderer->_position.x, renderer->_position.y, renderer->_position.z};
