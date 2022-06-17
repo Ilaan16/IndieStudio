@@ -9,6 +9,7 @@
 #define GAME_HPP_
 
 #include "scenes/AScene.hpp"
+#include "scenes/SceneSplash.hpp"
 #include "scenes/MainScene.hpp"
 #include "scenes/SceneOption.hpp"
 #include "scenes/SceneMenu.hpp"
