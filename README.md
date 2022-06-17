@@ -149,7 +149,7 @@ To compil game you need to write this command :
 
 ```sh
 
-c'est une commande
+./config.sh
 
 ```
 <p  align="right">(<a  href="#top">back to top</a>)</p>
