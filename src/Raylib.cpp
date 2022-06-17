@@ -83,4 +83,5 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
         }
     }
     EndDrawing();
+    CloseAudioDevice();
 }

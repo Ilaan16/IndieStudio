@@ -12,6 +12,7 @@ namespace indie {
     {
         this->_music = LoadMusicStream(filename.c_str());
         this->_music.looping = false;
+        PlayMusicStream(this->_music);
     }
 
     RSoundManager::~RSoundManager()
@@ -21,11 +22,6 @@ namespace indie {
 
     void RSoundManager::playSong()
     {
-        if (RSoundManager::isMuteSong() == true) {
-            PlayMusicStream(this->_music);
-            std::cout << "olala" << std::endl;
-            this->_isPause = false;
-        }
         UpdateMusicStream(this->_music);
     }
 
