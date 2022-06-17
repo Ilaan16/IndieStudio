@@ -13,4 +13,4 @@ if [ "$DIST" = "$LINUX" ]; then
   cmake -B ./build
   make -C build/
 fi
-  echo "test"
+  echo "teste"
