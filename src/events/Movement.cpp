@@ -18,6 +18,10 @@ namespace indie {
     void Movement::useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept
     {
         std::shared_ptr<Renderable> renderer = std::static_pointer_cast<Renderable, IComponent>(ownEntity->getComponents().find(indie::RENDERABLE)->second);
+        auto entitiesScene = ownScene->getEntities();
+        auto mapEntity = entitiesScene.find(typeEntity::MAP)->second.at(0)->getComponents();
+        auto rendererMap = dynamic_cast<indie::Renderable *>(mapEntity.find(tag::RENDERABLE)->second.get());
+
         std::cout << "Test Down" << std::endl;
         if (_direction == 1) {
             renderer->_model._model.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*-90 });

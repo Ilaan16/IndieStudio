@@ -16,6 +16,7 @@ indie::MainScene::MainScene()
     std::vector<std::shared_ptr<Entity>> drawable_ent;
     std::vector<std::shared_ptr<Entity>> movable_ent;
     std::vector<std::shared_ptr<Entity>> playable_ent;
+    std::vector<std::shared_ptr<Entity>> map_ent;
 
     std::unique_ptr<Event> move_right = std::make_unique<Movement>(1);
     std::unique_ptr<Event> move_left = std::make_unique<Movement>(2);
@@ -30,6 +31,7 @@ indie::MainScene::MainScene()
     _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
     _entities.emplace(typeEntity::MOVABLE, movable_ent);
     _entities.emplace(typeEntity::PLAYABLE, playable_ent);
+    _entities.emplace(typeEntity::MAP, map_ent);
 
     EntitiesFactory Entities;
 
