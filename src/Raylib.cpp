@@ -65,6 +65,7 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
     camera.fovy = 45.0f;                                // Camera field-of-view Y
     camera.projection = CAMERA_PERSPECTIVE;
 
+    InitAudioDevice();
     BeginDrawing();
     auto drawable_entity = entities.find(typeEntity::DRAWABLE);
     for (int i = 0; i < drawable_entity->second.size(); i++) {

@@ -23,8 +23,10 @@ namespace indie {
     {
         if (RSoundManager::isMuteSong() == true) {
             PlayMusicStream(this->_music);
+            std::cout << "olala" << std::endl;
             this->_isPause = false;
         }
+        UpdateMusicStream(this->_music);
     }
 
     void RSoundManager::PauseResumeTheme()

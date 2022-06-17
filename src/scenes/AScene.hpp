@@ -22,8 +22,7 @@ namespace indie {
         DRAWABLE,
         MOVABLE,
         PLAYABLE,
-        CLICKABLE,
-        EARABLE
+        CLICKABLE
     };
 
     class AScene : public IScene {

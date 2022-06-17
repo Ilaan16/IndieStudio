@@ -19,6 +19,7 @@ indie::MainScene::MainScene()
     _entities.emplace(typeEntity::PLAYABLE, playable_ent);
     createMap();
     EntitiesFactory Entities;
+    Entities.createSound(_entities, "./assets/sound/minecraft.mp3");
     Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png");
     Entities.createShape(_entities,"./assets/characters/texture.png");
     createIA();
