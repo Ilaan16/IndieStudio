@@ -18,8 +18,8 @@ indie::MainScene::MainScene()
     _entities.emplace(typeEntity::MOVABLE, movable_ent);
     _entities.emplace(typeEntity::PLAYABLE, playable_ent);
     EntitiesFactory Entities;
-    Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png", {-6.0f, 2.0f, 6.0f}, 0.0F, {1920, 1080, 0});
-    std::cout << "Player set" << std::endl;
+    // Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png", {-6.0f, 2.0f, 6.0f}, 0.0F, {1920, 1080, 0});
+    // std::cout << "Player set" << std::endl;
     Entities.createMap(_entities,"", "assets/map/cubicmap_atlas.png", {0, 0, 0}, 0.0F, {1920, 1080, 0}, "assets/map/map.png");
     createCamera();
     std::cout << "Camera set" << std::endl;
