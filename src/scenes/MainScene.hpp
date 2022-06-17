@@ -9,7 +9,8 @@
 #define mainscenedef
 
 #include "scenes/AScene.hpp"
-#include "raylib/RMap.hpp"
+#include "events/Event.hpp"
+#include "raylib/REvent.hpp"
 
 namespace indie
 {
@@ -19,10 +20,11 @@ namespace indie
             ~MainScene();
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
+            
 
         protected:
         private:
-            RMap map;
+            void addEventToLastEntity(const KeyboardKey &key, std::unique_ptr<Event> &evt);
     };
 }
 

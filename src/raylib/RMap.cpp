@@ -70,9 +70,6 @@ namespace indie {
             playerCellY = _cubicmap.height - 1;
         }
 
-        std::cout << playerCellX << "\n";
-        std::cout << playerCellY << "\n\n";
-
         for (int y = 0; y < _cubicmap.height; y++) {
             for (int x = 0; x < _cubicmap.width; x++) {
                 if (_mapPixels[y*_cubicmap.width + x].r == 255 && CheckCollisionCircleRec(playerPos, playerRadius, (Rectangle){ _mapPos.x - 0.5f + x*1.0f, _mapPos.z - 0.5f + y*1.0f, 1.0f, 1.0f })) {
@@ -103,8 +100,6 @@ namespace indie {
         } else if (playerCellY >= _cubicmap.height) {
             playerCellY = _cubicmap.height - 1;
         }
-        std::cout << playerCellX << "\n";
-        std::cout << playerCellY << "\n\n";
 
         for (int y = 0; y < _cubicmap.height; y++) {
             for (int x = 0; x < _cubicmap.width; x++) {
@@ -166,18 +161,18 @@ namespace indie {
     void RMap::draw(Camera3D camera)
     {
 
-        player1 = collision(player1, KEY_D, KEY_A, KEY_S, KEY_W);
-        player2 = collision(player2, KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP);
+        // player1 = collision(player1, KEY_D, KEY_A, KEY_S, KEY_W);
+        // player2 = collision(player2, KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP);
         
         BeginMode3D(camera);
         DrawModel(this->_model, this->_mapPos, 1.0f, WHITE);
 
-        player1 = putBomb(player1, KEY_ENTER);
-        player2 = putBomb(player2, KEY_SPACE);
+        // player1 = putBomb(player1, KEY_ENTER);
+        // player2 = putBomb(player2, KEY_SPACE);
 
 
-        DrawModelEx(player1._modelPlayer, player1._playerPosition, (Vector3){ 1.0f, 0.0f, 0.0f }, -90.0f, player1._playerSize, WHITE);
-        DrawModelEx(player2._modelPlayer, player2._playerPosition, (Vector3){ 1.0f, 0.0f, 0.0f }, -90.0f, player2._playerSize, WHITE);
+        // DrawModelEx(player1._modelPlayer, player1._playerPosition, (Vector3){ 1.0f, 0.0f, 0.0f }, -90.0f, player1._playerSize, WHITE);
+        // DrawModelEx(player2._modelPlayer, player2._playerPosition, (Vector3){ 1.0f, 0.0f, 0.0f }, -90.0f, player2._playerSize, WHITE);
         EndMode3D();
     }
 }
