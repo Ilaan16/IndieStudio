@@ -22,6 +22,11 @@ indie::MainScene::MainScene()
     std::unique_ptr<Event> move_down = std::make_unique<Movement>(3);
     std::unique_ptr<Event> move_up = std::make_unique<Movement>(4);
 
+    std::unique_ptr<Event> move_right2 = std::make_unique<Movement>(1);
+    std::unique_ptr<Event> move_left2 = std::make_unique<Movement>(2);
+    std::unique_ptr<Event> move_down2 = std::make_unique<Movement>(3);
+    std::unique_ptr<Event> move_up2 = std::make_unique<Movement>(4);
+
     _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
     _entities.emplace(typeEntity::MOVABLE, movable_ent);
     _entities.emplace(typeEntity::PLAYABLE, playable_ent);
@@ -36,6 +41,12 @@ indie::MainScene::MainScene()
     this->addEventToLastEntity(KeyboardKey::KEY_DOWN, move_down);
     this->addEventToLastEntity(KeyboardKey::KEY_UP, move_up);
 
+    Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png", {6.0f, 2.0f, 6.0f}, 0.0F, {1920, 1080, 0});
+    this->addEventToLastEntity(KeyboardKey::KEY_D, move_right2);
+    this->addEventToLastEntity(KeyboardKey::KEY_A, move_left2);
+    this->addEventToLastEntity(KeyboardKey::KEY_S, move_down2);
+    this->addEventToLastEntity(KeyboardKey::KEY_W, move_up2);
+
     Entities.createMap(_entities,"", "assets/map/cubicmap_atlas.png", {0, 0, 0}, 0.0F, {1920, 1080, 0}, "assets/map/map.png");
 
     std::vector<std::pair<KeyboardKey, ButtonState>> input;
@@ -43,6 +54,12 @@ indie::MainScene::MainScene()
     input.push_back(std::make_pair(KeyboardKey::KEY_LEFT, ButtonState::None));
     input.push_back(std::make_pair(KeyboardKey::KEY_DOWN, ButtonState::None));
     input.push_back(std::make_pair(KeyboardKey::KEY_UP, ButtonState::None));
+
+    input.push_back(std::make_pair(KeyboardKey::KEY_D, ButtonState::None));
+    input.push_back(std::make_pair(KeyboardKey::KEY_A, ButtonState::None));
+    input.push_back(std::make_pair(KeyboardKey::KEY_S, ButtonState::None));
+    input.push_back(std::make_pair(KeyboardKey::KEY_W, ButtonState::None));
+    
 
     events = raylib::REvent({input}, {});
 }

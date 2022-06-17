@@ -6,6 +6,7 @@
 */
 
 #include "Event.hpp"
+#include <raymath.h>
 #include <iostream>
 
 namespace indie {
@@ -18,14 +19,22 @@ namespace indie {
     {
         std::shared_ptr<Renderable> renderer = std::static_pointer_cast<Renderable, IComponent>(ownEntity->getComponents().find(indie::RENDERABLE)->second);
         std::cout << "Test Down" << std::endl;
-        if (_direction == 1)
+        if (_direction == 1) {
+            renderer->_model._model.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*-90 });
             renderer->_position.x += 0.1f;
-        if (_direction == 2)
+        }
+        if (_direction == 2) {
+            renderer->_model._model.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*90 });
             renderer->_position.x -= 0.1f;
-        if (_direction == 3)
+        }
+        if (_direction == 3) {
+            renderer->_model._model.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*0 });
             renderer->_position.z += 0.1f;
-        if (_direction == 4)
+        }
+        if (_direction == 4) {
+            renderer->_model._model.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*180 });
             renderer->_position.z -= 0.1f;
+        }
     }
 
     void Movement::usePressed(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept
