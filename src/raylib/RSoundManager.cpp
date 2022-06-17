@@ -29,9 +29,12 @@ namespace indie {
 
     void RSoundManager::PauseResumeTheme()
     {
-        if (RSoundManager::isMuteSong() == false)
+        if (RSoundManager::isMuteSong() == false) {
             PauseMusicStream(this->_music);
-        else
+            this->_isPause = true;
+        } else {
             ResumeMusicStream(this->_music);
+            this->_isPause = false;
+        }
     } 
 }
