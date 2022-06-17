@@ -26,7 +26,7 @@
                 void draw(Camera3D camera);
                 Player collision(Player player, KeyboardKey right, KeyboardKey left, KeyboardKey down, KeyboardKey up);
                 Player putBomb(Player player, KeyboardKey action);
-                bool checkHit(float *position1, float *position2, float movement);
+                bool checkHit(Vector3 position, float *position1, float *position2, float movement, int *explose);
             protected:
             private:
                 Player player1;
@@ -39,18 +39,6 @@
                 Mesh _mesh;
 
                 Vector3 _mapPos;
-
-                float _life;
-
-
-                bool _explosion;
-                bool _isbomb;
-                Vector3 _positionBomb;
-
-                Vector3 _bomb_up;
-                Vector3 _bomb_down;
-                Vector3 _bomb_right;
-                Vector3 _bomb_left;
         };
     }
 

@@ -35,9 +35,14 @@ namespace indie {
         _timer = { 0 };
         _life = 2.0f;
         _putBomb = false;
-        _explosion = false;
+        _explosion = 0;
         _endup = false;
         
+        _up_stillalive = false;
+        _down_stillalive = false;
+        _left_stillalive = false;
+        _right_stillalive = false;
+
         _playerPosition = { -6.0f, 2.0f, 6.0f };
         _playerSize = { 2.0f, 2.0f, 2.0f };
         _modelPlayer = LoadModel("assets/characters/character.iqm");

@@ -30,15 +30,21 @@
                 void UpdateTimer(Timer* timer);
                 bool TimerDone(Timer* timer);
 
+
+                int _explosion;
                 bool _endup;
-                bool _explosion;
+
                 bool _putBomb;
                 Vector3 _tnt;
 
                 Bomb _up;
+                bool _up_stillalive;
                 Bomb _down;
+                bool _down_stillalive;
                 Bomb _left;
+                bool _left_stillalive;
                 Bomb _right;
+                bool _right_stillalive;
 
                 Timer _timer;
                 float _life;

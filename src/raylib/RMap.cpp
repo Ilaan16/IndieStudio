@@ -10,8 +10,6 @@
 namespace indie {
     RMap::RMap(const std::string &image, const std::string &filename_texture)
     {
-        _isbomb = false;
-        _explosion = false;
 
         Image imMap = LoadImage(image.c_str());
         std::cout << "image load" << std::endl;
@@ -72,6 +70,9 @@ namespace indie {
             playerCellY = _cubicmap.height - 1;
         }
 
+        std::cout << playerCellX << "\n";
+        std::cout << playerCellY << "\n\n";
+
         for (int y = 0; y < _cubicmap.height; y++) {
             for (int x = 0; x < _cubicmap.width; x++) {
                 if (_mapPixels[y*_cubicmap.width + x].r == 255 && CheckCollisionCircleRec(playerPos, playerRadius, (Rectangle){ _mapPos.x - 0.5f + x*1.0f, _mapPos.z - 0.5f + y*1.0f, 1.0f, 1.0f })) {
@@ -83,11 +84,11 @@ namespace indie {
         return (player);
     }
 
-    bool RMap::checkHit(float *position1, float *position2, float movement)
+    bool RMap::checkHit(Vector3 position, float *position1, float *position2, float movement, int *explose)
     {
         *(position2) += movement;
         float playerRadius = 0.1f;
-        Vector2 playerPos = { *(position1), *(position2) };
+        Vector2 playerPos = { position.x, position.z };
         int playerCellX = (int)(playerPos.x - _mapPos.x + 0.5f);
         int playerCellY = (int)(playerPos.y - _mapPos.z + 0.5f);
 
@@ -102,11 +103,12 @@ namespace indie {
         } else if (playerCellY >= _cubicmap.height) {
             playerCellY = _cubicmap.height - 1;
         }
+        std::cout << playerCellX << "\n";
+        std::cout << playerCellY << "\n\n";
 
         for (int y = 0; y < _cubicmap.height; y++) {
             for (int x = 0; x < _cubicmap.width; x++) {
                 if (_mapPixels[y*_cubicmap.width + x].r == 255 && CheckCollisionCircleRec(playerPos, playerRadius, (Rectangle){ _mapPos.x - 0.5f + x*1.0f, _mapPos.z - 0.5f + y*1.0f, 1.0f, 1.0f })) {
-                    *(position2) -= movement;
                     return (false);
                 }
             }
@@ -125,6 +127,11 @@ namespace indie {
             player._down._bomb = player._playerPosition;
             player._left._bomb = player._playerPosition;
             player._right._bomb = player._playerPosition;
+            player._explosion = 4;
+            player._up_stillalive = true;
+            player._down_stillalive = true;
+            player._left_stillalive = true;
+            player._right_stillalive = true;
         }
 
         player.UpdateTimer(&player._timer);
@@ -133,18 +140,22 @@ namespace indie {
             DrawCubeV(player._tnt, { 1.0f, 1.0f, 1.0f }, RED);
         }
 
-        if (player.TimerDone(&player._timer)) {
+        if (player.TimerDone(&player._timer) && (player._explosion > 0 || player._putBomb == true)) {
             player._putBomb = false;
-            if (checkHit(&player._up._bomb.x, &player._up._bomb.z, -0.1f) == true) {
+            if (player._up_stillalive == true) {
+                player._up_stillalive = checkHit(player._up._bomb, &player._up._bomb.x, &player._up._bomb.z, -0.2f, &player._explosion);
                 DrawCubeV(player._up._bomb, { 1.0f, 2.0f, 1.0f }, RED);
             }
-            if (checkHit(&player._down._bomb.x, &player._down._bomb.z, 0.1f) == true) {
+            if (player._down_stillalive == true) {
+                player._down_stillalive = checkHit(player._down._bomb, &player._down._bomb.x, &player._down._bomb.z, 0.2f, &player._explosion);
                 DrawCubeV(player._down._bomb, { 1.0f, 2.0f, 1.0f }, RED);
             }
-            if (checkHit(&player._left._bomb.z, &player._left._bomb.x, -0.1f) == true) {
+            if (player._left_stillalive == true) {
+                player._left_stillalive = checkHit(player._left._bomb, &player._left._bomb.z, &player._left._bomb.x, -0.2f, &player._explosion);
                 DrawCubeV(player._left._bomb, { 1.0f, 2.0f, 1.0f }, RED);
             }
-            if (checkHit(&player._right._bomb.z, &player._right._bomb.x, 0.1f) == true) {
+            if (player._right_stillalive == true) {
+                player._right_stillalive = checkHit(player._right._bomb, &player._right._bomb.z, &player._right._bomb.x, 0.2f, &player._explosion);
                 DrawCubeV(player._right._bomb, { 1.0f, 2.0f, 1.0f }, RED);
             }
         }
