@@ -15,9 +15,6 @@
     #include "Player.hpp"
 
     namespace indie {
-
-
-
         class RMap {
             public:
                 RMap();
@@ -25,7 +22,7 @@
 
                 void draw(Camera3D camera);
                 void putBomb(float *x, float *y, float *z, Player *player, Camera3D camera);
-                bool checkHit(Vector3 position, float *position1, float *position2, float movement, int *explose);
+                bool checkHit(Vector3 position, float *position1, float *position2, float movement, int *explose, Texture2D _cubicmap, Color *_mapPixels);
             protected:
             private:
                 Player player1;

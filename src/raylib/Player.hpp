@@ -30,7 +30,9 @@
                 void UpdateTimer(Timer* timer);
                 bool TimerDone(Timer* timer);
 
-
+                Texture2D _cubicmap;
+                Color *_mapPixels;
+                
                 int _explosion;
                 bool _endup;
 
