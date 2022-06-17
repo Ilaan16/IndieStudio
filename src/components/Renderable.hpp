@@ -14,6 +14,7 @@
 #include "raylib/Rtext.hpp"
 #include "raylib/RTexture2D.hpp"
 #include "raylib/RShape.hpp"
+#include "raylib/RSoundManager.hpp"
 
 namespace indie {
 
@@ -27,11 +28,12 @@ namespace indie {
         public:
             Renderable(std::string model = "", std::string texture = "", std::string text = "",
                 float fontSize = 0, Vector3D position = {0}, float angle = 0, Vector3D size = {0}, Vector3D rect = {0}, Vector3D textPosition = {0}, bool is3D = false)
-                :_model(model, texture), _shape(texture), _texture(texture), _text(fontSize), _strString(text), _fontSize(fontSize), _position(position), _angle(angle), _size(size), _rect(rect), _textPos(textPosition), _is3D(is3D) {}
+                :_model(model, texture), _music(texture), _shape(texture), _texture(texture), _text(fontSize), _strString(text), _fontSize(fontSize), _position(position), _angle(angle), _size(size), _rect(rect), _textPos(textPosition), _is3D(is3D) {}
             ~Renderable() = default;
 
             indie::RModel _model;
             indie::RShape _shape;
+            indie::RSoundManager _music;
             indie::RTexture2D _texture;
             indie::Rtext _text;
             std::string _strString;

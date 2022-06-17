@@ -67,4 +67,11 @@ namespace indie {
         bomb->addRenderer("", texture, "", 0.0F, {0, 0, 0}, 0.0F, {1920, 1080, 0}, {0, 0, 0}, {0, 0, 0}, true);
         _entities.find(DRAWABLE)->second.push_back(bomb);
     }
+
+    void EntitiesFactory::createSound(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string sound)
+    {
+        std::shared_ptr<Entity> music = std::make_shared<Entity>();
+        music->addRenderer("", sound, "", 0.0F, {0, 0, 0}, 0.0F, {1920, 1080, 0}, {0, 0, 0}, {0, 0, 0}, false);
+        _entities.find(EARABLE)->second.push_back(music);
+    }
 }
