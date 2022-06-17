@@ -17,25 +17,16 @@ indie::MainScene::MainScene()
     _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
     _entities.emplace(typeEntity::MOVABLE, movable_ent);
     _entities.emplace(typeEntity::PLAYABLE, playable_ent);
-    createMap();
     EntitiesFactory Entities;
     Entities.createSound(_entities, "assets/sound/C418 - Aria Math, but its an EPIC Soundtrack.mp3");
     Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png", {2, 2, 2}, 0.0F, {1920, 1080, 0});
     Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png", {-6.0f, 2.0f, 6.0f}, 0.0F, {1920, 1080, 0});
-    createIA();
-    std::cout << "Player set" << std::endl;
-    createCamera();
-    std::cout << "Camera set" << std::endl;
+    Entities.createMap(_entities,"", "assets/map/cubicmap_atlas.png", {0, 0, 0}, 0.0F, {1920, 1080, 0}, "assets/map/map.png");
 }
 
 indie::MainScene::~MainScene()
 {
     //clear objects
-}
-
-void indie::MainScene::createCamera()
-{
-    std::shared_ptr<Entity> camera = std::make_shared<indie::Entity>();
 }
 
 std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &indie::MainScene::getEntities()
