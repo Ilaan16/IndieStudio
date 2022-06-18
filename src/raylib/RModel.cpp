@@ -12,13 +12,14 @@ namespace indie {
     RModel::RModel(const std::string &filename, const std::string &filename_texture)
     {
         this->_model = LoadModel(filename.c_str());
-        Texture2D texture = LoadTexture(filename_texture.c_str());
-        SetMaterialTexture(&this->_model.materials[0], MATERIAL_MAP_DIFFUSE, texture);
+        this->_texture = LoadTexture(filename_texture.c_str());
+        SetMaterialTexture(&this->_model.materials[0], MATERIAL_MAP_DIFFUSE, this->_texture);
     }
 
     RModel::~RModel()
     {
         UnloadModel(this->_model);
+        UnloadTexture(this->_texture);
     }
 
     void RModel::draw(const float &x, const float &y, Camera camera)

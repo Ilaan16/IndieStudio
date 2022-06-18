@@ -24,6 +24,13 @@ void indie::Entity::addRenderer(std::string model, std::string texture, std::str
     this->putComponent(renderer, indie::RENDERABLE);
 }
 
+void indie::Entity::addMusic(const std::string &path)
+{
+    std::shared_ptr<indie::IComponent> renderer = std::make_shared<indie::Renderable>("", path);
+    this->putComponent(renderer, indie::RENDERABLE);
+    this->putComponent(renderer, indie::MUSIC);
+}
+
 void indie::Entity::addListener(std::shared_ptr<Entity> &entity)
 {
     std::shared_ptr<indie::IComponent> listener = std::make_shared<indie::Listener>(entity);

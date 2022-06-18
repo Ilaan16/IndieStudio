@@ -60,4 +60,18 @@ namespace indie {
         player->addRenderer(model, texture, "", 0.0F, {0, 0, 0}, 0.0F, {1920, 1080, 0}, {0, 0, 0}, {0, 0, 0}, true);
         _entities.find(DRAWABLE)->second.push_back(player);
     }
+
+    void EntitiesFactory::createShape(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string texture)
+    {
+        std::shared_ptr<Entity> bomb = std::make_shared<Entity>();
+        bomb->addRenderer("", texture, "", 0.0F, {0, 0, 0}, 0.0F, {1920, 1080, 0}, {0, 0, 0}, {0, 0, 0}, true);
+        _entities.find(DRAWABLE)->second.push_back(bomb);
+    }
+
+    void EntitiesFactory::createSound(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string sound)
+    {
+        std::shared_ptr<Entity> music = std::make_shared<Entity>();
+        music->addMusic(sound);
+        _entities.find(DRAWABLE)->second.push_back(music);
+    }
 }

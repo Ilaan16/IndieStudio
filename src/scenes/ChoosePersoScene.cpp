@@ -19,11 +19,12 @@ namespace indie {
         std::vector<std::shared_ptr<Entity>> drawable_ent;
         std::vector<std::shared_ptr<Entity>> clickable_ent;
 
-        std::unique_ptr<MouseEvent> start = std::make_unique<GoScene>(Scenes::GAME);
+        std::unique_ptr<MouseEvent> start = std::make_unique<GoScene>(Scenes::GAME, true);
         std::unique_ptr<MouseEvent> back = std::make_unique<GoScene>(Scenes::MENU);
 
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
         _entities.emplace(typeEntity::CLICKABLE, clickable_ent);
+        Entities.createSound(_entities, "assets/sound/C418 - Aria Math, but its an EPIC Soundtrack.mp3");
         Entities.createBackground(_entities, "./assets/choosePerso/background.png");
         Entities.createButton(_entities, "P1", {30.0f, 436.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408, 0.0f, 0.0f}, {201.0f, 457.0f, 0.0f});
         Entities.createButton(_entities, "P2", {1498.0f, 436.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408.0f, 0.0f, 0.0f}, {1669.0f, 457.0f, 0.0f});

@@ -21,7 +21,7 @@ namespace indie {
 
     class Game {
         public:
-            Game();
+            Game(raylib::Window &window);
             ~Game();
 
             indie::Scenes manageGame();
