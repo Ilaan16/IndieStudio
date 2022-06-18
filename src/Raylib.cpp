@@ -18,18 +18,27 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
     camera.projection = CAMERA_PERSPECTIVE;
 
     BeginDrawing();
+
     auto drawable_entity = entities.find(typeEntity::DRAWABLE);
 
     Texture2D cubicmap;
     Color *mapPixels;
+    std::vector<Vector3> collision_entity;
 
     if (sceneId == 3) {
         auto mapEntity = entities.find(typeEntity::MAP)->second.at(0)->getComponents();
         auto rendererMap = dynamic_cast<indie::Renderable *>(mapEntity.find(tag::RENDERABLE)->second.get());
         cubicmap = rendererMap->_map.getMap();
         mapPixels = rendererMap->_map._mapPixels;
-    }
 
+        auto playerEntity = entities.find(typeEntity::MOVABLE);
+        for (int i = 0; i < playerEntity->second.size(); i++) {
+            auto component = playerEntity->second.at(i)->getComponents();
+            indie::Renderable *rendererPlayer = dynamic_cast<indie::Renderable *>(component.find(tag::RENDERABLE)->second.get());
+            Vector3 position = {rendererPlayer->_position.x, rendererPlayer->_position.y, rendererPlayer->_position.z};
+            collision_entity.push_back(position);
+        }
+    }
     for (int i = 0; i < drawable_entity->second.size(); i++) {
         auto component = drawable_entity->second.at(i)->getComponents();
         auto renderer = component.find(tag::RENDERABLE);
@@ -42,7 +51,7 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
         } else
             if (sceneId == 2) {
                 entity->_model.draw(entity->_position.x, entity->_position.y, entity->_position.z, camera);
-                entity->_map.putBomb(&entity->_position.x, &entity->_position.y, &entity->_position.z, &entity->_inventory, camera, cubicmap, mapPixels);
+                entity->_map.putBomb(&entity->_position.x, &entity->_position.y, &entity->_position.z, &entity->_inventory, camera, cubicmap, mapPixels, collision_entity);
                 entity->_map.draw(camera);
             }
     }
