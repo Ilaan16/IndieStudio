@@ -52,4 +52,8 @@ namespace indie {
     {
         return (this->_entities);
     }
+
+    void indie::SceneMenu::update(std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity)
+    {
+    }
 }

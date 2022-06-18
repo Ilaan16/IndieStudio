@@ -22,6 +22,7 @@ namespace indie {
             ~SceneEnd();
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
+            void update(std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity);
 
         protected:
         private:

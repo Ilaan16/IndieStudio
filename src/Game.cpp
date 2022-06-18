@@ -6,10 +6,11 @@
 */
 
 #include "Game.hpp"
+#include <iostream>
 #include "components/Listener.hpp"
 #include "raylib/RMusicManager.hpp"
 
-int indie::Game::sceneId = 3;
+int indie::Game::sceneId = 0;
 
 indie::Game::Game(raylib::Window &window)
 {
@@ -37,9 +38,7 @@ indie::Scenes indie::Game::updateSystem()
     std::vector<std::pair<KeyboardKey, indie::ButtonState>> keys = _scenes[sceneId]->events.getKeyboard();
     std::vector<std::pair<MouseButton, indie::ButtonState>> mouses = _scenes[sceneId]->events.getMouse();
     std::vector<std::shared_ptr<Entity>> &move = _scenes[sceneId]->getEntities().find(MOVABLE)->second;
-    // std::vector<std::shared_ptr<Entity>> &play = _scenes[sceneId]->getEntities().find(PLAYABLE)->second;
     std::vector<std::shared_ptr<Entity>> &click = _scenes[sceneId]->getEntities().find(CLICKABLE)->second;
-    // move.insert(move.end(), play.begin(), play.end());
     for (auto key = keys.begin(); key != keys.end(); key++)
         for (auto ent = move.begin(); ent != move.end(); ent++) {
             callEvent(*ent, *key, _scenes[sceneId]);

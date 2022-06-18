@@ -21,8 +21,6 @@
                 ~RMap();
 
                 void draw(Camera3D camera);
-                void putBomb(float *x, float *y, float *z, Player *player, Camera3D camera, Texture2D cubicmap, Color *mapPixels, std::vector<Vector3> collision_entity);
-                bool checkHit(Vector3 position, float *position1, float *position2, float movement, int *explose, Texture2D cubicmap, Color *mapPix, std::vector<Vector3> collision_entity);
             protected:
             private:
                 Player player1;

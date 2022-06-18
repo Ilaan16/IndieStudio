@@ -17,8 +17,6 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
     camera.fovy = 45.0f;                                // Camera field-of-view Y
     camera.projection = CAMERA_PERSPECTIVE;
 
-    BeginDrawing();
-
     auto drawable_entity = entities.find(typeEntity::DRAWABLE);
 
     Texture2D cubicmap;
@@ -51,9 +49,7 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
         } else
             if (sceneId == 2) {
                 entity->_model.draw(entity->_position.x, entity->_position.y, entity->_position.z, camera);
-                entity->_map.putBomb(&entity->_position.x, &entity->_position.y, &entity->_position.z, &entity->_inventory, camera, cubicmap, mapPixels, collision_entity);
                 entity->_map.draw(camera);
             }
-    }
-    EndDrawing();
+        }
 }

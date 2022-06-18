@@ -38,6 +38,7 @@ namespace indie
             void createBackground();
 
             std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &getEntities();
+            void update(std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity);
             bool clockGame();
 
         protected:

@@ -38,4 +38,8 @@ namespace indie {
     {
         return (this->_entities);
     }
+    
+    void indie::SceneSplash::update(std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity)
+    {
+    }
 }
