@@ -15,6 +15,8 @@
 #include "raylib/RTexture2D.hpp"
 #include "raylib/RShape.hpp"
 #include "raylib/RMusicManager.hpp"
+#include "raylib/Player.hpp"
+#include "raylib/RMap.hpp"
 
 namespace indie {
 
@@ -26,9 +28,10 @@ namespace indie {
 
     class Renderable : public IComponent {
         public:
-            Renderable(std::string model = "", std::string texture = "", std::string text = "",
+            Renderable(std::string model = "", std::string texture = "", std::string text = "", std::string image = "",
                 float fontSize = 0, Vector3D position = {0}, float angle = 0, Vector3D size = {0}, Vector3D rect = {0}, Vector3D textPosition = {0}, bool is3D = false)
-                :_model(model, texture), _music(texture), _shape(texture), _texture(texture), _text(fontSize), _strString(text), _fontSize(fontSize), _position(position), _angle(angle), _size(size), _rect(rect), _textPos(textPosition), _is3D(is3D) {}
+                :_model(model, texture), _music(texture), _shape(texture), _map(image, texture), _texture(texture), _text(fontSize), _strString(text), _fontSize(fontSize),
+                _position(position), _angle(angle), _size(size), _rect(rect), _textPos(textPosition), _is3D(is3D), _inventory() {}
             ~Renderable() = default;
 
             indie::RModel _model;
@@ -36,6 +39,8 @@ namespace indie {
             indie::raylib::RMusicManager _music;
             indie::RTexture2D _texture;
             indie::Rtext _text;
+            indie::RMap _map;
+            indie::Player _inventory;
             std::string _strString;
             float _fontSize;
             Vector3D _position;

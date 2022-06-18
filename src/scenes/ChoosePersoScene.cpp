@@ -19,8 +19,8 @@ namespace indie {
         std::vector<std::shared_ptr<Entity>> drawable_ent;
         std::vector<std::shared_ptr<Entity>> clickable_ent;
 
-        std::unique_ptr<MouseEvent> start = std::make_unique<GoScene>(Scenes::GAME, true);
-        std::unique_ptr<MouseEvent> back = std::make_unique<GoScene>(Scenes::MENU);
+        std::shared_ptr<MouseEvent> start = std::make_shared<GoScene>(Scenes::GAME, true);
+        std::shared_ptr<MouseEvent> back = std::make_shared<GoScene>(Scenes::MENU);
 
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
         _entities.emplace(typeEntity::CLICKABLE, clickable_ent);
@@ -34,12 +34,12 @@ namespace indie {
         this->addEventToLastEntity(MouseButton::MOUSE_BUTTON_LEFT, back);
         Entities.createButton(_entities, "start", {962.0f, 892.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408.0f, 0.0f, 0.0f}, {1075.0f, 913.0f, 0.0f});
         this->addEventToLastEntity(MouseButton::MOUSE_BUTTON_LEFT, start);
-        Entities.createPlayer2D(_entities, "", {561.5f, 112.0f, 0.0f}, {200.0f, 288.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createPlayer2D(_entities, "", {589.5f, 112.0f, 0.0f}, {144.0f, 288.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
 
         events = raylib::REvent({}, {std::make_pair(MouseButton::MOUSE_BUTTON_LEFT, ButtonState::None)});
     }
 
-    void ChoosePersoScene::addEventToLastEntity(const MouseButton &mouse, std::unique_ptr<MouseEvent> &evt)
+    void ChoosePersoScene::addEventToLastEntity(const MouseButton &mouse, std::shared_ptr<MouseEvent> &evt)
     {
         std::shared_ptr<indie::IComponent> comp = _entities.find(CLICKABLE)->second.back()->getComponents().find(LISTENER)->second;
         std::shared_ptr<indie::Listener> listener = std::static_pointer_cast<Listener, IComponent>(comp);
@@ -54,6 +54,10 @@ namespace indie {
     std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &ChoosePersoScene::getEntities()
     {
         return (this->_entities);
+    }
+
+    void indie::ChoosePersoScene::update(int *sceneId, std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity)
+    {
     }
 
 }

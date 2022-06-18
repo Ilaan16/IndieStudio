@@ -67,5 +67,10 @@ namespace indie {
             float volume = size / max;
             SetMasterVolume(volume);
         }
+
+        void Window::clear(void)
+        {
+            ClearBackground(RAYWHITE);
+        }
     }
 }

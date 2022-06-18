@@ -22,12 +22,14 @@ namespace indie {
         DRAWABLE,
         MOVABLE,
         PLAYABLE,
-        CLICKABLE
+        CLICKABLE,
+        MAP
     };
 
     class AScene : public IScene {
         public:
             virtual ~AScene() = default;
+            virtual void update(int *sceneId, std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity) = 0;
             virtual std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities() = 0;
             raylib::REvent events;
         protected:

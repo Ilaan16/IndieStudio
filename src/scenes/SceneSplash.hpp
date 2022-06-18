@@ -20,8 +20,9 @@ namespace indie
             ~SceneSplash() = default;
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
+            void update(int *sceneId, std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity);
         private:
-            void addEventToLastEntity(const MouseButton &mouse, std::unique_ptr<MouseEvent> &evt);
+            void addEventToLastEntity(const MouseButton &mouse, std::shared_ptr<MouseEvent> &evt);
     };
 }
 #endif /* !SCENESPLASH_HPP_ */

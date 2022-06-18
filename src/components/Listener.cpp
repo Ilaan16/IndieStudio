@@ -8,15 +8,15 @@
 #include "Listener.hpp"
 
 namespace indie {
-    bool Listener::addEvent(const KeyboardKey &key, std::unique_ptr<Event> &handler)
+    bool Listener::addEvent(const KeyboardKey &key, std::shared_ptr<Event> &handler)
     {
-        auto ret = keyboardEvents.emplace(key, move(handler));
+        auto ret = keyboardEvents.emplace(key, handler);
         return ret.second;
     }
 
-    bool Listener::addEvent(const MouseButton &mouse, std::unique_ptr<MouseEvent> &handler)
+    bool Listener::addEvent(const MouseButton &mouse, std::shared_ptr<MouseEvent> &handler)
     {
-        auto ret = mouseEvents.emplace(mouse, move(handler));
+        auto ret = mouseEvents.emplace(mouse, handler);
         return ret.second;
     }
 

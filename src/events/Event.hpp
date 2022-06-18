@@ -32,16 +32,6 @@ namespace indie {
             virtual void useNone(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept = 0;
     };
 
-    class TestKey : public Event {
-        public:
-            TestKey() = default;
-            ~TestKey() = default;
-
-            void useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
-            void usePressed(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
-            void useReleased(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
-    };
-
     class TestClick : public MouseEvent {
         public:
             TestClick() = default;
@@ -51,6 +41,41 @@ namespace indie {
             void usePressed(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
             void useReleased(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
             void useNone(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+    };
+
+    class Movement : public Event {
+        public:
+            Movement(int direction);
+            ~Movement() = default;
+
+            void useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void usePressed(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void useReleased(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+        protected:
+        private:
+            int _direction;
+    };
+
+    class Action : public Event {
+        public:
+            Action() = default;
+            ~Action() = default;
+
+            void useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void usePressed(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void useReleased(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+        protected:
+        private:
+    };
+
+    class TestKey : public Event {
+        public:
+            TestKey() = default;
+            ~TestKey() = default;
+
+            void useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void usePressed(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void useReleased(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
     };
 
     class GoScene : public MouseEvent {

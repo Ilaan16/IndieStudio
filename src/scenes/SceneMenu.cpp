@@ -21,9 +21,9 @@ namespace indie {
         std::vector<std::shared_ptr<Entity>> drawable_ent;
         std::vector<std::shared_ptr<Entity>> clicable_ent;
 
-        std::unique_ptr<MouseEvent> play = std::make_unique<GoScene>(Scenes::PERSO);
-        std::unique_ptr<MouseEvent> settings = std::make_unique<GoScene>(Scenes::OPTION, true);
-        std::unique_ptr<MouseEvent> quit = std::make_unique<GoScene>(Scenes::QUIT);
+        std::shared_ptr<MouseEvent> play = std::make_shared<GoScene>(Scenes::PERSO);
+        std::shared_ptr<MouseEvent> settings = std::make_shared<GoScene>(Scenes::OPTION, true);
+        std::shared_ptr<MouseEvent> quit = std::make_shared<GoScene>(Scenes::QUIT);
 
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
         _entities.emplace(typeEntity::CLICKABLE, clicable_ent);
@@ -40,7 +40,7 @@ namespace indie {
         events = raylib::REvent({}, {std::make_pair(MouseButton::MOUSE_BUTTON_LEFT, ButtonState::None)});
     }
 
-    void SceneMenu::addEventToLastEntity(const MouseButton &mouse, std::unique_ptr<MouseEvent> &evt)
+    void SceneMenu::addEventToLastEntity(const MouseButton &mouse, std::shared_ptr<MouseEvent> &evt)
     {
         std::shared_ptr<indie::IComponent> comp = _entities.find(CLICKABLE)->second.back()->getComponents().find(LISTENER)->second;
         std::shared_ptr<indie::Listener> listener = std::static_pointer_cast<Listener, IComponent>(comp);
@@ -51,5 +51,9 @@ namespace indie {
     std::map<typeEntity, std::vector<std::shared_ptr<Entity>>> &SceneMenu::getEntities()
     {
         return (this->_entities);
+    }
+
+    void indie::SceneMenu::update(int *sceneId, std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity)
+    {
     }
 }

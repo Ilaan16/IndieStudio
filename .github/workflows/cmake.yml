@@ -11,21 +11,22 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ windows-latest]
     steps:
-    # - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+    - name: build with cmake
+      continue-on-error: true
+      run: |
+        cmake -B build
+        cmake --build build
 
-    # - name: Update Kernel
-    #   run: sudo apt update ; sudo apt -y upgrade
-
-    # - name: Build
-    #   run: cmake -B ${{github.workspace}}/build
-
-    # - name: Makefile
-    #   run: make -C ${{github.workspace}}/build
-
-    # - if: ${{ success() }}
+  push:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - uses: andstor/copycat-action@v3
       with:
         personal_token: ${{ secrets.API_GITHUB }}

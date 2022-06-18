@@ -12,8 +12,7 @@
 #include "raylib/REvent.hpp"
 #include "Game.hpp"
 
-namespace indie
-{
+namespace indie {
     void GoScene::useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept
     {
         std::shared_ptr<Renderable> renderer = std::static_pointer_cast<Renderable, IComponent>(ownEntity->getComponents().find(indie::RENDERABLE)->second);

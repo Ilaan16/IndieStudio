@@ -1,4 +1,3 @@
-
 <div  id="top"></div>
 
 
@@ -148,9 +147,7 @@ To compil game you need to write this command :
 * commande
 
 ```sh
-
 ./config.sh
-
 ```
 <p  align="right">(<a  href="#top">back to top</a>)</p>
 
