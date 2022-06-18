@@ -18,7 +18,7 @@ namespace indie {
         std::vector<std::shared_ptr<Entity>> drawable_ent;
         std::vector<std::shared_ptr<Entity>> clicable_ent;
 
-        std::unique_ptr<MouseEvent> back = std::make_unique<GoScene>(Scenes::MENU);
+        std::shared_ptr<MouseEvent> back = std::make_shared<GoScene>(Scenes::MENU);
 
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
         _entities.emplace(typeEntity::CLICKABLE, clicable_ent);
@@ -26,7 +26,7 @@ namespace indie {
         Entities.createLogo(_entities, "./assets/splash/logo.png", "Play", {700.0f, 250.0f, 0.0f}, {500.0f, 500.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
     }
 
-    void SceneSplash::addEventToLastEntity(const MouseButton &mouse, std::unique_ptr<MouseEvent> &evt)
+    void SceneSplash::addEventToLastEntity(const MouseButton &mouse, std::shared_ptr<MouseEvent> &evt)
     {
         std::shared_ptr<indie::IComponent> comp = _entities.find(CLICKABLE)->second.back()->getComponents().find(LISTENER)->second;
         std::shared_ptr<indie::Listener> listener = std::static_pointer_cast<Listener, IComponent>(comp);
@@ -38,7 +38,7 @@ namespace indie {
     {
         return (this->_entities);
     }
-    
+
     void indie::SceneSplash::update(int *sceneId, std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity)
     {
     }

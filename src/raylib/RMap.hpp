@@ -17,22 +17,22 @@
     namespace indie {
         class RMap {
             public:
-                RMap();
+                RMap(const std::string &image, const std::string &filename_texture);
                 ~RMap();
-
+                
+                Vector3 _mapPos;
+                Color *_mapPixels;
+                Texture2D getMap(void);
                 void draw(Camera3D camera);
             protected:
             private:
                 Player player1;
                 Player player2;
 
-                Color *_mapPixels;
                 Texture2D _cubicmap;
                 Texture2D _texture;
                 Model _model;
                 Mesh _mesh;
-
-                Vector3 _mapPos;
         };
     }
 

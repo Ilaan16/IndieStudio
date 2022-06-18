@@ -19,8 +19,8 @@ namespace indie {
         std::vector<std::shared_ptr<Entity>> drawable_ent;
         std::vector<std::shared_ptr<Entity>> clickable_ent;
 
-        std::unique_ptr<MouseEvent> start = std::make_unique<GoScene>(Scenes::GAME, true);
-        std::unique_ptr<MouseEvent> back = std::make_unique<GoScene>(Scenes::MENU);
+        std::shared_ptr<MouseEvent> start = std::make_shared<GoScene>(Scenes::GAME, true);
+        std::shared_ptr<MouseEvent> back = std::make_shared<GoScene>(Scenes::MENU);
 
         _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
         _entities.emplace(typeEntity::CLICKABLE, clickable_ent);

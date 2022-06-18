@@ -68,11 +68,6 @@ namespace indie {
             SetMasterVolume(volume);
         }
 
-        const bool Window::closing(void) const
-        {
-            return WindowShouldClose();
-        }
-
         void Window::clear(void)
         {
             ClearBackground(RAYWHITE);

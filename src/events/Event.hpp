@@ -67,7 +67,7 @@ namespace indie {
         protected:
         private:
     };
-    
+
     class TestKey : public Event {
         public:
             TestKey() = default;
