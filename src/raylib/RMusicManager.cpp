@@ -51,5 +51,11 @@ namespace indie {
         {
             musicTime = GetMusicTimePlayed(this->_music);
         }
+
+        void RMusicManager::resetMusic()
+        {
+            StopMusicStream(this->_music);
+            PlayMusicStream(this->_music);
+        }
     }
 }

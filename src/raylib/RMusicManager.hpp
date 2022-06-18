@@ -27,6 +27,7 @@
                     void PauseResumeTheme();
                     void setTime();
                     void markTime();
+                    void resetMusic();
 
                 private:
                     static float musicTime;
