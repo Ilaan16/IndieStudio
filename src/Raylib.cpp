@@ -19,6 +19,17 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
 
     BeginDrawing();
     auto drawable_entity = entities.find(typeEntity::DRAWABLE);
+
+    Texture2D cubicmap;
+    Color *mapPixels;
+
+    if (sceneId == 3) {
+        auto mapEntity = entities.find(typeEntity::MAP)->second.at(0)->getComponents();
+        auto rendererMap = dynamic_cast<indie::Renderable *>(mapEntity.find(tag::RENDERABLE)->second.get());
+        cubicmap = rendererMap->_map.getMap();
+        mapPixels = rendererMap->_map._mapPixels;
+    }
+
     for (int i = 0; i < drawable_entity->second.size(); i++) {
         auto component = drawable_entity->second.at(i)->getComponents();
         auto renderer = component.find(tag::RENDERABLE);
@@ -31,7 +42,7 @@ void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<
         } else
             if (sceneId == 2) {
                 entity->_model.draw(entity->_position.x, entity->_position.y, entity->_position.z, camera);
-                entity->_map.putBomb(&entity->_position.x, &entity->_position.y, &entity->_position.z, &entity->_inventory, camera);
+                entity->_map.putBomb(&entity->_position.x, &entity->_position.y, &entity->_position.z, &entity->_inventory, camera, cubicmap, mapPixels);
                 entity->_map.draw(camera);
             }
     }

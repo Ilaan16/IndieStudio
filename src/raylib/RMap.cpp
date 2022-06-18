@@ -34,7 +34,7 @@ namespace indie {
         UnloadTexture(this->_cubicmap);
     }
 
-    bool RMap::checkHit(Vector3 position, float *position1, float *position2, float movement, int *explose, Texture2D _cubicmap, Color *_mapPixels)
+    bool RMap::checkHit(Vector3 position, float *position1, float *position2, float movement, int *explose, Texture2D cubicmap, Color *mapPix)
     {
         *(position2) += movement;
         float playerRadius = 0.1f;
@@ -44,19 +44,18 @@ namespace indie {
 
         if (playerCellX < 0) {
             playerCellX = 0;
-        } else if (playerCellX >= _cubicmap.width) {
-            playerCellX = _cubicmap.width - 1;
+        } else if (playerCellX >= cubicmap.width) {
+            playerCellX = cubicmap.width - 1;
         }
         if (playerCellY < 0) {
             playerCellY = 0;
-        } else if (playerCellY >= _cubicmap.height) {
-            playerCellY = _cubicmap.height - 1;
+        } else if (playerCellY >= cubicmap.height) {
+            playerCellY = cubicmap.height - 1;
         }
 
-
-        for (int y = 0; y < _cubicmap.height; y++) {
-            for (int x = 0; x < _cubicmap.width; x++) {
-                if (_mapPixels[y*_cubicmap.width + x].r == 255 && CheckCollisionCircleRec(playerPos, playerRadius, (Rectangle){ _mapPos.x - 0.5f + x*1.0f, _mapPos.z - 0.5f + y*1.0f, 1.0f, 1.0f })) {
+        for (int y = 0; y < cubicmap.height; y++) {
+            for (int x = 0; x < cubicmap.width; x++) {
+                if (mapPix[y*cubicmap.width + x].r == 255 && CheckCollisionCircleRec(playerPos, playerRadius, (Rectangle){ _mapPos.x - 0.5f + x*1.0f, _mapPos.z - 0.5f + y*1.0f, 1.0f, 1.0f })) {
                     return (false);
                 }
             }
@@ -65,11 +64,10 @@ namespace indie {
     }
 
 
-    void RMap::putBomb(float *x, float *y, float *z, Player *player, Camera3D camera)
+    void RMap::putBomb(float *x, float *y, float *z, Player *player, Camera3D camera, Texture2D cubicmap, Color *mapPixels)
     {
         BeginMode3D(camera);
         (*player).UpdateTimer(&(*player)._timer);
-
         if ((*player)._putBomb == true && !(*player).TimerDone(&(*player)._timer)) {
             DrawCubeV((*player)._tnt, { 1.0f, 1.0f, 1.0f }, RED);
         }
@@ -77,19 +75,19 @@ namespace indie {
         if ((*player).TimerDone(&(*player)._timer) && ((*player)._explosion > 0 || (*player)._putBomb == true)) {
             (*player)._putBomb = false;
             if ((*player)._up_stillalive == true) {
-                (*player)._up_stillalive = checkHit((*player)._up._bomb, &(*player)._up._bomb.x, &(*player)._up._bomb.z, -0.2f, &(*player)._explosion, (*player)._cubicmap, (*player)._mapPixels);
+                (*player)._up_stillalive = checkHit((*player)._up._bomb, &(*player)._up._bomb.x, &(*player)._up._bomb.z, -0.2f, &(*player)._explosion, cubicmap, mapPixels);
                 DrawCubeV((*player)._up._bomb, { 1.0f, 2.0f, 1.0f }, RED);
             }
             if ((*player)._down_stillalive == true) {
-                (*player)._down_stillalive = checkHit((*player)._down._bomb, &(*player)._down._bomb.x, &(*player)._down._bomb.z, 0.2f, &(*player)._explosion, (*player)._cubicmap, (*player)._mapPixels);
+                (*player)._down_stillalive = checkHit((*player)._down._bomb, &(*player)._down._bomb.x, &(*player)._down._bomb.z, 0.2f, &(*player)._explosion, cubicmap, mapPixels);
                 DrawCubeV((*player)._down._bomb, { 1.0f, 2.0f, 1.0f }, RED);
             }
             if ((*player)._left_stillalive == true) {
-                (*player)._left_stillalive = checkHit((*player)._left._bomb, &(*player)._left._bomb.z, &(*player)._left._bomb.x, -0.2f, &(*player)._explosion, (*player)._cubicmap, (*player)._mapPixels);
+                (*player)._left_stillalive = checkHit((*player)._left._bomb, &(*player)._left._bomb.z, &(*player)._left._bomb.x, -0.2f, &(*player)._explosion, cubicmap, mapPixels);
                 DrawCubeV((*player)._left._bomb, { 1.0f, 2.0f, 1.0f }, RED);
             }
             if ((*player)._right_stillalive == true) {
-                (*player)._right_stillalive = checkHit((*player)._right._bomb, &(*player)._right._bomb.z, &(*player)._right._bomb.x, 0.2f, &(*player)._explosion, (*player)._cubicmap, (*player)._mapPixels);
+                (*player)._right_stillalive = checkHit((*player)._right._bomb, &(*player)._right._bomb.z, &(*player)._right._bomb.x, 0.2f, &(*player)._explosion, cubicmap, mapPixels);
                 DrawCubeV((*player)._right._bomb, { 1.0f, 2.0f, 1.0f }, RED);
             }
         }
