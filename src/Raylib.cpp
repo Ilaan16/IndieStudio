@@ -8,54 +8,6 @@
 #include "scenes/AScene.hpp"
 #include "Raylib.hpp"
 
-indie::Raylib::Raylib() :
-    _camera({{0.0f, 10.0f, 10.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, 45.0f, 0})
-{
-}
-
-void indie::Raylib::setCamera(Vector3 pos, Vector3 target, Vector3 up, float fovy, int projection)
-{
-    _camera.position = pos;
-    _camera.target = target;
-    _camera.up = up;
-    _camera.fovy = fovy;
-    _camera.projection = projection;
-};
-
-Camera indie::Raylib::getCamera() const
-{
-    return _camera;
-};
-
-void indie::Raylib::createWindow(int screenWidth, int screenHeight, std::string const &title, std::size_t const fps)
-{
-    _screenSize.first = screenWidth;
-    _screenSize.second = screenHeight;
-    InitWindow(screenWidth, screenHeight, title.c_str());
-    SetTargetFPS(fps);
-    std::cout << "test" << std::endl;
-}
-
-bool indie::Raylib::gameLoop()
-{
-    return !WindowShouldClose();
-}
-
-bool indie::Raylib::isKeyDown(int button) const noexcept
-{
-    return (IsKeyDown(button));
-}
-
-bool indie::Raylib::isKeyPressed(int button) const noexcept
-{
-    return (IsKeyPressed(button));
-}
-
-bool indie::Raylib::isKeyReleased(int button) const noexcept
-{
-    return (IsKeyReleased(button));
-}
-
 void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
 {
     Camera camera;

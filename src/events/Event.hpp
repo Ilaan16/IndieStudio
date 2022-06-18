@@ -55,8 +55,7 @@ namespace indie {
 
     class GoScene : public MouseEvent {
         public:
-            GoScene(const Scenes &scene, const std::shared_ptr<Entity> &musicEntity = nullptr, bool keepTime = false):
-                scene(scene), keepTime(keepTime), musicEntity(musicEntity) {}
+            GoScene(const Scenes &scene, bool keepTime = false): scene(scene), keepTime(keepTime) {}
             ~GoScene() = default;
 
             void useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
@@ -67,7 +66,6 @@ namespace indie {
         private:
             Scenes scene;
             bool keepTime;
-            std::shared_ptr<Entity> musicEntity;
     };
     class Slider : public MouseEvent {
         public:

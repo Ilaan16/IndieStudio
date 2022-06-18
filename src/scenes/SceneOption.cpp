@@ -18,14 +18,13 @@ namespace indie {
         std::vector<std::shared_ptr<Entity>> drawable_ent;
         std::vector<std::shared_ptr<Entity>> clicable_ent;
 
-        _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
-        _entities.emplace(typeEntity::CLICKABLE, clicable_ent);
-        Entities.createSound(_entities, "assets/sound/C418 - Minecraft - Minecraft Volume Alpha.mp3");
-
-        std::unique_ptr<MouseEvent> back = std::make_unique<GoScene>(Scenes::MENU, _entities.find(DRAWABLE)->second.back(), true);
+        std::unique_ptr<MouseEvent> back = std::make_unique<GoScene>(Scenes::MENU, true);
         std::unique_ptr<MouseEvent> full = std::make_unique<FullScreen>(window);
         std::unique_ptr<MouseEvent> slider = std::make_unique<Slider>(window);
 
+        _entities.emplace(typeEntity::DRAWABLE, drawable_ent);
+        _entities.emplace(typeEntity::CLICKABLE, clicable_ent);
+        Entities.createSound(_entities, "assets/sound/C418 - Minecraft - Minecraft Volume Alpha.mp3");
         Entities.createBackground(_entities, "./assets/options/dirt_background.png");
         Entities.createLogo(_entities, "./assets/options/settings.png", "Play", {750.0f, 150.0f, 0.0f}, {427.0f, 79.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
         Entities.createSlider(_entities, "Sound", {660.0f, 400.0f, 0.0f}, {595.0f, 80.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {863.0f, 420.0f, 0.0f});
