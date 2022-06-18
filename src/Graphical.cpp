@@ -20,9 +20,7 @@ void indie::Graphical::updateSystem(int sceneId, std::unique_ptr<indie::AScene> 
 {
     BeginDrawing();
     this->_raylib.displayAll(sceneId, scene->getEntities());
-    if (sceneId == 3) {
-        scene->update(scene->getEntities());
-    }
+    scene->update(scene->getEntities());
     EndDrawing();
     scene->events.updateEvents();
 }
