@@ -20,9 +20,10 @@ namespace indie
             ~MainScene();
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
-            void update(std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity);
-            void putBomb(float *x, float *y, float *z, Player *player, Camera3D camera, Texture2D cubicmap, Color *mapPixels, std::vector<Vector3> collision_entity);
-            bool checkHit(Vector3 position, float *position1, float *position2, float movement, int *explose, Texture2D cubicmap, Color *mapPix, std::vector<Vector3> collision_entity);
+            void update(int *sceneId, std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity);
+            void putBomb(int *sceneId, float *x, float *y, float *z, Player *player, Camera3D camera, Texture2D cubicmap, Color *mapPixels, std::vector<Vector3> collision_entity);
+            bool checkHit(Vector3 position, float *position1, float *position2, float movement, int *explose, Texture2D cubicmap, Color *mapPix);
+            void hitPlayer(int *sceneId, Vector3 position, std::vector<Vector3> collision_entity);
             void createPlayer();
             void createCamera();
         protected:

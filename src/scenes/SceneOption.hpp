@@ -21,7 +21,7 @@ namespace indie
             ~SceneOption() = default;
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
-            void update(std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity);
+            void update(int *sceneId, std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity);
         private:
             void addEventToLastEntity(const MouseButton &mouse, std::shared_ptr<MouseEvent> &evt);
     };
