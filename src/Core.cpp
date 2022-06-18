@@ -7,7 +7,7 @@
 
 #include "Core.hpp"
 
-indie::Core::Core(std::size_t const fps) : _window("Bombermine")
+indie::Core::Core(std::size_t const fps) : _window("Bombermine"), _gameLogic(_window)
 {
 }
 

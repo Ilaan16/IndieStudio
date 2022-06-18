@@ -11,7 +11,7 @@ namespace indie {
     RSoundManager::RSoundManager(const std::string &filename) : _isPause(true)
     {
         this->_music = LoadMusicStream(filename.c_str());
-        this->_music.looping = false;
+        this->_music.looping = true;
         PlayMusicStream(this->_music);
     }
 
@@ -27,12 +27,12 @@ namespace indie {
 
     void RSoundManager::PauseResumeTheme()
     {
-        if (RSoundManager::isMuteSong() == false) {
+        if (!_isPause) {
             PauseMusicStream(this->_music);
             this->_isPause = true;
         } else {
             ResumeMusicStream(this->_music);
             this->_isPause = false;
         }
-    } 
+    }
 }

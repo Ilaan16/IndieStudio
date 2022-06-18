@@ -71,7 +71,7 @@ namespace indie {
     void EntitiesFactory::createSound(std::map<typeEntity ,std::vector<std::shared_ptr<Entity>>> &_entities, std::string sound)
     {
         std::shared_ptr<Entity> music = std::make_shared<Entity>();
-        music->addRenderer("", sound, "", 0.0F, {0, 0, 0}, 0.0F, {1920, 1080, 0}, {0, 0, 0}, {0, 0, 0}, false);
+        music->addRenderer("", sound);
         _entities.find(DRAWABLE)->second.push_back(music);
     }
 }

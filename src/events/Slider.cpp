@@ -20,13 +20,14 @@ namespace indie
             mouse = raylib::REvent::getMousePosition();
             if (mouse_last.x == 0)
                 mouse_last = mouse;
-            if (renderer->_position.x + mouse.x - mouse_last.x < 675)
-                renderer->_position.x = 675;
+            if (renderer->_position.x + mouse.x - mouse_last.x < 660)
+                renderer->_position.x = 660;
             else if (renderer->_position.x + mouse.x - mouse_last.x > 1235)
                 renderer->_position.x = 1235;
             else
                 renderer->_position.x += mouse.x - mouse_last.x;
             mouse_last = raylib::REvent::getMousePosition();
+            window.changeVolume(renderer->_position.x - 660, 1235 - 660);
         }
     }
 

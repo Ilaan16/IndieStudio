@@ -21,7 +21,7 @@ namespace indie {
 
     class Game {
         public:
-            Game();
+            Game(raylib::Window &window);
             ~Game();
 
             indie::Scenes manageGame();
@@ -34,7 +34,6 @@ namespace indie {
                 std::unique_ptr<AScene> &scene);
             void callEvent(std::shared_ptr<Entity> &ent, std::pair<MouseButton, indie::ButtonState> &key,
                 std::unique_ptr<AScene> &scene);
-
             static int sceneId;
             std::chrono::time_point<std::chrono::steady_clock> splashTimer;
             std::vector<std::unique_ptr<AScene>> _scenes;

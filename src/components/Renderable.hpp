@@ -14,7 +14,7 @@
 #include "raylib/Rtext.hpp"
 #include "raylib/RTexture2D.hpp"
 #include "raylib/RShape.hpp"
-#include "raylib/RSoundManager.hpp"
+#include "raylib/RMusicManager.hpp"
 
 namespace indie {
 
@@ -33,7 +33,7 @@ namespace indie {
 
             indie::RModel _model;
             indie::RShape _shape;
-            indie::RSoundManager _music;
+            indie::raylib::RMusicManager _music;
             indie::RTexture2D _texture;
             indie::Rtext _text;
             std::string _strString;

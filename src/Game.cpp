@@ -7,16 +7,17 @@
 
 #include "Game.hpp"
 #include "components/Listener.hpp"
+#include "raylib/RMusicManager.hpp"
 
 int indie::Game::sceneId = 0;
 
-indie::Game::Game()
+indie::Game::Game(raylib::Window &window)
 {
     std::unique_ptr<indie::AScene> splashScene = std::make_unique<indie::SceneSplash>();
     std::unique_ptr<indie::AScene> menuScene = std::make_unique<indie::SceneMenu>();
     std::unique_ptr<indie::AScene> persoScene = std::make_unique<indie::ChoosePersoScene>();
     std::unique_ptr<indie::AScene> mainScene = std::make_unique<indie::MainScene>();
-    std::unique_ptr<indie::AScene> optionScene = std::make_unique<indie::SceneOption>();
+    std::unique_ptr<indie::AScene> optionScene = std::make_unique<indie::SceneOption>(window);
     std::unique_ptr<indie::AScene> endScene = std::make_unique<indie::SceneEnd>();
     this->_scenes.push_back(move(splashScene));
     this->_scenes.push_back(move(menuScene));

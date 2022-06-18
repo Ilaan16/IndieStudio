@@ -5,13 +5,19 @@
 ** main
 */
 
+#include <iostream>
 #include "Core.hpp"
 #include "Raylib.hpp"
 
 int main(void)
 {
-    indie::Core core(60);
+    try {
+        indie::Core core(60);
 
-    core.start();
+        core.start();
+    } catch(std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        return 84;
+    }
     return (0);
 }

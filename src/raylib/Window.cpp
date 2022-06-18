@@ -11,17 +11,23 @@
 namespace indie {
     namespace raylib {
         Window::Window(const std::string &title, int width, int height, int fps):
-            _fps(fps), _width(width), _height(height), _fullScreen(false)
+            _fps(fps), _width(width), _height(height)
         {
             InitWindow(width, height, title.c_str());
             if (!IsWindowReady())
                 throw ;
+            InitAudioDevice();
+            if (!IsAudioDeviceReady())
+                throw std::runtime_error("Audio device not ready");
+            SetMasterVolume(1.0);
             SetTargetFPS(fps);
             SetWindowState(FLAG_WINDOW_RESIZABLE);
         }
 
         Window::~Window()
         {
+            if (IsAudioDeviceReady())
+                CloseAudioDevice();
             if (IsWindowReady())
                 CloseWindow();
         }
@@ -29,7 +35,6 @@ namespace indie {
         void Window::toggleFull(void)
         {
             ToggleFullscreen();
-            _fullScreen = !_fullScreen;
         }
 
         const int &Window::getFps(void) const
@@ -47,14 +52,20 @@ namespace indie {
             return _height;
         }
 
-        const bool &Window::isFullScreen(void) const
+        bool Window::isFullScreen(void) const
         {
-            return _fullScreen;
+            return IsWindowFullscreen();
         }
 
         const bool Window::closing(void) const
         {
             return WindowShouldClose();
+        }
+
+        void Window::changeVolume(float size, float max) const
+        {
+            float volume = size / max;
+            SetMasterVolume(volume);
         }
     }
 }

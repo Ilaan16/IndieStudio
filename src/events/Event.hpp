@@ -12,6 +12,8 @@
     #include "raylib/REvent.hpp"
     #include "Entity.hpp"
     #include "scenes/AScene.hpp"
+    #include "raylib/Window.hpp"
+    #include "raylib/RMusicManager.hpp"
 
 namespace indie {
     class Event {
@@ -53,7 +55,8 @@ namespace indie {
 
     class GoScene : public MouseEvent {
         public:
-            GoScene(const Scenes &scene): scene(scene) {}
+            GoScene(const Scenes &scene, const std::shared_ptr<Entity> &musicEntity = nullptr, bool keepTime = false):
+                scene(scene), keepTime(keepTime), musicEntity(musicEntity) {}
             ~GoScene() = default;
 
             void useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
@@ -63,10 +66,12 @@ namespace indie {
 
         private:
             Scenes scene;
+            bool keepTime;
+            std::shared_ptr<Entity> musicEntity;
     };
     class Slider : public MouseEvent {
         public:
-            Slider(): mouse({0,0}), mouse_last({0,0}) {}
+            Slider(raylib::Window &window): mouse({0,0}), mouse_last({0,0}), window(window) {}
             ~Slider() = default;
 
             void useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
@@ -75,8 +80,22 @@ namespace indie {
             void useNone(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
 
         private:
+            raylib::Window window;
             Vector2 mouse;
             Vector2 mouse_last;
+    };
+    class FullScreen : public MouseEvent {
+        public:
+            FullScreen(raylib::Window &window): window(window) {}
+            ~FullScreen() = default;
+
+            void useDown(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void usePressed(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void useReleased(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+            void useNone(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
+
+        private:
+            raylib::Window window;
     };
 }
 

@@ -11,12 +11,13 @@
     #include "scenes/AScene.hpp"
     #include "raylib/REvent.hpp"
     #include "events/Event.hpp"
+    #include "raylib/Window.hpp"
 
 namespace indie
 {
     class SceneOption : public AScene {
         public:
-            SceneOption();
+            SceneOption(raylib::Window &window);
             ~SceneOption() = default;
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
