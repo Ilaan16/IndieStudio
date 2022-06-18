@@ -87,7 +87,7 @@ std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &indie:
     return (this->_entities);
 }
 
-bool indie::MainScene::checkHit(Vector3 position, float *position1, float *position2, float movement, int *explose, Texture2D cubicmap, Color *mapPix)
+bool indie::MainScene::checkHit(int *sceneId, Vector3 position, float *position1, float *position2, float movement, int *explose, Texture2D cubicmap, Color *mapPix, std::vector<Vector3> collision_entity)
 {
     Vector3 _mapPos = { -7, 2, -5 };
     *(position2) += movement;
@@ -113,27 +113,23 @@ bool indie::MainScene::checkHit(Vector3 position, float *position1, float *posit
             }
         }
     }
-    return (true);
-}
 
-void indie::MainScene::hitPlayer(int *sceneId, Vector3 position, std::vector<Vector3> collision_entity)
-{
     for (Vector3 position_player : collision_entity) {
-        if (CheckCollisionBoxes (
-    (BoundingBox){(Vector3){ position_player.x - 1.0f/2,
-                                position_player.y - 1.0f/2,
-                                position_player.z - 1.0f/2 },
-                    (Vector3){ position_player.x + 1.0f/2,
-                                position_player.y + 1.0f/2,
-                                position_player.z + 1.0f/2 }},
-    (BoundingBox){(Vector3){ position.x - 1.0f/2,
-                                position.y - 1.0f/2,
-                                position.z - 1.0f/2 },
-                    (Vector3){ position.x + 1.0f/2,
-                                position.y + 1.0f/2,
-                                position.z + 1.0f/2 }})) 
-            *sceneId = 5;
+            if (CheckCollisionBoxes(
+        (BoundingBox){(Vector3){ position_player.x - 1.0f/2,
+                                    position_player.y - 1.0f/2,
+                                    position_player.z - 1.0f/2 },
+                        (Vector3){ position_player.x + 1.0f/2,
+                                    position_player.y + 1.0f/2,
+                                    position_player.z + 1.0f/2 }},
+        (BoundingBox){(Vector3){ position.x - 1.0f/2,
+                                    position.y - 1.0f/2,
+                                    position.z - 1.0f/2 },
+                        (Vector3){ position.x + 1.0f/2,
+                                    position.y + 1.0f/2,
+                                    position.z + 1.0f/2 }})) *sceneId = 5;
     }
+    return (true);
 }
 
 void indie::MainScene::putBomb(int *sceneId, float *x, float *y, float *z, Player *player, Camera3D camera, Texture2D cubicmap, Color *mapPixels, std::vector<Vector3> collision_entity)
@@ -147,23 +143,19 @@ void indie::MainScene::putBomb(int *sceneId, float *x, float *y, float *z, Playe
     if ((*player).TimerDone(&(*player)._timer) && ((*player)._explosion > 0 || (*player)._putBomb == true)) {
         (*player)._putBomb = false;
         if ((*player)._up_stillalive == true) {
-            (*player)._up_stillalive = checkHit((*player)._up._bomb, &(*player)._up._bomb.x, &(*player)._up._bomb.z, -0.2f, &(*player)._explosion, cubicmap, mapPixels);
-            hitPlayer(sceneId, (*player)._up._bomb, collision_entity);
+            (*player)._up_stillalive = checkHit(sceneId, (*player)._up._bomb, &(*player)._up._bomb.x, &(*player)._up._bomb.z, -0.2f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
             DrawCubeV((*player)._up._bomb, { 1.0f, 2.0f, 1.0f }, RED);
         }
         if ((*player)._down_stillalive == true) {
-            (*player)._down_stillalive = checkHit((*player)._down._bomb, &(*player)._down._bomb.x, &(*player)._down._bomb.z, 0.2f, &(*player)._explosion, cubicmap, mapPixels);
-            hitPlayer(sceneId, (*player)._up._bomb, collision_entity);
+            (*player)._down_stillalive = checkHit(sceneId, (*player)._down._bomb, &(*player)._down._bomb.x, &(*player)._down._bomb.z, 0.2f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
             DrawCubeV((*player)._down._bomb, { 1.0f, 2.0f, 1.0f }, RED);
         }
         if ((*player)._left_stillalive == true) {
-            (*player)._left_stillalive = checkHit((*player)._left._bomb, &(*player)._left._bomb.z, &(*player)._left._bomb.x, -0.2f, &(*player)._explosion, cubicmap, mapPixels);
-            hitPlayer(sceneId, (*player)._up._bomb, collision_entity);
+            (*player)._left_stillalive = checkHit(sceneId, (*player)._left._bomb, &(*player)._left._bomb.z, &(*player)._left._bomb.x, -0.2f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
             DrawCubeV((*player)._left._bomb, { 1.0f, 2.0f, 1.0f }, RED);
         }
         if ((*player)._right_stillalive == true) {
-            (*player)._right_stillalive = checkHit((*player)._right._bomb, &(*player)._right._bomb.z, &(*player)._right._bomb.x, 0.2f, &(*player)._explosion, cubicmap, mapPixels);
-            hitPlayer(sceneId, (*player)._up._bomb, collision_entity);
+            (*player)._right_stillalive = checkHit(sceneId, (*player)._right._bomb, &(*player)._right._bomb.z, &(*player)._right._bomb.x, 0.2f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
             DrawCubeV((*player)._right._bomb, { 1.0f, 2.0f, 1.0f }, RED);
         }
     }
