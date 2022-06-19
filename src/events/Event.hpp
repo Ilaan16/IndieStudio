@@ -9,8 +9,9 @@
     #define EVENT_HPP_
 
     #include <memory>
-    #include "raylib/REvent.hpp"
     #include "Entity.hpp"
+    #include "Raylib.hpp"
+    #include "raylib/REvent.hpp"
     #include "scenes/AScene.hpp"
     #include "raylib/Window.hpp"
     #include "raylib/RMusicManager.hpp"
@@ -53,6 +54,7 @@ namespace indie {
             void useReleased(std::unique_ptr<AScene> &ownScene, std::shared_ptr<Entity> &ownEntity) noexcept final;
         protected:
         private:
+            Raylib _raylib;
             int _direction;
     };
 

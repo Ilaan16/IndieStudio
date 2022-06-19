@@ -28,8 +28,6 @@ namespace indie {
         Entities.createBackground(_entities, "./assets/choosePerso/background.png");
         Entities.createButton(_entities, "P1", {30.0f, 436.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408, 0.0f, 0.0f}, {201.0f, 457.0f, 0.0f});
         Entities.createButton(_entities, "P2", {1498.0f, 436.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408.0f, 0.0f, 0.0f}, {1669.0f, 457.0f, 0.0f});
-        Entities.createButton(_entities, "P3", {30.0f, 978.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408.0f, 0.0f, 0.0f}, {201.0f, 999.0f, 0.0f});
-        Entities.createButton(_entities, "P4", {1498.0f, 978.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408.0f, 0.0f, 0.0f}, {1669.0f, 999.0f, 0.0f});
         Entities.createButton(_entities, "return", {532.0f, 892.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408.0f, 0.0f, 0.0f}, {626.0f, 913.0f, 0.0f});
         this->addEventToLastEntity(MouseButton::MOUSE_BUTTON_LEFT, back);
         Entities.createButton(_entities, "start", {962.0f, 892.0f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408.0f, 0.0f, 0.0f}, {1075.0f, 913.0f, 0.0f});

@@ -27,9 +27,10 @@ namespace indie {
         _entities.emplace(typeEntity::CLICKABLE, clickable_ent);
         Entities.createSound(_entities, "assets/sound/C418 - Sweden - Minecraft Volume Alpha.mp3");
         Entities.createBackground(_entities, "./assets/end/background.png");
-        Entities.createButton(_entities, "restart", {555.0f, 842.5f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408, 0.0f, 0.0f}, {632.0f, 863.0f, 0.0f});
+        Entities.createLogo(_entities, "./assets/end/end_of_game.png", "Play", {665.0f, 150.0f, 0.0f}, {595.0f, 79.0f, 0.0f}, {0.0f, 0.0f, 0.0f});
+        Entities.createButton(_entities, "restart", {555.0f, 542.5f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408, 0.0f, 0.0f}, {632.0f, 563.0f, 0.0f});
         this->addEventToLastEntity(MouseButton::MOUSE_BUTTON_LEFT, restart);
-        Entities.createButton(_entities, "exit", {991.0f, 842.5f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408, 0.0f, 0.0f}, {1125.0f, 863.0f, 0.0f});
+        Entities.createButton(_entities, "exit", {991.0f, 542.5f, 0.0f}, {392.0f, 80.0f, 0.0f}, {1408, 0.0f, 0.0f}, {1125.0f, 563.0f, 0.0f});
         this->addEventToLastEntity(MouseButton::MOUSE_BUTTON_LEFT, exit);
 
         events = raylib::REvent({}, {std::make_pair(MouseButton::MOUSE_BUTTON_LEFT, ButtonState::None)});

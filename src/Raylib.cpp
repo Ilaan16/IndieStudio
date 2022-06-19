@@ -5,8 +5,47 @@
 ** raylib
 */
 
+#include "Exception.hpp"
 #include "scenes/AScene.hpp"
 #include "Raylib.hpp"
+
+void indie::Raylib::displayCube(model const type, Vector3 const position, Vector3 const size, Color const color) const
+{
+    if (type == BASIC)
+        DrawCube(position, size.x, size.y, size.z, color);
+    else if (type == WIRES)
+        DrawCubeWires(position, size.x, size.y, size.z, color);
+    else
+        throw TypeError("The cuby isn't recognize");
+}
+
+Model indie::Raylib::rotateModel(Model entity, int angle) const
+{
+    entity.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*angle });
+    return (entity);
+}
+
+bool indie::Raylib::collision_entities(Vector3 position_entity, Vector3 position, float size) const
+{
+    if (CheckCollisionBoxes(
+            (BoundingBox){(Vector3){ position_entity.x - size/2,
+            position_entity.y - size/2, position_entity.z - size/2 },
+            (Vector3){ position_entity.x + size/2,
+            position_entity.y + size/2, position_entity.z + size/2 }},
+            (BoundingBox){(Vector3){ position.x - size/2,
+            position.y - size/2, position.z - size/2 },
+            (Vector3){ position.x + size/2,
+            position.y + size/2, position.z + size/2 }}))
+        return (true);
+    return (false);
+}
+
+bool indie::Raylib::collision_image(Vector2 position_entity, Vector3 _collabsPos, float entity_raidus, int x, int y) const
+{
+    if (CheckCollisionCircleRec(position_entity, entity_raidus, (Rectangle){ _collabsPos.x - 0.5f + x*1.0f, _collabsPos.z - 0.5f + y*1.0f, 1.0f, 1.0f }))
+        return (true);
+    return (false);
+}
 
 void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
 {

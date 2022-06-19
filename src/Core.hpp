@@ -17,6 +17,7 @@
 #include "scenes/MainScene.hpp"
 #include "Graphical.hpp"
 #include "Game.hpp"
+#include "Exception.hpp"
 #include "raylib/Window.hpp"
 
 namespace indie {

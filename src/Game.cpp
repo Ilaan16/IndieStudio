@@ -37,10 +37,10 @@ indie::Scenes indie::Game::updateSystem()
 {
     std::vector<std::pair<KeyboardKey, indie::ButtonState>> keys = _scenes[sceneId]->events.getKeyboard();
     std::vector<std::pair<MouseButton, indie::ButtonState>> mouses = _scenes[sceneId]->events.getMouse();
-    std::vector<std::shared_ptr<Entity>> &move = _scenes[sceneId]->getEntities().find(MOVABLE)->second;
+    std::vector<std::shared_ptr<Entity>> &_move = _scenes[sceneId]->getEntities().find(MOVABLE)->second;
     std::vector<std::shared_ptr<Entity>> &click = _scenes[sceneId]->getEntities().find(CLICKABLE)->second;
     for (auto key = keys.begin(); key != keys.end(); key++)
-        for (auto ent = move.begin(); ent != move.end(); ent++) {
+        for (auto ent = _move.begin(); ent != _move.end(); ent++) {
             callEvent(*ent, *key, _scenes[sceneId]);
         }
 
@@ -48,6 +48,11 @@ indie::Scenes indie::Game::updateSystem()
         for (auto ent = click.begin(); ent != click.end(); ent++) {
             callEvent(*ent, *mouse, _scenes[sceneId]);
         }
+    if (sceneId == 5) {
+        std::unique_ptr<indie::AScene> mainScene = std::make_unique<indie::MainScene>();
+        _scenes.erase(_scenes.begin()+3);
+        _scenes.emplace(_scenes.begin()+3, move(mainScene));
+    }
     return static_cast<Scenes>(sceneId);
 }
 

@@ -13,11 +13,10 @@ int main(void)
 {
     try {
         indie::Core core(60);
-
         core.start();
-    } catch(std::runtime_error &e) {
-        std::cerr << e.what() << std::endl;
-        return 84;
-    }
+    } catch (indie::Exception &error) {
+		std::cerr << error.what() << std::endl;
+		return (84);
+	}
     return (0);
 }

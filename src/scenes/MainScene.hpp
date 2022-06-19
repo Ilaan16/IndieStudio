@@ -11,6 +11,7 @@
 #include "scenes/AScene.hpp"
 #include "events/Event.hpp"
 #include "raylib/REvent.hpp"
+#include "Raylib.hpp"
 
 namespace indie
 {
@@ -27,6 +28,7 @@ namespace indie
             void createCamera();
         protected:
         private:
+            Raylib _raylib;
             void addEventToLastEntity(const KeyboardKey &key, std::shared_ptr<Event> &evt);
     };
 }

@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include "Exception.hpp"
 #include "Window.hpp"
 
 namespace indie {
@@ -15,10 +16,10 @@ namespace indie {
         {
             InitWindow(width, height, title.c_str());
             if (!IsWindowReady())
-                throw ;
+                throw WindowError("Window not ready");
             InitAudioDevice();
             if (!IsAudioDeviceReady())
-                throw std::runtime_error("Audio device not ready");
+                throw AudioError("Audio device not ready");
             SetMasterVolume(1.0);
             SetTargetFPS(fps);
             SetWindowState(FLAG_WINDOW_RESIZABLE);
