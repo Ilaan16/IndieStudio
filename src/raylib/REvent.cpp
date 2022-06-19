@@ -49,6 +49,11 @@ namespace indie {
             return false;
         }
 
+        Vector2 REvent::getMousePosition()
+        {
+            return GetMousePosition();
+        }
+
         const std::vector<std::pair<KeyboardKey, ButtonState>> &REvent::getKeyboard() const
         {
             return keyboardEvents;

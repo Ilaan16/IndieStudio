@@ -5,6 +5,7 @@
 ** RTexture3D
 */
 
+#include <iostream>
 #include "RAnim.hpp"
 
 namespace indie {
@@ -17,10 +18,14 @@ namespace indie {
 
     RAnim::~RAnim()
     {
+        UnloadModelAnimations(this->anims, this->animsCount);
     }
 
-    void RAnim::draw(const float &x, const float &y, Model model)
+    void RAnim::draw(RModel &model)
     {
-        UpdateModelAnimation(model, this->anims[0], this->animFrameCounter);
+        this->animFrameCounter++;
+        UpdateModelAnimation(model._model, this->anims[0], this->animFrameCounter);
+        if (animFrameCounter >= anims[0].frameCount)
+            animFrameCounter = 0;
     }
 }

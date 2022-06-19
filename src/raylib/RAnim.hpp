@@ -1,3 +1,4 @@
+
 /*
 ** EPITECH PROJECT, 2022
 ** Indie
@@ -9,7 +10,9 @@
     #define RANIM_HPP_
 
     #include <string>
+    #include <memory>
     #include "raylib.h"
+    #include "RModel.hpp"
 
     namespace indie {
         class RAnim {
@@ -17,7 +20,7 @@
                 RAnim(const std::string &filename);
                 ~RAnim();
 
-                void draw(const float &x, const float &y, Model model);
+                void draw(RModel &model);
             private:
             ModelAnimation *anims;
             unsigned int animsCount;

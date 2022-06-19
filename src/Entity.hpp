@@ -20,7 +20,8 @@ namespace indie
     enum tag {
         RENDERABLE,
         MOVEMENT,
-        LISTENER
+        LISTENER,
+        MUSIC
     };
 
     class Entity {
@@ -30,8 +31,9 @@ namespace indie
 
             std::map<indie::tag, std::shared_ptr<indie::IComponent>> &getComponents();
             void putComponent(std::shared_ptr<indie::IComponent> component, indie::tag tag);
-            void addRenderer(std::string model = "", std::string texture = "", std::string text = "",
-                float fontSize = 0, indie::Vector3D position = {0}, float angle = 0, indie::Vector3D size = {0}, indie::Vector3D rect = {0}, indie::Vector3D posText = {0}, bool is3D = false);
+            void addRenderer(std::string model = "", std::string texture = "", std::string text = "", std::string image = "",
+                float fontSize = 0, indie::Vector3D position = {0}, float angle = 0, indie::Vector3D size = {0}, indie::Vector3D rect = {0}, indie::Vector3D posText = {0}, bool is3D = false, std::string animation = "");
+            void addMusic(const std::string &path);
             void addListener(std::shared_ptr<Entity> &entity);
             void addIAAlgo(std::shared_ptr<Entity> &entity);
         protected:

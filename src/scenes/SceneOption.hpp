@@ -9,16 +9,21 @@
     #define SCENEOPTION_HPP_
 
     #include "scenes/AScene.hpp"
+    #include "raylib/REvent.hpp"
+    #include "events/Event.hpp"
+    #include "raylib/Window.hpp"
 
 namespace indie
 {
     class SceneOption : public AScene {
         public:
-            SceneOption();
+            SceneOption(raylib::Window &window);
             ~SceneOption() = default;
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
+            void update(int *sceneId, std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity);
         private:
+            void addEventToLastEntity(const MouseButton &mouse, std::shared_ptr<MouseEvent> &evt);
     };
 }
 #endif /* !SCENEOPTION_HPP_ */

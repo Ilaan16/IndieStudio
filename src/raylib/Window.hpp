@@ -19,17 +19,18 @@ namespace indie {
                 ~Window();
 
                 void toggleFull(void);
+                void clear(void);
                 const int &getFps() const;
                 const int &getWidth() const;
                 const int &getHeight() const;
-                const bool &isFullScreen() const;
+                bool isFullScreen() const;
                 const bool closing() const;
+                void changeVolume(float size, float max) const;
 
             private:
                 int _fps;
                 int _width;
                 int _height;
-                bool _fullScreen;
         };
     }
 }

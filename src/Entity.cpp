@@ -17,11 +17,18 @@ indie::Entity::~Entity()
 {
 }
 
-void indie::Entity::addRenderer(std::string model, std::string texture, std::string text,
-    float fontSize, indie::Vector3D position, float angle, indie::Vector3D size, indie::Vector3D rect, indie::Vector3D posText, bool is3D)
+void indie::Entity::addRenderer(std::string model, std::string texture, std::string text, std::string image,
+    float fontSize, indie::Vector3D position, float angle, indie::Vector3D size, indie::Vector3D rect, indie::Vector3D posText, bool is3D, std::string animation)
 {
-    std::shared_ptr<indie::IComponent> renderer = std::make_shared<indie::Renderable>(model, texture, text, fontSize, position, angle, size, rect, posText, is3D);
+    std::shared_ptr<indie::IComponent> renderer = std::make_shared<indie::Renderable>(model, texture, text, image, fontSize, position, angle, size, rect, posText, is3D, animation);
     this->putComponent(renderer, indie::RENDERABLE);
+}
+
+void indie::Entity::addMusic(const std::string &path)
+{
+    std::shared_ptr<indie::IComponent> renderer = std::make_shared<indie::Renderable>("", path);
+    this->putComponent(renderer, indie::RENDERABLE);
+    this->putComponent(renderer, indie::MUSIC);
 }
 
 void indie::Entity::addListener(std::shared_ptr<Entity> &entity)

@@ -11,7 +11,8 @@
 namespace indie {
     enum class Scenes {
         QUIT = -1,
-        MENU = 0,
+        SPLASH = 0,
+        MENU,
         PERSO,
         GAME,
         OPTION,

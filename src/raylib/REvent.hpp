@@ -33,6 +33,8 @@ namespace indie {
 
                 static bool isHover(const float &x, const float &y, const float &height, const float &width);
 
+                static Vector2 getMousePosition();
+
                 const std::vector<std::pair<KeyboardKey, ButtonState>> &getKeyboard() const;
                 const std::vector<std::pair<MouseButton, ButtonState>> &getMouse() const;
 

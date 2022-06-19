@@ -5,132 +5,66 @@
 ** raylib
 */
 
+#include "Exception.hpp"
 #include "scenes/AScene.hpp"
 #include "Raylib.hpp"
 
-indie::Raylib::Raylib() :
-    _camera({{0.0f, 10.0f, 10.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, 45.0f, 0})
+void indie::Raylib::displayCube(model const type, Vector3 const position, Vector3 const size, Color const color) const
 {
-}
-
-void indie::Raylib::setCamera(Vector3 pos, Vector3 target, Vector3 up, float fovy, int projection)
-{
-    _camera.position = pos;
-    _camera.target = target;
-    _camera.up = up;
-    _camera.fovy = fovy;
-    _camera.projection = projection;
-};
-
-Camera indie::Raylib::getCamera() const
-{
-    return _camera;
-};
-
-void indie::Raylib::createWindow(int screenWidth, int screenHeight, std::string const &title, std::size_t const fps)
-{
-    _screenSize.first = screenWidth;
-    _screenSize.second = screenHeight;
-    InitWindow(screenWidth, screenHeight, title.c_str());
-    SetTargetFPS(fps);
-    std::cout << "test" << std::endl;
-}
-
-bool indie::Raylib::gameLoop()
-{
-    return !WindowShouldClose();
-}
-
-bool indie::Raylib::isKeyDown(int button) const noexcept
-{
-    return (IsKeyDown(button));
-}
-
-bool indie::Raylib::isKeyPressed(int button) const noexcept
-{
-    return (IsKeyPressed(button));
-}
-
-bool indie::Raylib::isKeyReleased(int button) const noexcept
-{
-    return (IsKeyReleased(button));
-}
-
-void indie::Raylib::printCircle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, float const radius, std::pair<Color, Color> const color) const
-{
-    if (typeEntityLine == BASIC)
-        DrawCircle(position.first, position.second, radius, color.first);
-    else if (typeEntityLine == GRADIENT)
-        DrawCircleGradient(position.first, position.second, radius, color.first, color.second);
-    else if (typeEntityLine == LINES)
-        DrawCircleLines(position.first, position.second, radius, color.first);
-    else
-        std::cout << "Unknow Circle Type\n";
-}
-
-void indie::Raylib::printRectangle(typeEntityLine const typeEntityLine, std::pair<int, int> const position, std::pair<int, int> const size, std::pair<Color, Color> const color) const
-{
-    if (typeEntityLine == BASIC)
-        DrawRectangle(position.first, position.second, size.first, size.second, color.first);
-    else if (typeEntityLine == GRADIENT)
-        DrawRectangleGradientH(position.first, position.second, size.first, size.second, color.first, color.second);
-    else if (typeEntityLine == LINES)
-        DrawRectangleLines(position.first, position.second, size.first, size.second, color.first);
-    else
-        std::cout << "Unknow Rectangle Type\n";
-}
-
-void indie::Raylib::printCube(typeEntityLine const typeEntityLine, Vector3 const position, Vector3 const size, Color const color) const
-{
-    if (typeEntityLine == BASIC)
+    if (type == BASIC)
         DrawCube(position, size.x, size.y, size.z, color);
-    else if (typeEntityLine == WIRES)
+    else if (type == WIRES)
         DrawCubeWires(position, size.x, size.y, size.z, color);
     else
-        std::cout << "Unknow Cube Type\n";
+        throw TypeError("The cuby isn't recognize");
 }
 
-void indie::Raylib::printSphere(typeEntityLine const typeEntityLine, Vector3 const position, float const size, std::pair<int, int> const Vertex, Color const color) const
+Model indie::Raylib::rotateModel(Model entity, int angle) const
 {
-    if (typeEntityLine == BASIC)
-        DrawSphere(position, size, color);
-    else if (typeEntityLine == WIRES)
-        DrawSphereWires(position, size, Vertex.first, Vertex.second, color);
-    else
-        std::cout << "Unknow Shpere Type\n";
+    entity.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*angle });
+    return (entity);
 }
 
-void indie::Raylib::printGrid(int const slices, float const space) const
+bool indie::Raylib::collision_entities(Vector3 position_entity, Vector3 position, float size) const
 {
-    DrawGrid(slices, space);
+    if (CheckCollisionBoxes(
+            (BoundingBox){(Vector3){ position_entity.x - size/2,
+            position_entity.y - size/2, position_entity.z - size/2 },
+            (Vector3){ position_entity.x + size/2,
+            position_entity.y + size/2, position_entity.z + size/2 }},
+            (BoundingBox){(Vector3){ position.x - size/2,
+            position.y - size/2, position.z - size/2 },
+            (Vector3){ position.x + size/2,
+            position.y + size/2, position.z + size/2 }}))
+        return (true);
+    return (false);
 }
 
-void indie::Raylib::printFps(std::pair<int, int> const pos) const
+bool indie::Raylib::collision_image(Vector2 position_entity, Vector3 _collabsPos, float entity_raidus, int x, int y) const
 {
-    DrawFPS(pos.first, pos.second);
+    if (CheckCollisionCircleRec(position_entity, entity_raidus, (Rectangle){ _collabsPos.x - 0.5f + x*1.0f, _collabsPos.z - 0.5f + y*1.0f, 1.0f, 1.0f }))
+        return (true);
+    return (false);
 }
 
 void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
 {
-    Camera camera;
-    camera.position = (Vector3){ 10.0f, 10.0f, 10.0f }; // Camera position
-    camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };      // Camera looking at point
-    camera.up = (Vector3){ 0.0f, 1.0f, 0.0f };          // Camera up vector (rotation towards target)
-    camera.fovy = 45.0f;                                // Camera field-of-view Y
-    camera.projection = CAMERA_PERSPECTIVE;
+    Camera camera = { { 0, 18, 8 }, { 0, -2, 0 }, { 0, 1, 0 }, 50, 0 };
+    SetCameraMode(camera, CAMERA_ORBITAL);
 
-    BeginDrawing();
     auto drawable_entity = entities.find(typeEntity::DRAWABLE);
-    for (int i = 0; i < drawable_entity->second.size(); i++) {
-        auto component = drawable_entity->second.at(i)->getComponents();
-        auto renderer = component.find(tag::RENDERABLE);
-        indie::Renderable *entity = dynamic_cast<indie::Renderable *>(renderer->second.get());
-        std::cout << entity->_is3D << std::endl;
-        if (entity->_is3D == false) {
-            entity->_texture.draw(entity->_position.x, entity->_position.y, {entity->_rect.x, entity->_rect.y, entity->_size.x, entity->_size.y});
-            entity->_text.draw(entity->_textPos.x, entity->_textPos.y, entity->_strString, entity->_fontSize);
-        } else
-            entity->_model.draw(50, 50, camera);
-    }
-    EndDrawing();
+        for (int i = 0; i < drawable_entity->second.size(); i++) {
+            auto component = drawable_entity->second.at(i)->getComponents();
+            auto renderer = component.find(tag::RENDERABLE);
+            indie::Renderable *entity = dynamic_cast<indie::Renderable *>(renderer->second.get());
+            if (entity->_is3D == false) {
+                entity->_music.setTime();
+                entity->_music.playSong();
+                entity->_texture.draw(entity->_position.x, entity->_position.y, {entity->_rect.x, entity->_rect.y, entity->_size.x, entity->_size.y});
+                entity->_text.draw(entity->_textPos.x, entity->_textPos.y, entity->_strString, entity->_fontSize);
+            } else {
+                entity->_model.draw(entity->_position.x, entity->_position.y, entity->_position.z, camera);
+                entity->_map.draw(camera);
+            }
+        }
 }

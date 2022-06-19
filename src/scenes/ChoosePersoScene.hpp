@@ -11,6 +11,8 @@
 #include "scenes/AScene.hpp"
 #include <array>
 #include <unordered_map>
+#include "raylib/REvent.hpp"
+#include "events/Event.hpp"
 
 namespace indie
 {
@@ -20,8 +22,11 @@ namespace indie
             ~ChoosePersoScene();
 
             std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &getEntities();
+            void update(int *sceneId, std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &entity);
         protected:
         private:
+            void addEventToLastEntity(const MouseButton &mouse, std::shared_ptr<MouseEvent> &evt);
+            std::size_t _select;
     };
 }
 

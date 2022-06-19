@@ -17,10 +17,10 @@
                 RModel(const std::string &filename, const std::string &filename_texture);
                 ~RModel();
 
-                void draw(const float &x, const float &y, Camera camera);
+                void draw(const float &x, const float &y, const float &z, Camera camera);
                 Model _model;
+                Texture2D _texture;
             private:
-            Texture2D _texture;
         };
     }
 
