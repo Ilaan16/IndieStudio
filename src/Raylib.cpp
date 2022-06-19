@@ -8,6 +8,32 @@
 #include "scenes/AScene.hpp"
 #include "Raylib.hpp"
 
+void indie::Raylib::displayCube(model const type, Vector3 const position, Vector3 const size, Color const color) const
+{
+    if (type == BASIC)
+        DrawCube(position, size.x, size.y, size.z, color);
+    else if (type == WIRES)
+        DrawCubeWires(position, size.x, size.y, size.z, color);
+    else
+        std::cout << "Unknow Cube Type\n";
+        //error
+}
+
+bool indie::Raylib::collision_entities(Vector3 position_entity, Vector3 position, float size) const
+{
+    if (CheckCollisionBoxes(
+            (BoundingBox){(Vector3){ position_entity.x - size/2,
+            position_entity.y - size/2, position_entity.z - size/2 },
+            (Vector3){ position_entity.x + size/2,
+            position_entity.y + size/2, position_entity.z + size/2 }},
+            (BoundingBox){(Vector3){ position.x - size/2,
+            position.y - size/2, position.z - size/2 },
+            (Vector3){ position.x + size/2,
+            position.y + size/2, position.z + size/2 }}))
+        return (true);
+    return (false);
+}
+
 void indie::Raylib::displayAll(std::map<typeEntity ,std::vector<std::shared_ptr<indie::Entity>>> &entities)
 {
     Camera camera = { { 0, 18, 8 }, { 0, -2, 0 }, { 0, 1, 0 }, 50, 0 };
