@@ -34,7 +34,7 @@ indie::MainScene::MainScene()
 
     Entities.createSound(_entities, "assets/sound/C418 - Aria Math, but its an EPIC Soundtrack.mp3");
 
-    Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png", {-6.0f, 2.0f, 6.0f}, 0.0F, {1920, 1080, 0});
+    Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png", {-6.0f, 2.0f, 6.0f}, 0.0F, {1920, 1080, 0}, "assets/characters/characterAnim.iqm");
     this->addEventToLastEntity(KeyboardKey::KEY_RIGHT, move_right);
     this->addEventToLastEntity(KeyboardKey::KEY_LEFT, move_left);
     this->addEventToLastEntity(KeyboardKey::KEY_DOWN, move_down);
@@ -42,7 +42,7 @@ indie::MainScene::MainScene()
 
     this->addEventToLastEntity(KeyboardKey::KEY_ENTER, put_bomb);
 
-    Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png", {6.0f, 2.0f, 6.0f}, 0.0F, {1920, 1080, 0});
+    Entities.createPlayer(_entities,"./assets/characters/character.iqm", "./assets/characters/steve.png", {6.0f, 2.0f, 6.0f}, 0.0F, {1920, 1080, 0}, "assets/characters/characterAnim.iqm");
     this->addEventToLastEntity(KeyboardKey::KEY_D, move_right);
     this->addEventToLastEntity(KeyboardKey::KEY_A, move_left);
     this->addEventToLastEntity(KeyboardKey::KEY_S, move_down);

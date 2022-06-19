@@ -6,8 +6,6 @@
 */
 
 #include "Event.hpp"
-#include <raymath.h>
-#include <iostream>
 
 namespace indie {
     Movement::Movement(int direction)
@@ -25,6 +23,7 @@ namespace indie {
 
         Vector3D oldPos = renderer->_position;
 
+        renderer->_anim.draw(renderer->_model);
         if (_direction == 1) {
             renderer->_model._model.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*-90 });
             renderer->_position.x += 0.1f;
