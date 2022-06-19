@@ -11,7 +11,6 @@
     #include <raylib.h>
     #include <vector>
     #include <random>
-    #include <raymath.h>
     #include "Player.hpp"
 
     namespace indie {

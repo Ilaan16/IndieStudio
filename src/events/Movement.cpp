@@ -25,19 +25,19 @@ namespace indie {
 
         renderer->_anim.draw(renderer->_model);
         if (_direction == 1) {
-            renderer->_model._model.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*-90 });
+            renderer->_model._model = _raylib.rotateModel(renderer->_model._model, -90);
             renderer->_position.x += 0.1f;
         }
         if (_direction == 2) {
-            renderer->_model._model.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*90 });
+            renderer->_model._model = _raylib.rotateModel(renderer->_model._model, 90);
             renderer->_position.x -= 0.1f;
         }
         if (_direction == 3) {
-            renderer->_model._model.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*0 });
+            renderer->_model._model = _raylib.rotateModel(renderer->_model._model, 0);
             renderer->_position.z += 0.1f;
         }
         if (_direction == 4) {
-            renderer->_model._model.transform = MatrixRotateXYZ((Vector3){ DEG2RAD*0, DEG2RAD*0, DEG2RAD*180 });
+            renderer->_model._model = _raylib.rotateModel(renderer->_model._model, 180);
             renderer->_position.z -= 0.1f;
         }
 
@@ -62,7 +62,7 @@ namespace indie {
 
         for (int y = 0; y < cubicmap.height; y++) {
             for (int x = 0; x < cubicmap.width; x++) {
-                if (rendererMap->_map._mapPixels[y*cubicmap.width + x].r == 255 && CheckCollisionCircleRec(playerPos, playerRadius, (Rectangle){ rendererMap->_map._mapPos.x - 0.5f + x*1.0f, rendererMap->_map._mapPos.z - 0.5f + y*1.0f, 1.0f, 1.0f })) {
+                if (rendererMap->_map._mapPixels[y*cubicmap.width + x].r == 255 && _raylib.collision_image(playerPos, rendererMap->_map._mapPos, playerRadius, x, y) == true) {
                     renderer->_position = oldPos;
                 }
             }

@@ -89,7 +89,7 @@ std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &indie:
 
 bool indie::MainScene::checkHit(int *sceneId, Vector3 position, float *position1, float *position2, float movement, int *explose, Texture2D cubicmap, Color *mapPix, std::vector<Vector3> collision_entity)
 {
-    Vector3 _mapPos = { -7, 2, -5 };
+    Vector3 mapPos = { -7, 2, -5 };
     *(position2) += movement;
     float playerRadius = 0.1f;
     Vector2 playerPos = { position.x, position.z };
@@ -108,7 +108,7 @@ bool indie::MainScene::checkHit(int *sceneId, Vector3 position, float *position1
 
     for (int y = 0; y < cubicmap.height; y++) {
         for (int x = 0; x < cubicmap.width; x++) {
-            if (mapPix[y*cubicmap.width + x].r == 255 && CheckCollisionCircleRec(playerPos, playerRadius, (Rectangle){ _mapPos.x - 0.5f + x*1.0f, _mapPos.z - 0.5f + y*1.0f, 1.0f, 1.0f })) {
+            if (mapPix[y*cubicmap.width + x].r == 255 && _raylib.collision_image(playerPos, mapPos, playerRadius, x, y) == true) {
                 return (false);
             }
         }
