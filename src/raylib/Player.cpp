@@ -35,11 +35,12 @@ namespace indie {
         Image imMap = LoadImage("assets/map/cubicmap_atlas.png");
         this->_cubicmap = LoadTextureFromImage(imMap);
         this->_mapPixels = LoadImageColors(imMap);
+        UnloadImage(imMap);
+
         _timer = { 0 };
         _life = 0.75f;
         _putBomb = false;
         _explosion = 0;
-        _endup = false;
         
         _up_stillalive = false;
         _down_stillalive = false;
@@ -56,5 +57,9 @@ namespace indie {
 
     Player::~Player()
     {
+        UnloadModel(_modelPlayer);
+        UnloadImageColors(_mapPixels);
+        UnloadTexture(_texturePlayer);
+        UnloadTexture(_cubicmap);
     }
 }

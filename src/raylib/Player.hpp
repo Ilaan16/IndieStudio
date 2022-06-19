@@ -33,8 +33,6 @@
                 Color *_mapPixels;
                 
                 int _explosion;
-                bool _endup;
-
                 bool _putBomb;
                 Vector3 _tnt;
 

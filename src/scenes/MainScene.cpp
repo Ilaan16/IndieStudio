@@ -79,7 +79,6 @@ void indie::MainScene::addEventToLastEntity(const KeyboardKey &key, std::shared_
 
 indie::MainScene::~MainScene()
 {
-    //clear objects
 }
 
 std::map<indie::typeEntity, std::vector<std::shared_ptr<indie::Entity>>> &indie::MainScene::getEntities()
