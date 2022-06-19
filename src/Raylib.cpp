@@ -5,6 +5,7 @@
 ** raylib
 */
 
+#include "Exception.hpp"
 #include "scenes/AScene.hpp"
 #include "Raylib.hpp"
 
@@ -15,8 +16,7 @@ void indie::Raylib::displayCube(model const type, Vector3 const position, Vector
     else if (type == WIRES)
         DrawCubeWires(position, size.x, size.y, size.z, color);
     else
-        std::cout << "Unknow Cube Type\n";
-        //error
+        throw TypeError("The cuby isn't recognize");
 }
 
 Model indie::Raylib::rotateModel(Model entity, int angle) const

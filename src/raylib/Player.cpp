@@ -36,7 +36,7 @@ namespace indie {
         this->_cubicmap = LoadTextureFromImage(imMap);
         this->_mapPixels = LoadImageColors(imMap);
         _timer = { 0 };
-        _life = 2.0f;
+        _life = 0.75f;
         _putBomb = false;
         _explosion = 0;
         _endup = false;

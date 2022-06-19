@@ -132,19 +132,19 @@ void indie::MainScene::putBomb(int *sceneId, float *x, float *y, float *z, Playe
     if ((*player).TimerDone(&(*player)._timer) && ((*player)._explosion > 0 || (*player)._putBomb == true)) {
         (*player)._putBomb = false;
         if ((*player)._up_stillalive == true) {
-            (*player)._up_stillalive = checkHit(sceneId, (*player)._up._bomb, &(*player)._up._bomb.x, &(*player)._up._bomb.z, -0.2f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
+            (*player)._up_stillalive = checkHit(sceneId, (*player)._up._bomb, &(*player)._up._bomb.x, &(*player)._up._bomb.z, -0.4f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
             _raylib.displayCube(Raylib::BASIC, (*player)._up._bomb, { 1.0f, 2.0f, 1.0f }, RED);
         }
         if ((*player)._down_stillalive == true) {
-            (*player)._down_stillalive = checkHit(sceneId, (*player)._down._bomb, &(*player)._down._bomb.x, &(*player)._down._bomb.z, 0.2f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
+            (*player)._down_stillalive = checkHit(sceneId, (*player)._down._bomb, &(*player)._down._bomb.x, &(*player)._down._bomb.z, 0.4f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
             _raylib.displayCube(Raylib::BASIC, (*player)._down._bomb, { 1.0f, 2.0f, 1.0f }, RED);
         }
         if ((*player)._left_stillalive == true) {
-            (*player)._left_stillalive = checkHit(sceneId, (*player)._left._bomb, &(*player)._left._bomb.z, &(*player)._left._bomb.x, -0.2f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
+            (*player)._left_stillalive = checkHit(sceneId, (*player)._left._bomb, &(*player)._left._bomb.z, &(*player)._left._bomb.x, -0.4f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
             _raylib.displayCube(Raylib::BASIC, (*player)._left._bomb, { 1.0f, 2.0f, 1.0f }, RED);
         }
         if ((*player)._right_stillalive == true) {
-            (*player)._right_stillalive = checkHit(sceneId, (*player)._right._bomb, &(*player)._right._bomb.z, &(*player)._right._bomb.x, 0.2f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
+            (*player)._right_stillalive = checkHit(sceneId, (*player)._right._bomb, &(*player)._right._bomb.z, &(*player)._right._bomb.x, 0.4f, &(*player)._explosion, cubicmap, mapPixels, collision_entity);
             _raylib.displayCube(Raylib::BASIC, (*player)._right._bomb, { 1.0f, 2.0f, 1.0f }, RED);
         }
     }
